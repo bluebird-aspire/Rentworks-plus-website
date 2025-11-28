@@ -1,5 +1,5 @@
 import { Link } from '../components/Router';
-import { ArrowLeft, ArrowRight, Check, Car, Truck, Zap, Users, Wrench, TrendingUp, Building2, Briefcase } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Car, Truck, Zap, Users, Wrench, TrendingUp, Building2, Briefcase, BookOpen, Calendar, Download, FileText, Clock, Tag, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useEffect, useState } from 'react';
 
@@ -659,23 +659,1025 @@ export function ITPage() {
 // ===========================================
 
 export function BlogPage() {
-  return <SimplePage title="Blog & Insights" description="Industry insights, best practices, and expert advice for rental businesses." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const categories = [
+    { name: "Fleet Management", count: 24, icon: <Car className="w-5 h-5" /> },
+    { name: "AI & Automation", count: 18, icon: <TrendingUp className="w-5 h-5" /> },
+    { name: "Industry Trends", count: 31, icon: <Building2 className="w-5 h-5" /> },
+    { name: "Operations", count: 15, icon: <Wrench className="w-5 h-5" /> }
+  ];
+
+  const featuredArticles = [
+    {
+      title: "How AI Demand Prediction Increased Revenue by 22% for Multi-Location Operators",
+      category: "AI & Automation",
+      date: "November 15, 2025",
+      readTime: "6 min read",
+      excerpt: "Discover how predictive AI models help rental operators optimize pricing, fleet allocation, and maintenance scheduling for maximum profitability.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800"
+    },
+    {
+      title: "The Complete Guide to Fleet Utilization Optimization",
+      category: "Fleet Management",
+      date: "November 10, 2025",
+      readTime: "8 min read",
+      excerpt: "Learn proven strategies to increase vehicle utilization rates, reduce idle time, and maximize ROI across your entire rental fleet.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800"
+    },
+    {
+      title: "EV Rental Operations: Battery Management & Charging Infrastructure",
+      category: "Industry Trends",
+      date: "November 5, 2025",
+      readTime: "7 min read",
+      excerpt: "Essential insights for rental operators entering the electric vehicle market, from battery health monitoring to customer charging education.",
+      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800"
+    },
+    {
+      title: "Reducing Check-In Time: Best Practices from High-Volume Locations",
+      category: "Operations",
+      date: "October 28, 2025",
+      readTime: "5 min read",
+      excerpt: "Airport and downtown locations share their workflows for processing 50+ check-ins per hour with zero customer friction.",
+      image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800"
+    },
+    {
+      title: "Predictive Maintenance: Catching Problems Before They Happen",
+      category: "Fleet Management",
+      date: "October 22, 2025",
+      readTime: "6 min read",
+      excerpt: "How AI analyzes vehicle telemetry, usage patterns, and maintenance history to predict failures weeks in advance.",
+      image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800"
+    },
+    {
+      title: "Commercial Fleet Rental Trends: What's Working in 2025",
+      category: "Industry Trends",
+      date: "October 18, 2025",
+      readTime: "9 min read",
+      excerpt: "Market analysis of truck and van rental demand, pricing strategies, and technology adoption rates across commercial operators.",
+      image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-24 overflow-hidden">
+        {/* Parallax Background Blob */}
+        <div
+          className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-left">
+            <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center">
+              <BookOpen className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold">Blog & Insights</h1>
+              <p className="text-xl text-gray-300 mt-2">
+                Insights on rental automation, AI, fleet performance & industry trends.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-lg text-gray-300 max-w-3xl opacity-0 animate-fade-in-left" style={{ animationDelay: '0.2s' }}>
+            Stay ahead with expert analysis, operational best practices, and data-driven strategies from the rental industry's leading innovators.
+          </p>
+        </div>
+      </div>
+
+      {/* Categories Section */}
+      <div className="max-w-6xl mx-auto px-8 py-16">
+        <h2 className="text-2xl font-bold text-[#081E32] mb-8">Browse by Category</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className="p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#007A55] hover:shadow-lg transition-all cursor-pointer opacity-0 animate-float-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-[#F4F5F7] flex items-center justify-center text-[#007A55] mb-4">
+                {category.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-[#081E32] mb-2">{category.name}</h3>
+              <p className="text-sm text-gray-600">{category.count} articles</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Featured Articles Grid */}
+      <div className="max-w-6xl mx-auto px-8 py-16 bg-[#F4F5F7]">
+        <h2 className="text-2xl font-bold text-[#081E32] mb-8">Latest Articles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredArticles.map((article, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer opacity-0 animate-float-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="h-48 bg-gray-200 overflow-hidden">
+                <ImageWithFallback
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="px-3 py-1 bg-[#007A55]/10 text-[#007A55] text-xs font-semibold rounded-full">
+                    {article.category}
+                  </span>
+                  <span className="text-xs text-gray-500">{article.readTime}</span>
+                </div>
+                <h3 className="text-lg font-bold text-[#081E32] mb-3 hover:text-[#007A55] transition-colors">
+                  {article.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">{article.excerpt}</p>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span>{article.date}</span>
+                  <ArrowRight className="w-4 h-4 text-[#007A55]" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Newsletter CTA */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-gradient-to-br from-[#081E32] to-[#007A55] text-white rounded-3xl p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">Never Miss an Insight</h2>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Subscribe to receive weekly updates on rental automation, AI trends, and operational best practices.
+          </p>
+          <div className="flex gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-6 py-3 rounded-xl text-gray-800"
+            />
+            <button className="px-8 py-3 bg-white text-[#007A55] font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function GuidesPage() {
-  return <SimplePage title="Guides & Playbooks" description="In-depth strategy guides, operational playbooks, and training materials." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const guides = [
+    {
+      title: "The Complete Multi-Location Rental Operations Playbook",
+      description: "40-page comprehensive guide covering centralized fleet management, branch performance optimization, and AI-powered transfer recommendations for franchise operators.",
+      topics: ["Fleet Distribution", "Branch Analytics", "Transfer Automation", "Franchise Compliance"],
+      pages: 40,
+      downloadFormat: "PDF",
+      icon: <Building2 className="w-6 h-6" />
+    },
+    {
+      title: "AI-Powered Pricing Strategy Framework",
+      description: "Step-by-step methodology for implementing dynamic pricing using demand forecasting, competitor analysis, and seasonal trend prediction.",
+      topics: ["Demand Prediction", "Dynamic Pricing", "Competitor Intelligence", "Yield Management"],
+      pages: 28,
+      downloadFormat: "PDF",
+      icon: <TrendingUp className="w-6 h-6" />
+    },
+    {
+      title: "Fleet Maintenance Excellence: Predictive Care Playbook",
+      description: "Comprehensive guide to reducing downtime and repair costs through AI-powered predictive maintenance, service scheduling, and condition monitoring.",
+      topics: ["Predictive Analytics", "Service Scheduling", "Condition Monitoring", "Cost Optimization"],
+      pages: 35,
+      downloadFormat: "PDF",
+      icon: <Wrench className="w-6 h-6" />
+    },
+    {
+      title: "Corporate Fleet & Long-Term Contract Management",
+      description: "Best practices for managing corporate accounts, recurring billing, contract lifecycle automation, and renewal scoring systems.",
+      topics: ["Contract Automation", "Recurring Billing", "Renewal Prediction", "Corporate Relations"],
+      pages: 32,
+      downloadFormat: "PDF",
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      title: "Customer Experience Optimization Manual",
+      description: "Proven workflows for reducing check-in times, improving customer satisfaction scores, and implementing self-service options for modern renters.",
+      topics: ["Check-In Workflows", "Self-Service", "Customer Satisfaction", "Process Optimization"],
+      pages: 24,
+      downloadFormat: "PDF",
+      icon: <Users className="w-6 h-6" />
+    },
+    {
+      title: "EV & Micro-Mobility Operations Guide",
+      description: "Essential playbook for electric vehicle fleet operators covering battery management, charging infrastructure, range optimization, and customer education.",
+      topics: ["Battery Health", "Charging Strategy", "Range Management", "Customer Education"],
+      pages: 30,
+      downloadFormat: "PDF",
+      icon: <Zap className="w-6 h-6" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-24 overflow-hidden">
+        <div
+          className="absolute top-20 left-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-left">
+            <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center">
+              <FileText className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold">Guides & Playbooks</h1>
+              <p className="text-xl text-gray-300 mt-2">
+                Step-by-step manuals for scaling rental operations with AI.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-lg text-gray-300 max-w-3xl opacity-0 animate-fade-in-left" style={{ animationDelay: '0.2s' }}>
+            Comprehensive operational playbooks created by industry experts to help you implement best practices, optimize workflows, and scale your rental business efficiently.
+          </p>
+        </div>
+      </div>
+
+      {/* Guides Library */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-3xl font-bold text-[#081E32] mb-12">Available Playbooks</h2>
+
+        <div className="space-y-6">
+          {guides.map((guide, index) => (
+            <div
+              key={index}
+              className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-[#007A55] hover:shadow-xl transition-all opacity-0 animate-float-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start gap-6">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55] flex-shrink-0">
+                  {guide.icon}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-[#081E32] mb-3">{guide.title}</h3>
+                  <p className="text-gray-600 mb-4">{guide.description}</p>
+
+                  {/* Topics */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {guide.topics.map((topic, topicIndex) => (
+                      <span
+                        key={topicIndex}
+                        className="px-3 py-1 bg-[#F4F5F7] text-[#081E32] text-sm rounded-full"
+                      >
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Meta Info */}
+                  <div className="flex items-center gap-6 text-sm text-gray-500">
+                    <span className="flex items-center gap-2">
+                      <FileText className="w-4 h-4" />
+                      {guide.pages} pages
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Download className="w-4 h-4" />
+                      {guide.downloadFormat}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Download Button */}
+                <button className="px-6 py-3 bg-[#007A55] text-white font-semibold rounded-xl hover:bg-[#006644] transition-colors flex items-center gap-2 flex-shrink-0">
+                  <Download className="w-5 h-5" />
+                  Download
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Benefits Section */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl font-bold text-[#081E32] mb-12 text-center">Why Download Our Playbooks?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <Check className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">Proven Frameworks</h3>
+              <p className="text-gray-600">
+                Battle-tested strategies used by top-performing rental operators across 12+ countries.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">Measurable Results</h3>
+              <p className="text-gray-600">
+                Step-by-step implementation guidance with KPIs and success metrics for every strategy.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">Always Updated</h3>
+              <p className="text-gray-600">
+                Regularly refreshed with the latest AI capabilities, market trends, and best practices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-gradient-to-br from-[#081E32] to-[#007A55] text-white rounded-3xl p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need Custom Implementation Support?</h2>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Our team of rental operations experts can help you implement these strategies tailored to your specific business needs.
+          </p>
+          <button className="px-8 py-4 bg-white text-[#007A55] font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+            Schedule a Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function TemplatesPage() {
-  return <SimplePage title="Templates & Checklists" description="Downloadable tools, templates, and checklists for rental operations." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const templates = [
+    {
+      category: "Vehicle Inspections",
+      items: [
+        { name: "Pre-Rental Vehicle Inspection Form", format: "PDF + Excel", icon: <Car className="w-5 h-5" /> },
+        { name: "Post-Rental Damage Documentation Checklist", format: "PDF", icon: <Car className="w-5 h-5" /> },
+        { name: "Photo-Based Inspection Template (Mobile-Ready)", format: "PDF", icon: <Car className="w-5 h-5" /> }
+      ]
+    },
+    {
+      category: "Operations & Workflows",
+      items: [
+        { name: "Daily Fleet Status Report Template", format: "Excel", icon: <Wrench className="w-5 h-5" /> },
+        { name: "Check-In/Check-Out Process Checklist", format: "PDF", icon: <Check className="w-5 h-5" /> },
+        { name: "Multi-Location Transfer Request Form", format: "Excel + PDF", icon: <Building2 className="w-5 h-5" /> },
+        { name: "Fleet Maintenance Schedule Template", format: "Excel", icon: <Wrench className="w-5 h-5" /> }
+      ]
+    },
+    {
+      category: "Customer & Contracts",
+      items: [
+        { name: "Rental Agreement Template (Customizable)", format: "Word + PDF", icon: <FileText className="w-5 h-5" /> },
+        { name: "Corporate Account Setup Checklist", format: "PDF", icon: <Briefcase className="w-5 h-5" /> },
+        { name: "Customer Satisfaction Survey Template", format: "PDF + Google Forms", icon: <Users className="w-5 h-5" /> }
+      ]
+    },
+    {
+      category: "Financial & Reporting",
+      items: [
+        { name: "Monthly Revenue & Utilization Dashboard", format: "Excel", icon: <TrendingUp className="w-5 h-5" /> },
+        { name: "Payment Reconciliation Worksheet", format: "Excel", icon: <Check className="w-5 h-5" /> },
+        { name: "Branch Performance Comparison Template", format: "Excel", icon: <Building2 className="w-5 h-5" /> }
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-24 overflow-hidden">
+        <div
+          className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-left">
+            <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center">
+              <Download className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold">Templates & Checklists</h1>
+              <p className="text-xl text-gray-300 mt-2">
+                Free downloadable tools for inspections, audits & workflows.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-lg text-gray-300 max-w-3xl opacity-0 animate-fade-in-left" style={{ animationDelay: '0.2s' }}>
+            Ready-to-use forms, checklists, and spreadsheet templates designed specifically for rental operations. Download, customize, and implement immediately.
+          </p>
+        </div>
+      </div>
+
+      {/* Templates Library */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="space-y-12">
+          {templates.map((category, catIndex) => (
+            <div key={catIndex} className="opacity-0 animate-float-in" style={{ animationDelay: `${catIndex * 0.1}s` }}>
+              <h2 className="text-2xl font-bold text-[#081E32] mb-6 flex items-center gap-3">
+                <span className="w-2 h-2 bg-[#007A55] rounded-full"></span>
+                {category.category}
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {category.items.map((item, itemIndex) => (
+                  <div
+                    key={itemIndex}
+                    className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[#007A55] hover:shadow-lg transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-4 flex-1">
+                        <div className="w-12 h-12 rounded-xl bg-[#F4F5F7] flex items-center justify-center text-[#007A55] group-hover:bg-[#007A55] group-hover:text-white transition-colors">
+                          {item.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-[#081E32] mb-2 group-hover:text-[#007A55] transition-colors">
+                            {item.name}
+                          </h3>
+                          <p className="text-sm text-gray-500">{item.format}</p>
+                        </div>
+                      </div>
+                      <button className="px-4 py-2 bg-[#007A55] text-white rounded-lg hover:bg-[#006644] transition-colors flex items-center gap-2 text-sm flex-shrink-0">
+                        <Download className="w-4 h-4" />
+                        Download
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl font-bold text-[#081E32] mb-12 text-center">What You Get</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <Download className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg font-bold text-[#081E32] mb-2">100% Free</h3>
+              <p className="text-sm text-gray-600">
+                No signup required. Instant downloads for all templates.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <FileText className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg font-bold text-[#081E32] mb-2">Fully Customizable</h3>
+              <p className="text-sm text-gray-600">
+                Edit, brand, and adapt every template to your business.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <Check className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg font-bold text-[#081E32] mb-2">Industry-Tested</h3>
+              <p className="text-sm text-gray-600">
+                Designed by rental operators for rental operators.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg font-bold text-[#081E32] mb-2">Always Updated</h3>
+              <p className="text-sm text-gray-600">
+                Regularly refreshed with new templates and formats.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-gradient-to-br from-[#081E32] to-[#007A55] text-white rounded-3xl p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need Templates Integrated Into Your System?</h2>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            RentWorksPlus+ includes all these templates built directly into the platform with auto-fill, digital signatures, and instant delivery.
+          </p>
+          <button className="px-8 py-4 bg-white text-[#007A55] font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+            Explore Platform Features
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function UpdatesPage() {
-  return <SimplePage title="Product Updates & Release Notes" description="Latest platform features, improvements, and release notes." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const updates = [
+    {
+      version: "v3.8.0",
+      date: "November 2025",
+      category: "Major Release",
+      highlights: [
+        {
+          title: "AI-Powered Demand Forecasting",
+          description: "New machine learning models predict rental demand 30-90 days ahead with 89% accuracy, enabling proactive pricing and fleet positioning.",
+          icon: <TrendingUp className="w-5 h-5" />
+        },
+        {
+          title: "Multi-Currency Support",
+          description: "Full support for 45+ currencies with automatic exchange rate updates and multi-currency financial reporting.",
+          icon: <Check className="w-5 h-5" />
+        },
+        {
+          title: "Advanced Fleet Transfer Engine",
+          description: "AI suggests optimal vehicle transfers between locations based on demand prediction, utilization gaps, and transportation costs.",
+          icon: <Car className="w-5 h-5" />
+        }
+      ]
+    },
+    {
+      version: "v3.7.2",
+      date: "October 2025",
+      category: "Feature Update",
+      highlights: [
+        {
+          title: "EV Battery Health Monitoring",
+          description: "Real-time battery condition tracking with degradation alerts, charging cycle optimization, and range prediction.",
+          icon: <Zap className="w-5 h-5" />
+        },
+        {
+          title: "Bulk SMS Notifications",
+          description: "Send reservation confirmations, pickup reminders, and return notifications via SMS to thousands of customers simultaneously.",
+          icon: <Check className="w-5 h-5" />
+        }
+      ]
+    },
+    {
+      version: "v3.7.0",
+      date: "September 2025",
+      category: "Major Release",
+      highlights: [
+        {
+          title: "Alexa AI Operator Assistant",
+          description: "Voice-powered rental assistant processes reservations, answers customer questions, and handles routine inquiries 24/7.",
+          icon: <Users className="w-5 h-5" />
+        },
+        {
+          title: "Mobile App Offline Mode",
+          description: "Complete check-in/out workflows work without internet connection and auto-sync when connectivity returns.",
+          icon: <Check className="w-5 h-5" />
+        },
+        {
+          title: "Corporate Contract Lifecycle",
+          description: "Automated contract renewal scoring, usage tracking, and predictive analytics for long-term corporate accounts.",
+          icon: <Briefcase className="w-5 h-5" />
+        }
+      ]
+    },
+    {
+      version: "v3.6.5",
+      date: "August 2025",
+      category: "Performance & Fixes",
+      highlights: [
+        {
+          title: "Dashboard Load Time: 60% Faster",
+          description: "Optimized queries and caching reduce main dashboard load time from 2.1s to 0.8s average.",
+          icon: <TrendingUp className="w-5 h-5" />
+        },
+        {
+          title: "API Rate Limit Increase",
+          description: "Increased API rate limits from 1000/hour to 5000/hour for enterprise accounts.",
+          icon: <Check className="w-5 h-5" />
+        }
+      ]
+    },
+    {
+      version: "v3.6.0",
+      date: "July 2025",
+      category: "Major Release",
+      highlights: [
+        {
+          title: "Predictive Maintenance Engine",
+          description: "AI analyzes mileage, usage patterns, and service history to predict maintenance needs 2-4 weeks in advance.",
+          icon: <Wrench className="w-5 h-5" />
+        },
+        {
+          title: "Smart Damage Detection",
+          description: "Computer vision automatically compares pre/post rental photos to identify new damage with 94% accuracy.",
+          icon: <Car className="w-5 h-5" />
+        }
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-24 overflow-hidden">
+        <div
+          className="absolute top-20 left-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-left">
+            <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center">
+              <Clock className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold">Product Updates & Release Notes</h1>
+              <p className="text-xl text-gray-300 mt-2">
+                Stay informed on new features, improvements & AI enhancements.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-lg text-gray-300 max-w-3xl opacity-0 animate-fade-in-left" style={{ animationDelay: '0.2s' }}>
+            Track every improvement to RentWorksPlus+ with detailed release notes, feature launches, and performance enhancements.
+          </p>
+        </div>
+      </div>
+
+      {/* Release Timeline */}
+      <div className="max-w-5xl mx-auto px-8 py-20">
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+
+          <div className="space-y-12">
+            {updates.map((update, index) => (
+              <div
+                key={index}
+                className="relative pl-20 opacity-0 animate-float-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-[26px] top-2 w-5 h-5 bg-[#007A55] rounded-full border-4 border-white shadow-lg"></div>
+
+                {/* Content Card */}
+                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-all">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div>
+                      <h2 className="text-3xl font-bold text-[#081E32] mb-2">{update.version}</h2>
+                      <div className="flex items-center gap-3">
+                        <span className="text-gray-600">{update.date}</span>
+                        <span className="px-3 py-1 bg-[#007A55]/10 text-[#007A55] text-sm font-semibold rounded-full">
+                          {update.category}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Features */}
+                  <div className="space-y-6">
+                    {update.highlights.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55] flex-shrink-0">
+                          {feature.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-[#081E32] mb-2">{feature.title}</h3>
+                          <p className="text-gray-600">{feature.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl font-bold text-[#081E32] mb-12 text-center">Our Commitment to Innovation</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#007A55] mb-2">52</div>
+              <p className="text-gray-600">Major releases in 2025</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#007A55] mb-2">180+</div>
+              <p className="text-gray-600">New features added</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#007A55] mb-2">99.9%</div>
+              <p className="text-gray-600">Platform uptime SLA</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-[#007A55] mb-2">24/7</div>
+              <p className="text-gray-600">Support & monitoring</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-gradient-to-br from-[#081E32] to-[#007A55] text-white rounded-3xl p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">Get Notified About New Releases</h2>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Subscribe to receive instant notifications when new features launch, updates deploy, or improvements are released.
+          </p>
+          <div className="flex gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-6 py-3 rounded-xl text-gray-800"
+            />
+            <button className="px-8 py-3 bg-white text-[#007A55] font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function WebinarsPage() {
-  return <SimplePage title="Webinars & Events" description="Live and on-demand training sessions, webinars, and industry events." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const upcomingWebinars = [
+    {
+      title: "AI-Powered Fleet Optimization: Real-World Results",
+      date: "December 12, 2025",
+      time: "2:00 PM EST",
+      duration: "60 minutes",
+      presenter: "Sarah Chen, VP of Product",
+      description: "Learn how top rental operators use machine learning to optimize fleet distribution, pricing, and maintenance scheduling.",
+      spots: "42 spots remaining",
+      type: "Live Webinar",
+      icon: <TrendingUp className="w-6 h-6" />
+    },
+    {
+      title: "Multi-Location Operations Masterclass",
+      date: "December 18, 2025",
+      time: "1:00 PM EST",
+      duration: "90 minutes",
+      presenter: "Michael Rodriguez, Operations Director",
+      description: "Deep dive into centralized management, branch performance analytics, and AI-powered fleet transfer recommendations.",
+      spots: "58 spots remaining",
+      type: "Live Workshop",
+      icon: <Building2 className="w-6 h-6" />
+    },
+    {
+      title: "EV Fleet Management: Battery Health & Charging Strategy",
+      date: "January 8, 2026",
+      time: "3:00 PM EST",
+      duration: "45 minutes",
+      presenter: "Dr. Lisa Kumar, EV Technology Lead",
+      description: "Essential strategies for managing electric vehicle fleets including battery monitoring, charging optimization, and range prediction.",
+      spots: "71 spots remaining",
+      type: "Live Webinar",
+      icon: <Zap className="w-6 h-6" />
+    }
+  ];
+
+  const onDemandWebinars = [
+    {
+      title: "Getting Started with RentWorksPlus+",
+      duration: "35 minutes",
+      views: "2,847 views",
+      category: "Platform Basics",
+      icon: <FileText className="w-5 h-5" />
+    },
+    {
+      title: "Advanced Pricing Strategies & Dynamic Rates",
+      duration: "52 minutes",
+      views: "1,634 views",
+      category: "Revenue Optimization",
+      icon: <TrendingUp className="w-5 h-5" />
+    },
+    {
+      title: "Corporate Fleet & Long-Term Contract Management",
+      duration: "48 minutes",
+      views: "1,219 views",
+      category: "Corporate Solutions",
+      icon: <Briefcase className="w-5 h-5" />
+    },
+    {
+      title: "Mobile Check-In/Out Workflows",
+      duration: "28 minutes",
+      views: "3,102 views",
+      category: "Operations",
+      icon: <Users className="w-5 h-5" />
+    },
+    {
+      title: "Predictive Maintenance Deep Dive",
+      duration: "41 minutes",
+      views: "987 views",
+      category: "Fleet Management",
+      icon: <Wrench className="w-5 h-5" />
+    },
+    {
+      title: "API Integration Best Practices",
+      duration: "55 minutes",
+      views: "1,455 views",
+      category: "Developer Resources",
+      icon: <FileText className="w-5 h-5" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-24 overflow-hidden">
+        <div
+          className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-left">
+            <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center">
+              <Calendar className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold">Webinars & Events</h1>
+              <p className="text-xl text-gray-300 mt-2">
+                Live sessions, virtual demos & expert talks for rental operators.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-lg text-gray-300 max-w-3xl opacity-0 animate-fade-in-left" style={{ animationDelay: '0.2s' }}>
+            Join our expert-led training sessions, live demos, and industry discussions to master rental operations and AI-powered automation.
+          </p>
+        </div>
+      </div>
+
+      {/* Upcoming Webinars */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-3xl font-bold text-[#081E32] mb-12">Upcoming Live Sessions</h2>
+
+        <div className="space-y-6">
+          {upcomingWebinars.map((webinar, index) => (
+            <div
+              key={index}
+              className="bg-white border-2 border-[#007A55] rounded-2xl p-8 hover:shadow-2xl transition-all opacity-0 animate-float-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start gap-8">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-[#007A55] text-white flex items-center justify-center flex-shrink-0">
+                  {webinar.icon}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <span className="px-3 py-1 bg-[#007A55]/10 text-[#007A55] text-sm font-semibold rounded-full">
+                        {webinar.type}
+                      </span>
+                      <h3 className="text-2xl font-bold text-[#081E32] mt-3 mb-2">{webinar.title}</h3>
+                      <p className="text-gray-600 mb-4">{webinar.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Date</p>
+                      <p className="text-sm font-semibold text-[#081E32]">{webinar.date}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Time</p>
+                      <p className="text-sm font-semibold text-[#081E32]">{webinar.time}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Duration</p>
+                      <p className="text-sm font-semibold text-[#081E32]">{webinar.duration}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Availability</p>
+                      <p className="text-sm font-semibold text-[#007A55]">{webinar.spots}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <p className="text-sm text-gray-600">
+                      <span className="font-semibold">Presented by:</span> {webinar.presenter}
+                    </p>
+                    <button className="px-6 py-3 bg-[#007A55] text-white font-semibold rounded-xl hover:bg-[#006644] transition-colors">
+                      Register Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* On-Demand Library */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl font-bold text-[#081E32] mb-12">On-Demand Webinar Library</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {onDemandWebinars.map((webinar, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 hover:shadow-xl transition-all cursor-pointer opacity-0 animate-float-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55]">
+                    {webinar.icon}
+                  </div>
+                  <div className="flex-1">
+                    <span className="px-2 py-1 bg-[#F4F5F7] text-[#081E32] text-xs font-semibold rounded">
+                      {webinar.category}
+                    </span>
+                  </div>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#081E32] mb-3">{webinar.title}</h3>
+
+                <div className="flex items-center justify-between text-sm text-gray-600">
+                  <span>{webinar.duration}</span>
+                  <span>{webinar.views}</span>
+                </div>
+
+                <button className="w-full mt-4 px-4 py-2 bg-[#007A55] text-white font-semibold rounded-xl hover:bg-[#006644] transition-colors flex items-center justify-center gap-2">
+                  <ExternalLink className="w-4 h-4" />
+                  Watch Now
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-gradient-to-br from-[#081E32] to-[#007A55] text-white rounded-3xl p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">Want a Private Training Session?</h2>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Schedule a custom training session tailored to your team's specific needs and workflows.
+          </p>
+          <button className="px-8 py-4 bg-white text-[#007A55] font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+            Request Private Training
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // ===========================================

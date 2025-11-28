@@ -320,31 +320,31 @@ function ResourcesMenu({ onClose }: { onClose: () => void }) {
     {
       icon: <BookOpen className="w-5 h-5" />,
       title: "Blog",
-      description: "Industry insights and best practices",
+      description: "Insights on rental automation, AI, fleet performance & industry trends.",
       link: "/resources/blog"
     },
     {
       icon: <FileText className="w-5 h-5" />,
       title: "Guides & Playbooks",
-      description: "In-depth strategy guides",
+      description: "Step-by-step manuals for scaling rental operations with AI.",
       link: "/resources/guides"
     },
     {
       icon: <Clipboard className="w-5 h-5" />,
       title: "Templates & Checklists",
-      description: "Downloadable tools and resources",
+      description: "Free downloadable tools for inspections, audits & workflows.",
       link: "/resources/templates"
     },
     {
       icon: <Megaphone className="w-5 h-5" />,
       title: "Product Updates & Release Notes",
-      description: "Latest releases and features",
+      description: "Stay informed on new features, improvements & AI enhancements.",
       link: "/resources/updates"
     },
     {
       icon: <CalendarIcon className="w-5 h-5" />,
       title: "Webinars & Events",
-      description: "Live and on-demand training",
+      description: "Live sessions, virtual demos & expert talks for rental operators.",
       link: "/resources/webinars"
     }
   ];
