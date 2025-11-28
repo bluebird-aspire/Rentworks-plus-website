@@ -118,13 +118,13 @@ export function RentallAPIPage() {
   );
 }
 
-// Mobile Application Page
+// Mobile-Responsive Web App Page
 export function MobileApplicationPage() {
   return (
     <FeaturePageTemplate
       hero={{
         icon: <Smartphone className="w-10 h-10" />,
-        title: "Mobile Application",
+        title: "Mobile-Responsive Web App",
         subtitle: "Manage your rental operations from anywhere. Full check-in/out workflows, damage capture, and live fleet visibility perfect for curbside, delivery, and airport operations."
       }}
       painPoints={[

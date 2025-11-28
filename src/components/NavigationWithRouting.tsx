@@ -139,7 +139,7 @@ function PlatformMegaMenu({ onClose }: { onClose: () => void }) {
     },
     {
       icon: <Smartphone className="w-5 h-5" />,
-      title: "Mobile Application",
+      title: "Mobile-Responsive Web App",
       description: "Check-out & check-in made simple on any device.",
       link: "/platform/mobile-app"
     },
