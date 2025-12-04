@@ -8,25 +8,25 @@ export function DailyOperationsTabs() {
     {
       icon: Car,
       title: 'Auto Rental System',
-      description: 'End-to-end workflows for reservations, agreements, extensions, and returns.',
+      description: 'Streamline your entire rental workflow—from first quote to vehicle return—using one car rental management system.',
       visual: 'rental'
     },
     {
       icon: MessageSquare,
-      title: 'Alexa (AI Operator)',
-      description: 'Your AI assistant that answers calls, handles chats, and creates bookings 24/7.',
+      title: 'CAREN (AI Operator)',
+      description: 'Your always-on digital assistant for rental operations and customer support.',
       visual: 'ai'
     },
     {
       icon: CreditCard,
       title: 'Payments',
-      description: 'Integrated payments supporting cash, card present, pay by link, direct debit, check, and hosted payment flows.',
+      description: 'Secure, flexible payment processing designed for vehicle rental businesses.',
       visual: 'payments'
     },
     {
       icon: Smartphone,
-      title: 'Web & Mobile Experience',
-      description: 'A responsive web application so customers and staff can use RentWorksPlus+ from any device.',
+      title: 'Smart Res Planner',
+      description: 'A visual reservation planner that lets you manage bookings and vehicles in a calendar timeline.',
       visual: 'mobile'
     }
   ];
@@ -177,7 +177,7 @@ export function DailyOperationsTabs() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                       </div>
-                      <span className="text-[#081E32] text-sm">Alexa AI</span>
+                      <span className="text-[#081E32] text-sm">CAREN AI</span>
                       <span className="text-xs text-[#081E32]/60">Handling calls</span>
                     </div>
                   </div>
@@ -253,7 +253,7 @@ export function DailyOperationsTabs() {
                 <div className="flex items-center justify-between mb-6">
                   <h4 className="text-[#081E32]">Payment Processing</h4>
                   <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                    Secure
+                    PCI-Compliant & Secure
                   </span>
                 </div>
 
@@ -315,59 +315,97 @@ export function DailyOperationsTabs() {
               </div>
             )}
 
-            {/* Web & Mobile Visual */}
+            {/* Smart Res Planner Visual */}
             {activeTab === 3 && (
               <div className="bg-white rounded-xl p-6 shadow-lg">
                 <div className="flex items-center justify-between mb-6">
-                  <h4 className="text-[#081E32]">Multi-Platform Access</h4>
+                  <h4 className="text-[#081E32]">Reservation Planner</h4>
                   <span className="text-sm bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full">
-                    Responsive
+                    Calendar View
                   </span>
                 </div>
 
-                {/* Device Grid */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="text-center">
-                    <div className="w-full h-32 bg-[#F4F5F7] rounded-lg mb-3 flex items-center justify-center">
-                      <svg className="w-12 h-12 text-[#007A55]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
-                      </svg>
-                    </div>
-                    <p className="text-sm text-gray-600">Desktop</p>
+                {/* Calendar Grid Mockup - Compact */}
+                <div className="bg-[#F4F5F7] rounded-lg p-3 mb-4">
+                  {/* Calendar Header */}
+                  <div className="grid grid-cols-5 gap-1 mb-2">
+                    <div className="text-[8px] text-gray-500 font-medium">Vehicle</div>
+                    <div className="text-[8px] text-gray-600 text-center">12/2</div>
+                    <div className="text-[8px] text-gray-600 text-center">12/3</div>
+                    <div className="text-[8px] text-gray-600 text-center">12/4</div>
+                    <div className="text-[8px] text-gray-600 text-center">12/5</div>
                   </div>
 
-                  <div className="text-center">
-                    <div className="w-full h-32 bg-[#F4F5F7] rounded-lg mb-3 flex items-center justify-center">
-                      <svg className="w-10 h-12 text-[#007A55]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18 0H6C4.34 0 3 1.34 3 3v18c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3V3c0-1.66-1.34-3-3-3zm-4 22h-4v-1h4v1zm5.25-3H4.75V3h14.5v16z"/>
-                      </svg>
+                  {/* Vehicle Rows - Only 3 rows to keep compact */}
+                  <div className="space-y-1">
+                    {/* A-101 */}
+                    <div className="grid grid-cols-5 gap-1 items-center">
+                      <div className="bg-white rounded px-1.5 py-1">
+                        <p className="text-[8px] text-[#081E32] font-medium">A-101</p>
+                      </div>
+                      <div className="col-span-2 bg-[#007A55] rounded px-1.5 py-1">
+                        <p className="text-[7px] text-white font-medium">RES-001</p>
+                      </div>
+                      <div className="col-span-2"></div>
                     </div>
-                    <p className="text-sm text-gray-600">Tablet</p>
-                  </div>
 
-                  <div className="text-center">
-                    <div className="w-full h-32 bg-[#F4F5F7] rounded-lg mb-3 flex items-center justify-center">
-                      <svg className="w-8 h-12 text-[#007A55]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-                      </svg>
+                    {/* A-102 */}
+                    <div className="grid grid-cols-5 gap-1 items-center">
+                      <div className="bg-white rounded px-1.5 py-1">
+                        <p className="text-[8px] text-[#081E32] font-medium">A-102</p>
+                      </div>
+                      <div></div>
+                      <div className="col-span-2 bg-blue-500 rounded px-1.5 py-1">
+                        <p className="text-[7px] text-white font-medium">RA-245</p>
+                      </div>
+                      <div></div>
                     </div>
-                    <p className="text-sm text-gray-600">Mobile</p>
+
+                    {/* A-103 */}
+                    <div className="grid grid-cols-5 gap-1 items-center">
+                      <div className="bg-white rounded px-1.5 py-1">
+                        <p className="text-[8px] text-[#081E32] font-medium">A-103</p>
+                      </div>
+                      <div className="bg-red-500 rounded px-1.5 py-1">
+                        <p className="text-[7px] text-white font-medium">RA-189</p>
+                      </div>
+                      <div className="col-span-3"></div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="space-y-3">
-                  {[
-                    'Real-time sync across all devices',
-                    'Offline mode for essential functions',
-                    'Touch-optimized interface',
-                    'Automatic cloud backup'
-                  ].map((feature, i) => (
-                    <div key={i} className="flex items-center space-x-3 p-3 bg-[#F4F5F7] rounded-lg">
-                      <Check className="w-5 h-5 text-[#007A55] flex-shrink-0" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                {/* Action Buttons */}
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <button className="flex items-center justify-center gap-2 bg-[#007A55] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#006644] transition-all">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    New Reservation
+                  </button>
+                  <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#007A55] to-[#00A575] text-white px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-all">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    AI Auto-Assign
+                  </button>
+                </div>
+
+                {/* Stats */}
+                <div className="bg-[#F4F5F7] rounded-lg p-4">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <p className="text-xl text-[#007A55]">24</p>
+                      <p className="text-xs text-gray-600">Active</p>
                     </div>
-                  ))}
+                    <div>
+                      <p className="text-xl text-orange-600">2</p>
+                      <p className="text-xs text-gray-600">Unassigned</p>
+                    </div>
+                    <div>
+                      <p className="text-xl text-red-600">1</p>
+                      <p className="text-xs text-gray-600">Conflicts</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

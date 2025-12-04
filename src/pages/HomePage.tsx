@@ -4,6 +4,7 @@ import { TrustedBy } from '../components/TrustedBy';
 import { BigTestimonial } from '../components/home/BigTestimonial';
 import { WhyChooseUs } from '../components/home/WhyChooseUs';
 import { ValueProposition } from '../components/home/ValueProposition';
+import { WhyChooseBenefits } from '../components/home/WhyChooseBenefits';
 import { EasyLearnAccessible } from '../components/EasyLearnAccessible';
 import { DailyOperationsTabs } from '../components/DailyOperationsTabs';
 import { RevenueIntelligence } from '../components/home/RevenueIntelligence';
@@ -23,6 +24,7 @@ export function HomePage() {
       <BigTestimonial />
       <WhyChooseUs />
       <ValueProposition />
+      <WhyChooseBenefits />
       <EasyLearnAccessible />
       <DailyOperationsTabs />
       <RevenueIntelligence />

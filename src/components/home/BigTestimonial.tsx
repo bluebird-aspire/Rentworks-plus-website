@@ -6,10 +6,10 @@ export function BigTestimonial() {
 
   const testimonials = [
     {
-      quote: "RentWorksPlus+ makes running our rental branches so much easier. Everything is in one place—from online bookings to check-ins, payments, and fleet maintenance. The system adapts to how we work, not the other way around.",
-      name: "Jenna Roberts",
-      role: "Operations Director",
-      company: "DriveCity Rentals",
+      quote: "RentWorksPlus+ completely changed how we manage our rental branches. The automation and smart tools save us more than 15 hours every week, and our revenue grew by 28% in just six months.",
+      name: "Sarah Mitchell",
+      role: "Owner",
+      company: "Premier Rentals",
       image: "https://images.unsplash.com/photo-1655249493799-9cee4fe983bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200"
     },
     {
@@ -22,23 +22,17 @@ export function BigTestimonial() {
   ];
 
   const reviews = [
-    { 
-      platform: 'Capterra', 
-      rating: 4.7, 
+    {
+      platform: 'Capterra',
+      rating: 4.7,
       total: 5,
-      logo: 'https://cdn.worldvectorlogo.com/logos/capterra.svg'
+      logo: '/capterra-logo.png'
     },
-    { 
-      platform: 'HotelTechReport', 
-      rating: 4.7, 
+    {
+      platform: 'Software Advice',
+      rating: 4.7,
       total: 5,
-      logo: 'https://www.hoteltechreport.com/images/htr-logo-dark.svg'
-    },
-    { 
-      platform: 'Software Advice', 
-      rating: 4.7, 
-      total: 5,
-      logo: 'https://www.softwareadvice.com/sa-theme/img/logos/software-advice-logo.svg'
+      logo: '/software-advice-logo.png'
     }
   ];
 
@@ -115,39 +109,48 @@ export function BigTestimonial() {
           </div>
         </div>
 
-        {/* Review Badges */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Review Badges - Modern Design */}
+        <div className="grid md:grid-cols-2 gap-6">
           {reviews.map((review, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover:border-[#007A55] transition-all hover:shadow-lg"
+              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#007A55]/30 group"
             >
-              {/* Platform Logo */}
-              <div className="flex items-center justify-center mb-4 h-12">
-                <img 
-                  src={review.logo} 
-                  alt={review.platform}
-                  className="max-h-10 max-w-[150px] object-contain"
-                  onError={(e) => {
-                    // Fallback to text if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = `<p class="text-[#081E32]">${review.platform}</p>`;
-                  }}
-                />
-              </div>
-              
-              {/* Star Rating */}
-              <div className="flex items-center justify-center mb-3">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className={`w-5 h-5 ${i < Math.floor(review.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+              <div className="flex flex-col items-center space-y-4">
+                {/* Platform Logo */}
+                <div className="flex items-center justify-center h-16 w-full">
+                  <img
+                    src={review.logo}
+                    alt={review.platform}
+                    className="max-h-12 max-w-[180px] object-contain transition-transform group-hover:scale-105"
+                    onError={(e) => {
+                      // Fallback to text if logo fails to load
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement!.innerHTML = `<p class="text-[#081E32] text-xl font-semibold">${review.platform}</p>`;
+                    }}
                   />
-                ))}
+                </div>
+
+                {/* Rating Score - Large and Prominent */}
+                <div className="flex flex-col items-center">
+                  <p className="text-5xl font-bold text-[#007A55] mb-2">{review.rating}</p>
+                  <p className="text-sm text-gray-500 mb-3">out of {review.total}</p>
+                </div>
+
+                {/* Star Rating */}
+                <div className="flex items-center justify-center gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-6 h-6 transition-all ${
+                        i < Math.floor(review.rating)
+                          ? 'text-yellow-400 fill-yellow-400'
+                          : 'text-gray-300 fill-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
-              
-              {/* Rating Score */}
-              <p className="text-2xl text-[#081E32]">{review.rating}/{review.total}</p>
             </div>
           ))}
         </div>

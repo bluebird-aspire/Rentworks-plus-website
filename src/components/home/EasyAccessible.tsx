@@ -21,9 +21,9 @@ export function EasyAccessible() {
             <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
               <Globe className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-3xl mb-4">Accessible Anywhere, Anytime</h3>
+            <h3 className="text-3xl mb-4">Access Your Rental Business Anywhere, Anytime</h3>
             <p className="text-white/90 text-lg leading-relaxed mb-8">
-              Access your rental system securely from any device—desktop, tablet, or mobile. All data is synced in real time so branches, drivers, and HQ stay aligned.
+              Full car rental system in your browser. Works on modern desktop and laptop devices. Fully responsive interface on tablets and phones. Perform check-in/check-out and inspections on the go. Real-time updates across all devices.
             </p>
 
             {/* Device Icons */}
