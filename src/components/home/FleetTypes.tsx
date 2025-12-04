@@ -5,27 +5,27 @@ export function FleetTypes() {
   const fleetTypes = [
     {
       title: 'Independent Car Rental Agencies',
-      description: 'Perfect for single or multi-location independents looking to compete with the big brands.',
+      description: 'Ideal for independent or regional brands. Control over pricing, reservations, and customer experience.',
       image: 'https://images.unsplash.com/photo-1744360817433-0d9386ddb9e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBjYXIlMjByZW50YWwlMjBvZmZpY2V8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     },
     {
-      title: 'Multi-Location & Franchise Networks',
-      description: 'Centralized control with branch-level flexibility across your entire network.',
+      title: 'Multi-Brand Networks',
+      description: 'Operate multiple brands under one platform. Maintain unique branding, policies, and rate structures per brand.',
       image: 'https://images.unsplash.com/photo-1664800529890-68258dc4ccf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGZsZWV0JTIwdmVoaWNsZXN8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     },
     {
-      title: 'Equipment & Machinery Rental',
-      description: 'Manage construction equipment, tools, and machinery with specialized tracking.',
+      title: 'Scooter & Bike Rental',
+      description: 'Track smaller vehicles and micro-mobility fleets. Manage battery cycles, short-term rentals, and quick turnovers.',
       image: 'https://images.unsplash.com/photo-1728039190626-ceea378d0419?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBlcXVpcG1lbnQlMjByZW50YWx8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     },
     {
       title: 'Corporate & Long-Term Fleets',
-      description: 'Streamline corporate accounts, long-term leases, and subscription programs.',
+      description: 'Manage long-term contracts and employee vehicles. Automate billing, renewals, and compliance.',
       image: 'https://images.unsplash.com/photo-1585937169521-4428971aaab6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB2ZWhpY2xlJTIwZmxlZXR8ZW58MXx8fHwxNzY0Mjc0MTA2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     },
     {
-      title: 'Dealership Loaner & Replacement Fleets',
-      description: 'Manage courtesy vehicles and replacement cars with seamless service integration.',
+      title: 'Insurance Rental Fleets',
+      description: 'Handle replacement rentals during claim periods. Coordinate with insurers and track claim-related rentals.',
       image: 'https://images.unsplash.com/photo-1711921345010-d1147f78db35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjYXIlMjBkZWFsZXJzaGlwfGVufDF8fHx8MTc2NDI3NDEwNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     }
   ];

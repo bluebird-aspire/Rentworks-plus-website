@@ -391,26 +391,26 @@ function CompanyMenu({ onClose }: { onClose: () => void }) {
   const items = [
     {
       icon: <Info className="w-5 h-5" />,
-      title: "About",
-      description: "Our story and mission",
+      title: "About Us",
+      description: "The story, mission, and values behind RentWorksPlus+.",
       link: "/company/about"
     },
     {
       icon: <Handshake className="w-5 h-5" />,
       title: "Partners & Integrations",
-      description: "Technology ecosystem",
+      description: "Technology partners and ecosystem connections that power our platform.",
       link: "/company/partners"
     },
     {
       icon: <UserPlus className="w-5 h-5" />,
       title: "Careers",
-      description: "Join our team",
+      description: "Join a global team building the future of intelligent mobility.",
       link: "/company/careers"
     },
     {
       icon: <Newspaper className="w-5 h-5" />,
       title: "Press & Media",
-      description: "News and media kit",
+      description: "Newsroom, announcements, brand assets, and media kit.",
       link: "/company/press"
     }
   ];
@@ -458,37 +458,37 @@ function SupportMenu({ onClose }: { onClose: () => void }) {
     {
       icon: <HelpCircle className="w-5 h-5" />,
       title: "Help Center",
-      description: "Browse help articles",
+      description: "Browse articles, tutorials & step-by-step guides",
       link: "/support/help-center"
     },
     {
       icon: <Book className="w-5 h-5" />,
       title: "Documentation",
-      description: "Technical documentation",
+      description: "Technical documentation for workflows & system features",
       link: "/support/documentation"
     },
     {
       icon: <Code className="w-5 h-5" />,
       title: "API Docs",
-      description: "Developer resources",
+      description: "Developer resources for building integrations and apps",
       link: "/support/api-docs"
     },
     {
       icon: <GraduationCap className="w-5 h-5" />,
       title: "Training & Onboarding",
-      description: "Get up to speed fast",
+      description: "Personalized setup, team training & implementation programs",
       link: "/support/training"
     },
     {
       icon: <Phone className="w-5 h-5" />,
       title: "Contact Support",
-      description: "Reach our support team",
+      description: "Chat, email, phone & priority support options",
       link: "/support/contact"
     },
     {
       icon: <Activity className="w-5 h-5" />,
       title: "System Status",
-      description: "Platform uptime",
+      description: "Live uptime reports & service health indicators",
       link: "/support/status"
     }
   ];

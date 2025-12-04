@@ -100,9 +100,9 @@ export function RevenueIntelligence() {
                     +8.3%
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mb-2">Avg. Daily</p>
+                <p className="text-sm text-gray-500 mb-2">RPD</p>
                 <p className="text-3xl text-[#081E32] mb-1">$89</p>
-                <p className="text-xs text-gray-400">Per vehicle rate</p>
+                <p className="text-xs text-gray-400">Revenue Per Day</p>
               </div>
             </div>
 

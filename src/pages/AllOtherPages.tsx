@@ -1,5 +1,5 @@
 import { Link } from '../components/Router';
-import { ArrowLeft, ArrowRight, Check, Car, Truck, Zap, Users, Wrench, TrendingUp, Building2, Briefcase, BookOpen, Calendar, Download, FileText, Clock, Tag, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Car, Truck, Zap, Users, Wrench, TrendingUp, Building2, Briefcase, BookOpen, Calendar, Download, FileText, Clock, Tag, ExternalLink, Target, Eye, Heart, Lightbulb, Globe, Award, Handshake, Code, Mail, MapPin, Newspaper, Settings, Search, RefreshCw, UserPlus, Video, MessageCircle, CheckCircle, AlertCircle, Shield, CreditCard, Phone, Smartphone, Activity } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useEffect, useState } from 'react';
 
@@ -1685,7 +1685,438 @@ export function WebinarsPage() {
 // ===========================================
 
 export function PricingPage() {
-  return <SimplePage title="Pricing" description="Simple, transparent pricing based on your fleet size and needs. No hidden fees." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    workEmail: '',
+    phone: '',
+    country: '',
+    jobTitle: '',
+    companyName: '',
+    fleetSize: '',
+    numberOfLocations: ''
+  });
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Quote request submitted:', formData);
+      setSubmitSuccess(true);
+      setIsSubmitting(false);
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          workEmail: '',
+          phone: '',
+          country: '',
+          jobTitle: '',
+          companyName: '',
+          fleetSize: '',
+          numberOfLocations: ''
+        });
+      }, 3000);
+    }, 1500);
+  };
+
+  const featureCards = [
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: "All-in-One AI-Powered Platform",
+      description: "Eliminate the cost and complexity of multiple vendors with a unified system covering fleet, reservations, pricing, payments & maintenance."
+    },
+    {
+      icon: <Globe className="w-6 h-6" />,
+      title: "Trusted by Operators Worldwide",
+      description: "Used by rental companies in 40+ countries, processing 2M+ rentals with industry-leading retention."
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "24/7 Rental-Focused Support",
+      description: "Get real-time help from specialists who understand mobility, fleets, and rental operations."
+    }
+  ];
+
+  const benefitCards = [
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "AI-Driven Efficiency",
+      description: "Automate reservations, pricing, maintenance, and check-in/out workflows with intelligent tools built for car rental operations."
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Fleet Intelligence That Drives Revenue",
+      description: "Monitor utilization, demand, battery/charging (EV), and maintenance needs in real-time — improving profitability per vehicle."
+    },
+    {
+      icon: <Award className="w-8 h-8" />,
+      title: "Simple, Transparent, Scalable Pricing",
+      description: "Only pay for what you need — modules scale as your fleet grows across new locations, vehicle types, and rental programs."
+    }
+  ];
+
+  const fleetSizeOptions = [
+    "1–25 vehicles",
+    "26–75 vehicles",
+    "76–150 vehicles",
+    "151–300 vehicles",
+    "300+ vehicles"
+  ];
+
+  const jobTitleOptions = [
+    "Owner / General Manager",
+    "Fleet Manager",
+    "Operations Manager",
+    "Front Desk",
+    "IT & Integrations",
+    "Other"
+  ];
+
+  const countryOptions = [
+    "United States",
+    "Canada",
+    "United Kingdom",
+    "Australia",
+    "Germany",
+    "France",
+    "Spain",
+    "Italy",
+    "Netherlands",
+    "Belgium",
+    "Mexico",
+    "Brazil",
+    "Other"
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes glow-pulse-fade {
+          0% { opacity: 0; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+          50% { opacity: 0.7; text-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { opacity: 1; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+        }
+        @keyframes light-drop-up {
+          0% { opacity: 0; transform: translateY(15px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes slide-blur-reveal {
+          0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes soft-scale-in {
+          0% { opacity: 0; transform: scale(0.95); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        .glow-pulse { animation: glow-pulse-fade 0.7s ease-out; }
+        .light-drop-up { animation: light-drop-up 0.6s ease-out forwards; opacity: 0; }
+        .slide-blur { animation: slide-blur-reveal 0.8s ease-out forwards; opacity: 0; }
+        .soft-scale-in { animation: soft-scale-in 0.5s ease-out forwards; opacity: 0; }
+        .magnetic-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-hover:hover { transform: scale(1.02) translateY(-2px); box-shadow: 0 8px 25px rgba(0, 122, 85, 0.3); }
+        .magnetic-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-cta:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 122, 85, 0.5); }
+      `}</style>
+
+      {/* Badge Label */}
+      <section className="pt-12 pb-6 text-center">
+        <div className="soft-scale-in inline-block px-4 py-2 bg-[#007A55] bg-opacity-10 rounded-full border border-[#007A55] border-opacity-30">
+          <span className="text-[#007A55] font-semibold text-sm">Get a Quote</span>
+        </div>
+      </section>
+
+      {/* Two-Column Hero Section */}
+      <section className="relative py-12 px-8 overflow-hidden">
+        {/* Background Blobs with Parallax */}
+        <div
+          className="absolute top-0 left-0 w-96 h-96 bg-[#007A55] opacity-5 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+        <div
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#081E32] opacity-5 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12">
+            {/* Left Column - Content */}
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold text-[#081E32] mb-6 glow-pulse leading-tight">
+                RentWorksPlus+ Pricing
+              </h1>
+
+              <p className="text-xl text-gray-600 mb-12 leading-relaxed slide-blur" style={{ animationDelay: '0.1s' }}>
+                Our pricing scales with your fleet size, locations, and operational needs — no paying for features you don't use. Tell us about your rental operation, and we'll prepare a personalized quote that includes the exact modules and capabilities your business requires.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#081E32] mb-8">What makes RentWorksPlus+ the smart choice?</h2>
+
+              <div className="space-y-6">
+                {featureCards.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="light-drop-up flex gap-4 bg-[#F4F5F7] rounded-xl p-6 hover:shadow-lg transition-shadow"
+                    style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-[#007A55] bg-opacity-10 rounded-lg flex items-center justify-center text-[#007A55]">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#081E32] mb-2">{feature.title}</h3>
+                      <p className="text-gray-600">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Quote Request Form */}
+            <div className="lg:sticky lg:top-24 h-fit">
+              <div className="slide-blur bg-white rounded-2xl p-8 shadow-xl border border-gray-200" style={{ animationDelay: '0.2s' }}>
+                {submitSuccess ? (
+                  <div className="text-center py-12">
+                    <Check className="w-16 h-16 text-[#007A55] mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-[#081E32] mb-2">Thank You!</h3>
+                    <p className="text-gray-600">We'll be in touch shortly with your personalized quote.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <h3 className="text-2xl font-bold text-[#081E32] mb-6">Request Your Quote</h3>
+
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-[#081E32] mb-2">First Name</label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange('firstName', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                          placeholder="John"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold text-[#081E32] mb-2">Last Name</label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange('lastName', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                          placeholder="Smith"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Work Email</label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.workEmail}
+                        onChange={(e) => handleInputChange('workEmail', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                        placeholder="john.smith@company.com"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Phone Number</label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                        placeholder="+1 (555) 123-4567"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Country</label>
+                      <select
+                        required
+                        value={formData.country}
+                        onChange={(e) => handleInputChange('country', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all bg-white"
+                      >
+                        <option value="">Select Country</option>
+                        {countryOptions.map((country, index) => (
+                          <option key={index} value={country}>{country}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Select Job Title</label>
+                      <select
+                        required
+                        value={formData.jobTitle}
+                        onChange={(e) => handleInputChange('jobTitle', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all bg-white"
+                      >
+                        <option value="">Select Job Title</option>
+                        {jobTitleOptions.map((title, index) => (
+                          <option key={index} value={title}>{title}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Company Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.companyName}
+                        onChange={(e) => handleInputChange('companyName', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                        placeholder="Your Company LLC"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Fleet Size</label>
+                      <select
+                        required
+                        value={formData.fleetSize}
+                        onChange={(e) => handleInputChange('fleetSize', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all bg-white"
+                      >
+                        <option value="">Select Fleet Size</option>
+                        {fleetSizeOptions.map((size, index) => (
+                          <option key={index} value={size}>{size}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-6">
+                      <label className="block text-sm font-semibold text-[#081E32] mb-2">Number of Locations (optional)</label>
+                      <input
+                        type="number"
+                        min="1"
+                        value={formData.numberOfLocations}
+                        onChange={(e) => handleInputChange('numberOfLocations', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#007A55] focus:ring-2 focus:ring-[#007A55] focus:ring-opacity-20 outline-none transition-all"
+                        placeholder="e.g., 3"
+                      />
+                    </div>
+
+                    <p className="text-xs text-gray-500 mb-6">
+                      By clicking 'Get Pricing,' you agree to our Terms of Service and Privacy Policy.
+                    </p>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="magnetic-cta w-full bg-[#007A55] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#006644] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Processing...
+                        </>
+                      ) : (
+                        <>
+                          Get Pricing
+                          <ArrowRight className="w-5 h-5" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Rental Operators Choose RentWorksPlus+ Section */}
+      <section className="py-20 px-8 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Why Rental Operators Choose RentWorksPlus+</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Trusted by operators worldwide for intelligent, scalable, and transparent rental management.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {benefitCards.map((benefit, index) => (
+              <div
+                key={index}
+                className="light-drop-up bg-white rounded-2xl p-8 hover:shadow-xl transition-all text-center magnetic-hover"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#007A55] bg-opacity-10 rounded-full mb-6">
+                  <div className="text-[#007A55]">{benefit.icon}</div>
+                </div>
+                <h3 className="text-xl font-bold text-[#081E32] mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reassurance Statement */}
+      <section className="py-12 px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-xl text-gray-600 leading-relaxed">
+            <span className="font-semibold text-[#081E32]">No setup fees.</span> <span className="font-semibold text-[#081E32]">No hidden charges.</span> Flexible modules that grow with your business.
+          </p>
+          <div className="flex items-center justify-center gap-8 mt-8 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#007A55]" />
+              <span>SOC 2 Compliant</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-[#007A55]" />
+              <span>GDPR Ready</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Globe className="w-5 h-5 text-[#007A55]" />
+              <span>40+ Countries</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-20 px-8 bg-gradient-to-br from-[#081E32] to-[#0a2740] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 glow-pulse">Ready to See RentWorksPlus+ in Action?</h2>
+          <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+            Get a custom quote and tailored walkthrough for your operations. See exactly how RentWorksPlus+ can transform your rental business.
+          </p>
+          <button className="magnetic-cta bg-[#007A55] text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-[#006644] inline-flex items-center gap-3">
+            Book a Demo
+            <ArrowRight className="w-5 h-5" />
+          </button>
+          <p className="text-sm text-gray-400 mt-6">
+            Join 500+ rental operators using RentWorksPlus+ worldwide
+          </p>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 // ===========================================
@@ -1693,19 +2124,1059 @@ export function PricingPage() {
 // ===========================================
 
 export function AboutPage() {
-  return <SimplePage title="About RentWorksPlus+" description="Our vision, mission, values, and the team transforming the car rental industry." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const milestones = [
+    { year: "2010", title: "Founded", description: "Started with a vision to modernize rental operations" },
+    { year: "2015", title: "Cloud Platform Launch", description: "Transitioned from desktop to cloud-based SaaS solution" },
+    { year: "2018", title: "AI Integration", description: "Introduced machine learning for demand forecasting" },
+    { year: "2021", title: "Global Expansion", description: "Reached 25+ countries with multilingual support" },
+    { year: "2023", title: "Alexa AI Release", description: "Launched conversational AI operator assistant" },
+    { year: "2025", title: "500+ Customers", description: "Processing 2M+ rentals monthly across 40+ countries" }
+  ];
+
+  const values = [
+    {
+      icon: <Lightbulb className="w-6 h-6" />,
+      title: "Innovation",
+      description: "Continuously pushing boundaries with AI-driven automation and intelligent workflows"
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Simplicity",
+      description: "Complex problems solved through intuitive design and frictionless user experiences"
+    },
+    {
+      icon: <Check className="w-6 h-6" />,
+      title: "Trust",
+      description: "Building lasting relationships through transparency, reliability, and 99.9% uptime"
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Intelligence",
+      description: "Transforming data into actionable insights that drive better business decisions"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes glow-pulse-fade {
+          0% { opacity: 0; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+          50% { opacity: 0.7; text-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { opacity: 1; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+        }
+        @keyframes slide-blur-reveal {
+          0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes soft-rise {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .glow-pulse { animation: glow-pulse-fade 0.7s ease-out; }
+        .slide-blur { animation: slide-blur-reveal 0.8s ease-out forwards; opacity: 0; }
+        .soft-rise { animation: soft-rise 0.6s ease-out forwards; opacity: 0; }
+        .magnetic-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-cta:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 122, 85, 0.5); }
+      `}</style>
+
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-32 overflow-hidden">
+        <div
+          className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <h1 className="text-6xl font-bold mb-6 glow-pulse">
+            Reimagining Rental Operations Through Intelligence
+          </h1>
+          <p className="text-2xl text-gray-300 max-w-4xl leading-relaxed">
+            RentWorksPlus+ is built on decades of rental experience combined with next-generation AI innovation. Our mission is to transform mobility businesses with automation, insight, and simplicity.
+          </p>
+          <button className="mt-10 px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Learn More About Our Mission
+          </button>
+        </div>
+      </div>
+
+      {/* Our Evolution Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Our Evolution</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="slide-blur" style={{ animationDelay: '0.1s' }}>
+            <div className="p-8 bg-[#F4F5F7] rounded-2xl hover:shadow-xl transition-all duration-300">
+              <ArrowRight className="w-12 h-12 text-[#007A55] mb-4" />
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">From Legacy Processes</h3>
+              <p className="text-gray-600">Manual spreadsheets and disconnected systems → intelligent automation</p>
+            </div>
+          </div>
+          <div className="slide-blur" style={{ animationDelay: '0.2s' }}>
+            <div className="p-8 bg-[#F4F5F7] rounded-2xl hover:shadow-xl transition-all duration-300">
+              <TrendingUp className="w-12 h-12 text-[#007A55] mb-4" />
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">To AI-Driven Optimization</h3>
+              <p className="text-gray-600">Manual workflows → predictive intelligence and proactive recommendations</p>
+            </div>
+          </div>
+          <div className="slide-blur" style={{ animationDelay: '0.3s' }}>
+            <div className="p-8 bg-[#F4F5F7] rounded-2xl hover:shadow-xl transition-all duration-300">
+              <Building2 className="w-12 h-12 text-[#007A55] mb-4" />
+              <h3 className="text-xl font-bold text-[#081E32] mb-3">Unified Rental Ecosystem</h3>
+              <p className="text-gray-600">Isolated tools → comprehensive platform with seamless integrations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mission & Vision */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="slide-blur" style={{ animationDelay: '0.1s' }}>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center flex-shrink-0">
+                  <Target className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-[#081E32] mb-4">Mission</h2>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    "To empower mobility businesses with intelligent software that simplifies operations and converts data into insights."
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="slide-blur" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-[#007A55] flex items-center justify-center flex-shrink-0">
+                  <Eye className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-[#081E32] mb-4">Vision</h2>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    "A future where every rental decision is driven by intelligence—not guesswork."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Values */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Our Values</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((value, index) => (
+            <div
+              key={index}
+              className="slide-blur"
+              style={{ animationDelay: `${index * 0.12}s` }}
+            >
+              <div className="p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#007A55] hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4">
+                  {value.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[#081E32] mb-2">{value.title}</h3>
+                <p className="text-sm text-gray-600">{value.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Timeline */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-5xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-[#081E32] mb-16 text-center glow-pulse">Major Milestones</h2>
+          <div className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[#007A55]/30"></div>
+            <div className="space-y-12">
+              {milestones.map((milestone, index) => (
+                <div
+                  key={index}
+                  className="relative pl-20 soft-rise"
+                  style={{ animationDelay: `${index * 0.12}s` }}
+                >
+                  <div className="absolute left-[26px] top-2 w-5 h-5 bg-[#007A55] rounded-full border-4 border-white shadow-lg"></div>
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+                    <div className="text-3xl font-bold text-[#007A55] mb-2">{milestone.year}</div>
+                    <h3 className="text-xl font-bold text-[#081E32] mb-2">{milestone.title}</h3>
+                    <p className="text-gray-600">{milestone.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Global Footprint */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Global Footprint</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center slide-blur" style={{ animationDelay: '0.1s' }}>
+            <div className="text-6xl font-bold text-[#007A55] mb-2">500+</div>
+            <p className="text-xl text-gray-700">Customers Worldwide</p>
+          </div>
+          <div className="text-center slide-blur" style={{ animationDelay: '0.2s' }}>
+            <div className="text-6xl font-bold text-[#007A55] mb-2">40+</div>
+            <p className="text-xl text-gray-700">Countries Served</p>
+          </div>
+          <div className="text-center slide-blur" style={{ animationDelay: '0.3s' }}>
+            <div className="text-6xl font-bold text-[#007A55] mb-2">2M+</div>
+            <p className="text-xl text-gray-700">Rentals Processed Monthly</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Leadership Philosophy */}
+      <div className="bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white py-20">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <Award className="w-16 h-16 mx-auto mb-6 text-[#007A55]" />
+          <h2 className="text-4xl font-bold mb-6">Built by Rental Experts for Rental Teams</h2>
+          <p className="text-xl text-gray-300 leading-relaxed mb-8">
+            Our team brings decades of hands-on rental experience combined with cutting-edge technology expertise. We don't just build software—we solve real operational challenges that we've lived ourselves.
+          </p>
+          <button className="px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Discover the Story Behind RentWorksPlus+
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function PartnersPage() {
-  return <SimplePage title="Partners & Integrations" description="Our ecosystem of technology partners and integrations." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const partnerCategories = [
+    {
+      title: "Payment Gateways",
+      icon: <CreditCard className="w-6 h-6" />,
+      partners: ["Stripe", "PayPal", "Square", "Adyen", "Braintree"]
+    },
+    {
+      title: "Communications",
+      icon: <Mail className="w-6 h-6" />,
+      partners: ["Twilio", "SendGrid", "WhatsApp API", "Slack", "Microsoft Teams"]
+    },
+    {
+      title: "ERP & Accounting",
+      icon: <Building2 className="w-6 h-6" />,
+      partners: ["SAP", "Oracle", "QuickBooks", "Xero", "NetSuite"]
+    },
+    {
+      title: "Telematics & GPS",
+      icon: <MapPin className="w-6 h-6" />,
+      partners: ["Geotab", "Verizon Connect", "Samsara", "Fleet Complete", "50+ providers"]
+    },
+    {
+      title: "Maps & Location",
+      icon: <Globe className="w-6 h-6" />,
+      partners: ["Google Maps", "Mapbox", "HERE Maps", "TomTom", "OpenStreetMap"]
+    },
+    {
+      title: "Developer Tools",
+      icon: <Code className="w-6 h-6" />,
+      partners: ["GitHub", "GitLab", "Jira", "Postman", "AWS"]
+    }
+  ];
+
+  const integrationBenefits = [
+    {
+      title: "Unified Workflows",
+      description: "Connect all your tools for seamless data flow across systems",
+      icon: <Check className="w-6 h-6" />
+    },
+    {
+      title: "Automated Data Sync",
+      description: "Real-time synchronization eliminates manual data entry errors",
+      icon: <ArrowRight className="w-6 h-6" />
+    },
+    {
+      title: "Reduced Manual Entry",
+      description: "Save hours daily with automated information transfer between platforms",
+      icon: <Clock className="w-6 h-6" />
+    },
+    {
+      title: "Scalable Tech Ecosystem",
+      description: "Add new tools as you grow without disrupting existing workflows",
+      icon: <TrendingUp className="w-6 h-6" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes glow-pulse-fade {
+          0% { opacity: 0; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+          50% { opacity: 0.7; text-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { opacity: 1; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+        }
+        @keyframes slide-blur-reveal {
+          0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes micro-drop {
+          0% { opacity: 0; transform: translateY(-10px) scale(0.95); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .glow-pulse { animation: glow-pulse-fade 0.7s ease-out; }
+        .slide-blur { animation: slide-blur-reveal 0.8s ease-out forwards; opacity: 0; }
+        .micro-drop { animation: micro-drop 0.5s ease-out forwards; opacity: 0; }
+        .magnetic-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-cta:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 122, 85, 0.5); }
+      `}</style>
+
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-32 overflow-hidden">
+        <div
+          className="absolute top-20 left-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <h1 className="text-6xl font-bold mb-6 glow-pulse">
+            A Connected Ecosystem That Accelerates Your Rental Operations
+          </h1>
+          <p className="text-2xl text-gray-300 max-w-4xl leading-relaxed">
+            RentWorksPlus+ integrates seamlessly with the tools and platforms that modern mobility businesses rely on—from payments and telematics to CRM, mapping, and ERP systems.
+          </p>
+          <button className="mt-10 px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Explore Our Integration Ecosystem
+          </button>
+        </div>
+      </div>
+
+      {/* Why Integrations Matter */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Why Integrations Matter</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {integrationBenefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="slide-blur"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="p-6 bg-[#F4F5F7] rounded-2xl hover:shadow-xl transition-all duration-300 h-full">
+                <div className="w-12 h-12 rounded-xl bg-[#007A55] text-white flex items-center justify-center mb-4">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[#081E32] mb-3">{benefit.title}</h3>
+                <p className="text-sm text-gray-600">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Partner Categories */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-[#081E32] mb-16 text-center glow-pulse">Our Integration Partners</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {partnerCategories.map((category, index) => (
+              <div
+                key={index}
+                className="slide-blur"
+                style={{ animationDelay: `${index * 0.12}s` }}
+              >
+                <div className="bg-white rounded-2xl p-8 hover:shadow-2xl hover:border-[#007A55] border-2 border-transparent transition-all duration-300">
+                  <div className="w-14 h-14 rounded-2xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#081E32] mb-4">{category.title}</h3>
+                  <div className="space-y-2">
+                    {category.partners.map((partner, partnerIndex) => (
+                      <div
+                        key={partnerIndex}
+                        className="micro-drop"
+                        style={{ animationDelay: `${(index * 0.12) + (partnerIndex * 0.05)}s` }}
+                      >
+                        <div className="flex items-center gap-2 text-gray-600 hover:text-[#007A55] transition-colors cursor-pointer">
+                          <Check className="w-4 h-4 text-[#007A55]" />
+                          <span>{partner}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* API-First Architecture */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="slide-blur">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-6 glow-pulse">API-First Architecture</h2>
+            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+              RentWorksPlus+ is built on a modern, RESTful API that gives you complete programmatic access to all platform features.
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-[#007A55] flex-shrink-0 mt-1" />
+                <span className="text-gray-700">OAuth 2.0 secure authentication with granular permissions</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-[#007A55] flex-shrink-0 mt-1" />
+                <span className="text-gray-700">Comprehensive API documentation with interactive examples</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-[#007A55] flex-shrink-0 mt-1" />
+                <span className="text-gray-700">Webhook support for real-time event notifications</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-[#007A55] flex-shrink-0 mt-1" />
+                <span className="text-gray-700">Sandbox environment for testing and development</span>
+              </li>
+            </ul>
+          </div>
+          <div className="slide-blur" style={{ animationDelay: '0.2s' }}>
+            <div className="bg-[#081E32] rounded-2xl p-8 text-white">
+              <Code className="w-12 h-12 text-[#007A55] mb-4" />
+              <div className="font-mono text-sm">
+                <div className="text-[#007A55]">POST /api/v1/reservations</div>
+                <div className="text-gray-400 mt-2">Authorization: Bearer token</div>
+                <div className="text-gray-400">Content-Type: application/json</div>
+                <div className="mt-4 text-gray-300">{`{`}</div>
+                <div className="ml-4 text-gray-300">"customer_id": "cust_123"</div>
+                <div className="ml-4 text-gray-300">"vehicle_id": "veh_456"</div>
+                <div className="ml-4 text-gray-300">"start_date": "2025-12-01"</div>
+                <div className="text-gray-300">{`}`}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 100+ Connectors Highlight */}
+      <div className="bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white py-20">
+        <div className="max-w-6xl mx-auto px-8 text-center">
+          <div className="text-8xl font-bold text-[#007A55] mb-4">100+</div>
+          <h2 className="text-4xl font-bold mb-6">Pre-Built Connectors & Growing</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            Our integration library expands monthly with new partners and protocols, ensuring you can connect RentWorksPlus+ to virtually any business system.
+          </p>
+          <button className="px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Build Your Ecosystem
+          </button>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-[#F4F5F7] rounded-3xl p-12 text-center">
+          <Handshake className="w-16 h-16 mx-auto mb-6 text-[#007A55]" />
+          <h2 className="text-3xl font-bold text-[#081E32] mb-4">Become an Integration Partner</h2>
+          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            Join our growing ecosystem and make your solution available to hundreds of rental operators worldwide.
+          </p>
+          <button className="px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Partner With Us
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function CareersPage() {
-  return <SimplePage title="Careers at RentWorksPlus+" description="Join our team and help shape the future of rental management technology." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const roleCategories = [
+    {
+      title: "Product & Engineering",
+      icon: <Code className="w-6 h-6" />,
+      description: "Build the next generation of AI-powered rental intelligence"
+    },
+    {
+      title: "Customer Success",
+      icon: <Users className="w-6 h-6" />,
+      description: "Help rental operators unlock maximum value from our platform"
+    },
+    {
+      title: "Sales & Growth",
+      icon: <TrendingUp className="w-6 h-6" />,
+      description: "Connect mobility businesses with transformative solutions"
+    },
+    {
+      title: "Implementation & Onboarding",
+      icon: <Check className="w-6 h-6" />,
+      description: "Guide customers through seamless platform adoption"
+    },
+    {
+      title: "Data & AI",
+      icon: <Lightbulb className="w-6 h-6" />,
+      description: "Develop machine learning models that power our intelligence engine"
+    }
+  ];
+
+  const culturePillars = [
+    {
+      title: "Remote-Friendly Culture",
+      description: "Work from anywhere with flexible hours and global collaboration",
+      icon: <Globe className="w-6 h-6" />
+    },
+    {
+      title: "Clear Growth Paths",
+      description: "Structured career progression with mentorship and learning opportunities",
+      icon: <TrendingUp className="w-6 h-6" />
+    },
+    {
+      title: "Autonomous Teamwork",
+      description: "Ownership and trust with minimal micromanagement",
+      icon: <Users className="w-6 h-6" />
+    },
+    {
+      title: "Impact-Driven Roles",
+      description: "See your work directly influence global rental operations",
+      icon: <Award className="w-6 h-6" />
+    }
+  ];
+
+  const perks = [
+    "Comprehensive health insurance (medical, dental, vision)",
+    "Annual learning & development budget ($2,500)",
+    "Remote work flexibility with home office stipend",
+    "Flexible PTO policy with encouraged time off",
+    "401(k) matching program",
+    "Annual company retreats and team gatherings",
+    "Latest equipment and tools for your role",
+    "Stock options for all employees"
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes glow-pulse-fade {
+          0% { opacity: 0; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+          50% { opacity: 0.7; text-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { opacity: 1; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+        }
+        @keyframes slide-blur-reveal {
+          0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes spotlight-hover {
+          0% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+          100% { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,122,85,0.2); }
+        }
+        .glow-pulse { animation: glow-pulse-fade 0.7s ease-out; }
+        .slide-blur { animation: slide-blur-reveal 0.8s ease-out forwards; opacity: 0; }
+        .spotlight-card { transition: all 0.3s ease-out; }
+        .spotlight-card:hover { animation: spotlight-hover 0.3s forwards; }
+        .magnetic-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-cta:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 122, 85, 0.5); }
+      `}</style>
+
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2640] to-[#081E32] text-white py-32 overflow-hidden">
+        <div
+          className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#007A55] rounded-full opacity-10 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
+
+        <div className="max-w-6xl mx-auto px-8 relative z-10">
+          <h1 className="text-6xl font-bold mb-6 glow-pulse">
+            Join the Team Building the Future of Mobility Intelligence
+          </h1>
+          <p className="text-2xl text-gray-300 max-w-4xl leading-relaxed">
+            We're hiring innovators, creators, and problem-solvers who are passionate about transforming the global car rental industry with AI-driven solutions.
+          </p>
+          <button className="mt-10 px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Explore Open Roles
+          </button>
+        </div>
+      </div>
+
+      {/* Life at RentWorksPlus+ */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Life at RentWorksPlus+</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {culturePillars.map((pillar, index) => (
+            <div
+              key={index}
+              className="slide-blur"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="p-6 bg-white border border-gray-200 rounded-2xl spotlight-card h-full">
+                <div className="w-12 h-12 rounded-xl bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4">
+                  {pillar.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[#081E32] mb-3">{pillar.title}</h3>
+                <p className="text-sm text-gray-600">{pillar.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Role Categories */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-[#081E32] mb-16 text-center glow-pulse">Open Positions by Team</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {roleCategories.map((role, index) => (
+              <div
+                key={index}
+                className="slide-blur"
+                style={{ animationDelay: `${index * 0.12}s` }}
+              >
+                <div className="bg-white rounded-2xl p-8 spotlight-card cursor-pointer h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-[#007A55] text-white flex items-center justify-center mb-4">
+                    {role.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#081E32] mb-3">{role.title}</h3>
+                  <p className="text-gray-600 mb-6">{role.description}</p>
+                  <button className="text-[#007A55] font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                    View Openings
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+            <div className="slide-blur" style={{ animationDelay: '0.6s' }}>
+              <div className="bg-white rounded-2xl p-8 spotlight-card cursor-pointer h-full border-2 border-[#007A55]">
+                <div className="w-14 h-14 rounded-2xl bg-[#007A55]/10 flex items-center justify-center mb-4">
+                  <Mail className="w-6 h-6 text-[#007A55]" />
+                </div>
+                <h3 className="text-xl font-bold text-[#081E32] mb-3">Don't See Your Role?</h3>
+                <p className="text-gray-600 mb-6">We're always looking for exceptional talent. Send us your resume and tell us why you'd be a great fit.</p>
+                <button className="text-[#007A55] font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                  Get in Touch
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Team Spotlight */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Meet The Team</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { name: "Sarah Chen", role: "VP of Product", quote: "We're solving real problems for an industry that's ready for transformation." },
+            { name: "Marcus Johnson", role: "Head of Engineering", quote: "Our tech stack combines cutting-edge AI with battle-tested reliability." },
+            { name: "Ana Rodriguez", role: "Director of Customer Success", quote: "Seeing our customers succeed is what drives everything we do." }
+          ].map((member, index) => (
+            <div
+              key={index}
+              className="slide-blur"
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <div className="bg-white rounded-2xl p-8 spotlight-card border border-gray-200">
+                <div className="w-20 h-20 rounded-full bg-[#007A55]/10 mb-4 flex items-center justify-center">
+                  <Users className="w-10 h-10 text-[#007A55]" />
+                </div>
+                <h3 className="text-xl font-bold text-[#081E32] mb-1">{member.name}</h3>
+                <p className="text-[#007A55] font-semibold mb-4">{member.role}</p>
+                <p className="text-gray-600 italic">"{member.quote}"</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Perks & Benefits */}
+      <div className="bg-[#F4F5F7] py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-[#081E32] mb-12 text-center glow-pulse">Perks & Benefits</h2>
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {perks.map((perk, index) => (
+              <div
+                key={index}
+                className="slide-blur"
+                style={{ animationDelay: `${index * 0.08}s` }}
+              >
+                <div className="bg-white rounded-xl p-4 flex items-center gap-3 hover:shadow-lg transition-shadow">
+                  <Check className="w-6 h-6 text-[#007A55] flex-shrink-0" />
+                  <span className="text-gray-700">{perk}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Diversity & Inclusion */}
+      <div className="max-w-6xl mx-auto px-8 py-20">
+        <div className="bg-white rounded-3xl p-12 border border-gray-200 text-center">
+          <Heart className="w-16 h-16 mx-auto mb-6 text-[#007A55]" />
+          <h2 className="text-3xl font-bold text-[#081E32] mb-6">Diversity & Inclusion</h2>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            We're committed to building a diverse team that reflects the global customers we serve. All qualified applicants receive equal consideration regardless of race, color, religion, gender, sexual orientation, national origin, disability, or veteran status.
+          </p>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white py-20">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Join a global team that's revolutionizing how the world thinks about rental operations.
+          </p>
+          <button className="px-10 py-4 bg-[#007A55] text-white font-semibold rounded-xl magnetic-cta">
+            Explore Open Roles and Join Our Mission
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function PressPage() {
-  return <SimplePage title="Press & Media" description="Press releases, media coverage, and brand assets for journalists and media." backLink="/" />;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const pressReleases = [
+    {
+      date: "November 15, 2024",
+      title: "RentWorksPlus+ launches AI-powered Dynamic Pricing Engine",
+      excerpt: "New intelligent pricing algorithm increases revenue by up to 22% through real-time market analysis and demand forecasting.",
+      link: "#"
+    },
+    {
+      date: "September 3, 2024",
+      title: "New Alexa AI Operator handles 24/7 rental inquiries",
+      excerpt: "Advanced conversational AI responds to customer questions, processes bookings, and provides instant support around the clock.",
+      link: "#"
+    },
+    {
+      date: "June 20, 2024",
+      title: "RentWorksPlus+ expands to 40+ countries",
+      excerpt: "Global expansion brings intelligent rental operations platform to Asia-Pacific, EMEA, and Latin American markets.",
+      link: "#"
+    }
+  ];
+
+  const mediaEssentials = [
+    { icon: <FileText className="w-6 h-6" />, label: "Brand Guidelines", description: "Logo usage, colors, typography" },
+    { icon: <Award className="w-6 h-6" />, label: "Logos & Icons", description: "SVG, PNG, and vector formats" },
+    { icon: <Calendar className="w-6 h-6" />, label: "Product Screenshots", description: "High-resolution platform images" },
+    { icon: <Users className="w-6 h-6" />, label: "Executive Bios", description: "Leadership team profiles" }
+  ];
+
+  const latestCoverage = [
+    {
+      publication: "TechCrunch",
+      title: "How RentWorksPlus+ is Disrupting Traditional Rental Software",
+      date: "October 2024",
+      link: "#"
+    },
+    {
+      publication: "Forbes",
+      title: "The Future of Fleet Management: AI Meets Mobility",
+      date: "September 2024",
+      link: "#"
+    },
+    {
+      publication: "VentureBeat",
+      title: "RentWorksPlus+ Raises $50M Series B for Global Expansion",
+      date: "August 2024",
+      link: "#"
+    }
+  ];
+
+  const productTimeline = [
+    { year: "2025", milestone: "Alexa AI Operator & Dynamic Pricing Engine launched" },
+    { year: "2023", milestone: "Mobile-responsive web app and Payments module released" },
+    { year: "2021", milestone: "Online Reservation Plugin reaches 1M+ bookings" },
+    { year: "2019", milestone: "RentWorksPlus+ API ecosystem opens to developers" },
+    { year: "2015", milestone: "Multi-location support and corporate fleet management" },
+    { year: "2010", milestone: "RentWorksPlus+ platform founded" }
+  ];
+
+  const mediaKitContents = [
+    "Company logos (SVG, PNG, white/color variants)",
+    "Product screenshots (dashboard, mobile, booking widget)",
+    "CEO and CMO executive bios with headshots",
+    "Brand guidelines PDF (colors, typography, logo usage)",
+    "Fact sheet with company statistics and milestones",
+    "Press release templates and boilerplate"
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <style>{`
+        @keyframes glow-pulse-fade {
+          0% { opacity: 0; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+          50% { opacity: 0.7; text-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { opacity: 1; text-shadow: 0 0 0px rgba(0, 122, 85, 0); }
+        }
+        @keyframes slide-blur-reveal {
+          0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes soft-rise {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes magnetic-cta {
+          0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 122, 85, 0); }
+          100% { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 122, 85, 0.5); }
+        }
+        .glow-pulse { animation: glow-pulse-fade 0.7s ease-out; }
+        .slide-blur { animation: slide-blur-reveal 0.8s ease-out forwards; opacity: 0; }
+        .soft-rise { animation: soft-rise 0.6s ease-out forwards; opacity: 0; }
+        .magnetic-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .magnetic-cta:hover { animation: magnetic-cta 0.3s forwards; }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-8 overflow-hidden">
+        {/* Background Blobs with Parallax */}
+        <div
+          className="absolute top-0 left-0 w-96 h-96 bg-[#007A55] opacity-5 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+        <div
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#081E32] opacity-5 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex items-center gap-3 mb-8">
+            <Newspaper className="w-12 h-12 text-[#007A55]" />
+            <div className="h-12 w-1 bg-[#007A55]"></div>
+            <span className="text-[#007A55] font-semibold text-lg tracking-wide">PRESS & MEDIA</span>
+          </div>
+
+          <h1 className="text-6xl md:text-7xl font-bold text-[#081E32] mb-6 glow-pulse max-w-4xl leading-tight">
+            RentWorksPlus+ in the News
+          </h1>
+
+          <p className="text-xl text-gray-600 mb-10 max-w-3xl leading-relaxed">
+            Find press releases, brand guidelines, leadership quotes, and official media assets for coverage, partnerships, and publications.
+          </p>
+
+          <button className="magnetic-cta bg-[#007A55] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#006644] flex items-center gap-2">
+            Download Media Kit
+            <Download className="w-5 h-5" />
+          </button>
+        </div>
+      </section>
+
+      {/* Media Essentials */}
+      <section className="py-20 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Media Essentials</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need to tell the RentWorksPlus+ story accurately and compellingly.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {mediaEssentials.map((item, index) => (
+              <div
+                key={index}
+                className="slide-blur bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow text-center"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#007A55] bg-opacity-10 rounded-full mb-4">
+                  <div className="text-[#007A55]">{item.icon}</div>
+                </div>
+                <h3 className="text-lg font-bold text-[#081E32] mb-2">{item.label}</h3>
+                <p className="text-gray-600 text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Press Release Highlights */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Press Release Highlights</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Latest announcements and major milestones from RentWorksPlus+.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {pressReleases.map((release, index) => (
+              <div
+                key={index}
+                className="soft-rise bg-gray-50 rounded-xl p-8 hover:shadow-xl transition-shadow border-l-4 border-[#007A55]"
+                style={{ animationDelay: `${index * 0.12}s` }}
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div className="flex-1">
+                    <div className="text-sm text-[#007A55] font-semibold mb-2">{release.date}</div>
+                    <h3 className="text-2xl font-bold text-[#081E32] mb-3">{release.title}</h3>
+                    <p className="text-gray-600 mb-4">{release.excerpt}</p>
+                    <a href={release.link} className="text-[#007A55] font-semibold flex items-center gap-2 hover:underline">
+                      Read full release
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                  <Newspaper className="w-12 h-12 text-[#007A55] opacity-20" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Coverage */}
+      <section className="py-20 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Latest Coverage</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Featured articles and mentions from leading tech and business publications.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {latestCoverage.map((article, index) => (
+              <div
+                key={index}
+                className="slide-blur bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="text-[#007A55] font-bold text-sm mb-3">{article.publication}</div>
+                <h3 className="text-xl font-bold text-[#081E32] mb-3 leading-snug">{article.title}</h3>
+                <div className="text-gray-500 text-sm mb-4">{article.date}</div>
+                <a href={article.link} className="text-[#007A55] font-semibold flex items-center gap-2 hover:underline">
+                  Read article
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Evolution Timeline */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Product Evolution Timeline</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Key milestones in the RentWorksPlus+ journey from 2010 to today.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-[26px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#007A55] to-transparent"></div>
+
+            <div className="space-y-8">
+              {productTimeline.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative pl-20 soft-rise"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="absolute left-[18px] top-2 w-5 h-5 bg-[#007A55] rounded-full border-4 border-white shadow-lg"></div>
+                  <div className="bg-gray-50 rounded-xl p-6 shadow-md">
+                    <div className="text-3xl font-bold text-[#007A55] mb-2">{item.year}</div>
+                    <p className="text-lg text-gray-700">{item.milestone}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Press Contacts */}
+      <section className="py-20 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#081E32] mb-4 glow-pulse">Press Contacts</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              For media inquiries, interviews, and partnership opportunities.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="slide-blur bg-white rounded-xl p-8 shadow-md text-center" style={{ animationDelay: '0s' }}>
+              <Mail className="w-12 h-12 text-[#007A55] mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-[#081E32] mb-2">Media Inquiries</h3>
+              <p className="text-gray-600 mb-4">For press releases, interviews, and media coverage</p>
+              <a href="mailto:press@rentworksplus.com" className="text-[#007A55] font-semibold hover:underline">
+                press@rentworksplus.com
+              </a>
+            </div>
+
+            <div className="slide-blur bg-white rounded-xl p-8 shadow-md text-center" style={{ animationDelay: '0.1s' }}>
+              <Handshake className="w-12 h-12 text-[#007A55] mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-[#081E32] mb-2">Partnership Inquiries</h3>
+              <p className="text-gray-600 mb-4">For technology partnerships and integrations</p>
+              <a href="mailto:partnerships@rentworksplus.com" className="text-[#007A55] font-semibold hover:underline">
+                partnerships@rentworksplus.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Media Kit Download CTA */}
+      <section className="py-20 px-8 bg-gradient-to-br from-[#081E32] to-[#0a2740] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <Download className="w-16 h-16 text-[#007A55] mx-auto mb-6" />
+          <h2 className="text-4xl font-bold mb-6 glow-pulse">Download the Official Media Kit</h2>
+          <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+            Everything you need in one ZIP file - logos, screenshots, executive bios, brand guidelines, and fact sheet.
+          </p>
+
+          <div className="bg-white bg-opacity-10 rounded-xl p-8 mb-10 text-left backdrop-blur-sm">
+            <h3 className="text-xl font-bold mb-4 text-[#007A55]">Media Kit Contents:</h3>
+            <ul className="space-y-2">
+              {mediaKitContents.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-[#007A55] flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-200">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <button className="magnetic-cta bg-[#007A55] text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-[#006644] inline-flex items-center gap-3">
+            Download Media Kit (ZIP)
+            <Download className="w-5 h-5" />
+          </button>
+
+          <p className="text-sm text-gray-400 mt-6">
+            Updated November 2024 • 12.5 MB • All assets licensed for editorial use
+          </p>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 // ===========================================
@@ -1713,25 +3184,826 @@ export function PressPage() {
 // ===========================================
 
 export function HelpCenterPage() {
-  return <SimplePage title="Help Center" description="Browse help articles, tutorials, and FAQs to find answers quickly." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">Help Center</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Your complete knowledge base for everything RentWorksPlus+. Search articles, how-tos, feature explanations, and operational best practices.
+            </p>
+            <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-4 rounded-xl hover:bg-[#006644]">
+              Search Help Articles
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Designed for rental teams of all sizes, our Help Center offers step-by-step guidance for using RentWorksPlus+ across reservations, fleet operations, payments, reporting, and more. Everything is organized, searchable, and constantly updated.
+          </p>
+        </div>
+      </section>
+
+      {/* Popular Categories */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">Popular Categories</h2>
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {[
+              { icon: <BookOpen className="w-6 h-6" />, title: "Getting Started with RentWorksPlus+", articles: "24 articles" },
+              { icon: <Calendar className="w-6 h-6" />, title: "Reservations & Agreements", articles: "32 articles" },
+              { icon: <Car className="w-6 h-6" />, title: "Fleet Management & Maintenance", articles: "28 articles" },
+              { icon: <CreditCard className="w-6 h-6" />, title: "Pricing & Payments", articles: "19 articles" },
+              { icon: <TrendingUp className="w-6 h-6" />, title: "Reports & Intelligence", articles: "22 articles" },
+              { icon: <Settings className="w-6 h-6" />, title: "Account Settings & Permissions", articles: "15 articles" }
+            ].map((category, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-6 hover:shadow-lg transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className={`w-14 h-14 rounded-lg bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                  {category.icon}
+                </div>
+                <h3 className="text-[#081E32] text-xl font-semibold mb-2">{category.title}</h3>
+                <p className="text-gray-600 text-sm">{category.articles}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Articles */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">Featured Articles</h2>
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
+            {[
+              { title: "How to Create Digital Agreements in Under 60 Seconds", time: "5 min read" },
+              { title: "Setting Up Dynamic Pricing in RentWorksPlus+", time: "8 min read" },
+              { title: "Managing Vehicles Across Multiple Locations", time: "6 min read" },
+              { title: "Capturing Photos & Digital Signatures from Any Device", time: "4 min read" }
+            ].map((article, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-6 border border-gray-200 hover:border-[#007A55] transition-all animate-slide-diagonal-delay-2"
+              >
+                <h3 className="text-[#081E32] text-lg font-semibold mb-2">{article.title}</h3>
+                <p className="text-gray-600 text-sm flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  {article.time}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#007A55] to-[#006644] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Can't find what you're looking for?</h3>
+          <p className="text-lg mb-6">Our support team is ready to help you 24/7</p>
+          <button className="lift-ease-cta bg-white text-[#007A55] px-8 py-3 rounded-xl hover:bg-gray-100 font-semibold">
+            Contact Support Team
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function DocumentationPage() {
-  return <SimplePage title="Documentation" description="Complete technical documentation for administrators and power users." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">Product Documentation</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Deep feature documentation for teams who need precise, detailed explanations of how the RentWorksPlus+ platform works.
+            </p>
+            <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-4 rounded-xl hover:bg-[#006644]">
+              Browse Documentation
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            From configuration steps to operational flows, the RentWorksPlus+ Documentation Hub provides clarity on every feature. Clear diagrams, walkthroughs, rules, and admin-level details help your team stay productive and informed.
+          </p>
+        </div>
+      </section>
+
+      {/* Platform Sections */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">Platform Overview</h2>
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
+            {[
+              { icon: <Car className="w-6 h-6" />, title: "Reservation Lifecycle Documentation", description: "Complete guide to reservations, contracts, pricing, and customer workflows.", pages: "45 pages" },
+              { icon: <Wrench className="w-6 h-6" />, title: "Fleet Lifecycle Documentation", description: "Vehicle tracking, inspection protocols, maintenance schedules, and lifecycle management.", pages: "32 pages" },
+              { icon: <TrendingUp className="w-6 h-6" />, title: "Pricing Engine Rules", description: "Custom reports, KPI dashboards, utilization metrics, and revenue intelligence.", pages: "28 pages" },
+              { icon: <Settings className="w-6 h-6" />, title: "Payments & Billing Workflows", description: "User permissions, branch setup, rate structures, and admin settings.", pages: "38 pages" },
+              { icon: <CreditCard className="w-6 h-6" />, title: "User Roles & Access Permissions", description: "Gateway integration, refund handling, deposit management, and billing cycles.", pages: "22 pages" },
+              { icon: <Smartphone className="w-6 h-6" />, title: "Customization & Settings", description: "Mobile features, responsive design, offline mode, and customer portals.", pages: "19 pages" }
+            ].map((section, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-6 hover:shadow-xl transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className={`w-14 h-14 rounded-lg bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                  {section.icon}
+                </div>
+                <h3 className="text-[#081E32] text-xl font-semibold mb-2">{section.title}</h3>
+                <p className="text-gray-600 mb-3">{section.description}</p>
+                <p className="text-[#007A55] text-sm font-medium">{section.pages}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documentation Strengths */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-12 text-center">Why Our Documentation Stands Out</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { icon: <Search className="w-6 h-6" />, label: "Written for rental operators", desc: "Industry-specific guidance" },
+              { icon: <BookOpen className="w-6 h-6" />, label: "Clear diagrams for workflows", desc: "Visual learning aids" },
+              { icon: <Download className="w-6 h-6" />, label: "Constantly updated", desc: "Platform changes reflected" },
+              { icon: <RefreshCw className="w-6 h-6" />, label: "Matches the real UI exactly", desc: "No confusion" }
+            ].map((strength, index) => (
+              <div key={index} className="text-center animate-slide-diagonal-delay-2">
+                <div className={`w-16 h-16 rounded-full bg-[#007A55] flex items-center justify-center text-white mb-4 mx-auto animate-micro-bounce-delay-${index % 3}`}>
+                  {strength.icon}
+                </div>
+                <h4 className="text-[#081E32] font-semibold mb-1">{strength.label}</h4>
+                <p className="text-gray-600 text-sm">{strength.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">View Full Documentation Library</h3>
+          <p className="text-lg mb-6">Access comprehensive guides for every feature</p>
+          <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-3 rounded-xl hover:bg-[#006644] font-semibold">
+            Explore Documentation
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function APIDocsPage() {
-  return <SimplePage title="API Documentation" description="Developer resources, API reference, and integration guides." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">Developer API Documentation</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Build integrations, apps, partner workflows, or mobile tools powered by RentWorksPlus+ using our secure, modern API platform.
+            </p>
+            <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-4 rounded-xl hover:bg-[#006644]">
+              Get API Key
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Our API Docs provide clear, developer-ready references for authentication, endpoints, payloads, and webhook events. Developers can explore examples, try live calls, and build quickly using our sandbox environment.
+          </p>
+        </div>
+      </section>
+
+      {/* API Sections */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">API Endpoints</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {[
+              { method: "POST", endpoint: "Authentication (OAuth)", desc: "Secure token-based auth" },
+              { method: "GET", endpoint: "Reservations API", desc: "Create and manage bookings" },
+              { method: "PATCH", endpoint: "Customers API", desc: "Customer data management" },
+              { method: "GET", endpoint: "Fleet & Vehicle API", desc: "Vehicle inventory access" },
+              { method: "POST", endpoint: "Pricing & Rate API", desc: "Dynamic pricing engine" },
+              { method: "GET", endpoint: "Payments API", desc: "Process transactions" },
+              { method: "POST", endpoint: "Webhooks", desc: "Real-time event notifications" },
+              { method: "GET", endpoint: "SDKs & Code Samples", desc: "Ready-to-use libraries" }
+            ].map((endpoint, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-5 hover:shadow-lg transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`px-3 py-1 rounded-md text-xs font-bold ${
+                    endpoint.method === 'GET' ? 'bg-blue-100 text-blue-700' :
+                    endpoint.method === 'POST' ? 'bg-green-100 text-green-700' :
+                    'bg-yellow-100 text-yellow-700'
+                  } animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                    {endpoint.method}
+                  </span>
+                </div>
+                <h3 className="text-[#081E32] font-semibold mb-1">{endpoint.endpoint}</h3>
+                <p className="text-gray-600 text-sm">{endpoint.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Developer Highlights */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-12 text-center">Developer Highlights</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <Shield className="w-6 h-6" />, title: "RESTful architecture", desc: "Modern API design" },
+              { icon: <Zap className="w-6 h-6" />, title: "Sandbox for testing", desc: "Safe development environment" },
+              { icon: <Code className="w-6 h-6" />, title: "High-performance design", desc: "Low-latency responses" },
+              { icon: <FileText className="w-6 h-6" />, title: "100+ integration use cases", desc: "Proven at scale" }
+            ].map((feature, index) => (
+              <div key={index} className="text-center bg-white rounded-xl p-6 border border-gray-200 animate-slide-diagonal-delay-2">
+                <div className={`w-16 h-16 rounded-full bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 mx-auto animate-micro-bounce-delay-${index % 3}`}>
+                  {feature.icon}
+                </div>
+                <h4 className="text-[#081E32] font-semibold mb-2">{feature.title}</h4>
+                <p className="text-gray-600 text-sm">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#007A55] to-[#006644] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Explore the Developer Portal</h3>
+          <p className="text-lg mb-6">Start building with our comprehensive API</p>
+          <button className="lift-ease-cta bg-white text-[#007A55] px-8 py-3 rounded-xl hover:bg-gray-100 font-semibold">
+            Access Developer Portal
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function TrainingPage() {
-  return <SimplePage title="Training & Onboarding" description="Comprehensive training programs and onboarding resources for new users." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">Training & Onboarding</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Get your entire team fully trained — fast. Personalized onboarding ensures you launch RentWorksPlus+ with confidence and operational excellence.
+            </p>
+            <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-4 rounded-xl hover:bg-[#006644]">
+              Start Training
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Our onboarding specialists work directly with your team to configure your fleet, pricing, workflows, and integrations. With structured training programs, your staff becomes proficient on day one.
+          </p>
+        </div>
+      </section>
+
+      {/* Training Programs */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">Programs</h2>
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {[
+              {
+                icon: <UserPlus className="w-6 h-6" />,
+                title: "Personalized Onboarding Setup",
+                description: "Dedicated specialist configures your system and trains your team"
+              },
+              {
+                icon: <Video className="w-6 h-6" />,
+                title: "Staff Training Sessions (Live)",
+                description: "Interactive sessions covering all features and workflows"
+              },
+              {
+                icon: <BookOpen className="w-6 h-6" />,
+                title: "RentWorksPlus+ Academy",
+                description: "Self-paced video tutorials and certification programs"
+              },
+              {
+                icon: <Award className="w-6 h-6" />,
+                title: "Certification for Managers",
+                description: "Official credentials for fleet and operations managers"
+              },
+              {
+                icon: <Users className="w-6 h-6" />,
+                title: "Multi-location Rollout",
+                description: "Strategic planning for enterprise deployments"
+              }
+            ].map((program, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-6 hover:shadow-xl transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className={`w-14 h-14 rounded-lg bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                  {program.icon}
+                </div>
+                <h3 className="text-[#081E32] text-xl font-semibold mb-3">{program.title}</h3>
+                <p className="text-gray-600">{program.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Training Benefits */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-12 text-center">Benefits</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <Zap className="w-6 h-6" />, title: "Launch in days, not months", desc: "Fast deployment" },
+              { icon: <TrendingUp className="w-6 h-6" />, title: "Reduced ramp-up time", desc: "Quick proficiency" },
+              { icon: <Target className="w-6 h-6" />, title: "Tailored for every role", desc: "Personalized training" },
+              { icon: <CheckCircle className="w-6 h-6" />, title: "Long-term adoption", desc: "Best practices built-in" }
+            ].map((benefit, index) => (
+              <div key={index} className="text-center bg-white rounded-xl p-6 border border-gray-200 animate-slide-diagonal-delay-2">
+                <div className={`w-16 h-16 rounded-full bg-[#007A55] flex items-center justify-center text-white mb-4 mx-auto animate-micro-bounce-delay-${index % 3}`}>
+                  {benefit.icon}
+                </div>
+                <h4 className="text-[#081E32] font-semibold mb-2">{benefit.title}</h4>
+                <p className="text-gray-600 text-sm">{benefit.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Start Your Onboarding Journey</h3>
+          <p className="text-lg mb-6">Schedule your personalized training session today</p>
+          <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-3 rounded-xl hover:bg-[#006644] font-semibold">
+            Book Training Session
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function ContactPage() {
-  return <SimplePage title="Contact Support" description="Get help from our expert support team - available 24/7." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">Contact Support</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Get help from real rental technology specialists — 24/7. Choose the best channel for your team.
+            </p>
+            <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-4 rounded-xl hover:bg-[#006644]">
+              Open Support Ticket
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Our support team understands rental operations deeply. Whether you need help with setup, daily workflows, API integration, or billing — we're here around the clock.
+          </p>
+        </div>
+      </section>
+
+      {/* Support Channels */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">Support Channels</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {[
+              { icon: <MessageCircle className="w-6 h-6" />, title: "Live Chat", availability: "24/7", responseTime: "< 2 minutes" },
+              { icon: <Phone className="w-6 h-6" />, title: "Phone Support", availability: "24/7", responseTime: "Immediate" },
+              { icon: <Mail className="w-6 h-6" />, title: "Email Support", availability: "24/7", responseTime: "< 4 hours" },
+              { icon: <Video className="w-6 h-6" />, title: "Screen Sharing", availability: "Business Hours", responseTime: "Scheduled" },
+              { icon: <FileText className="w-6 h-6" />, title: "Support Portal", availability: "Always", responseTime: "Self-Service" },
+              { icon: <Users className="w-6 h-6" />, title: "Account Manager", availability: "Enterprise", responseTime: "Priority" }
+            ].map((channel, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-6 hover:shadow-xl transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className={`w-14 h-14 rounded-lg bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                  {channel.icon}
+                </div>
+                <h3 className="text-[#081E32] text-xl font-semibold mb-3">{channel.title}</h3>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-600">
+                    <span className="font-medium">Availability:</span> {channel.availability}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <span className="font-medium">Response:</span> {channel.responseTime}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Extras */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-12 text-center">Additional Resources</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: <BookOpen className="w-6 h-6" />, title: "Knowledge Base Access", desc: "Self-service articles and guides" },
+              { icon: <Lightbulb className="w-6 h-6" />, title: "Feature Requests Portal", desc: "Submit and vote on new features" },
+              { icon: <Calendar className="w-6 h-6" />, title: "Scheduled Training", desc: "Book personalized sessions" }
+            ].map((extra, index) => (
+              <div key={index} className="text-center bg-white rounded-xl p-6 border border-gray-200 animate-slide-diagonal-delay-2">
+                <div className={`w-16 h-16 rounded-full bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 mx-auto animate-micro-bounce-delay-${index}`}>
+                  {extra.icon}
+                </div>
+                <h4 className="text-[#081E32] font-semibold mb-2">{extra.title}</h4>
+                <p className="text-gray-600 text-sm">{extra.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#007A55] to-[#006644] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Contact the Support Team</h3>
+          <p className="text-lg mb-6">We're here to help you succeed</p>
+          <button className="lift-ease-cta bg-white text-[#007A55] px-8 py-3 rounded-xl hover:bg-gray-100 font-semibold">
+            Start Live Chat
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function StatusPage() {
-  return <SimplePage title="System Status" description="Current system status, uptime monitoring, and historical performance data." backLink="/" />;
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        @keyframes slideInDiagonal {
+          from { opacity: 0; transform: translate(-30px, 30px); }
+          to { opacity: 1; transform: translate(0, 0); }
+        }
+        @keyframes glowBorderReveal {
+          0% { box-shadow: 0 0 0 rgba(0, 122, 85, 0); border-color: transparent; }
+          50% { box-shadow: 0 0 20px rgba(0, 122, 85, 0.4); }
+          100% { box-shadow: 0 0 15px rgba(0, 122, 85, 0.3); border-color: rgba(0, 122, 85, 0.5); }
+        }
+        @keyframes microBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes pulseLine {
+          0% { width: 0%; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.8; }
+        }
+        .animate-slide-diagonal { animation: slideInDiagonal 0.8s ease-out forwards; }
+        .animate-slide-diagonal-delay-1 { animation: slideInDiagonal 0.8s ease-out 0.1s forwards; opacity: 0; }
+        .animate-slide-diagonal-delay-2 { animation: slideInDiagonal 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .glow-border-card { border: 2px solid transparent; transition: all 0.3s ease; }
+        .glow-border-card:hover { animation: glowBorderReveal 0.6s ease-out forwards; }
+        .animate-micro-bounce { animation: microBounce 0.6s ease-in-out; }
+        .animate-micro-bounce-delay-1 { animation: microBounce 0.6s ease-in-out 0.1s; }
+        .animate-micro-bounce-delay-2 { animation: microBounce 0.6s ease-in-out 0.2s; }
+        .pulse-line-divider { position: relative; padding-bottom: 12px; }
+        .pulse-line-divider::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, #007A55, transparent); animation: pulseLine 1.5s ease-out forwards; }
+        .lift-ease-cta { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        .lift-ease-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0, 122, 85, 0.3); }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+          <div className="animate-slide-diagonal">
+            <h1 className="text-white mb-6 text-5xl font-bold">System Status & Uptime</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mb-8">
+              Check live system performance, uptime history, scheduled maintenance, and real-time service alerts.
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg animate-micro-bounce">
+                <CheckCircle className="w-5 h-5" />
+                <span className="font-semibold">All Systems Operational</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Paragraph */}
+      <section className="py-12 bg-[#F4F5F7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-diagonal-delay-1">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            RentWorksPlus+ delivers enterprise-grade reliability with global hosting infrastructure. Our transparent status page keeps your team informed of uptime, maintenance windows, or disruptions.
+          </p>
+        </div>
+      </section>
+
+      {/* Live System Components */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-3 pulse-line-divider">System Components</h2>
+          <div className="space-y-4 mt-12">
+            {[
+              { name: "Core Rental Platform", status: "operational", uptime: "99.99%" },
+              { name: "API Services", status: "operational", uptime: "99.98%" },
+              { name: "Online Booking Plugin", status: "operational", uptime: "99.97%" },
+              { name: "Mobile App Backend", status: "operational", uptime: "99.99%" },
+              { name: "Payment Processing", status: "operational", uptime: "99.96%" },
+              { name: "Reporting & Analytics", status: "operational", uptime: "99.95%" }
+            ].map((component, index) => (
+              <div
+                key={index}
+                className="glow-border-card bg-white rounded-xl p-6 flex items-center justify-between hover:shadow-lg transition-all animate-slide-diagonal-delay-1"
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center animate-micro-bounce-delay-${Math.min(index % 3, 2)}`}>
+                    <CheckCircle className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-[#081E32] text-lg font-semibold">{component.name}</h3>
+                    <p className="text-sm text-green-600 font-medium">Operational</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-600 mb-1">30-Day Uptime</p>
+                  <p className="text-2xl font-bold text-[#007A55]">{component.uptime}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Performance Metrics */}
+      <section className="py-16 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[#081E32] text-3xl font-bold mb-12 text-center">Performance Metrics</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { metric: "99.95%", label: "Overall Uptime", icon: <TrendingUp className="w-6 h-6" /> },
+              { metric: "24/7", label: "Monitoring", icon: <Activity className="w-6 h-6" /> },
+              { metric: "0", label: "Active Incidents", icon: <AlertCircle className="w-6 h-6" /> },
+              { metric: "Full", label: "Redundancy", icon: <Shield className="w-6 h-6" /> }
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="text-center bg-white rounded-xl p-8 border border-gray-200 hover:border-[#007A55] hover:shadow-lg transition-all animate-slide-diagonal-delay-2"
+              >
+                <div className={`w-16 h-16 rounded-full bg-[#007A55]/10 flex items-center justify-center text-[#007A55] mb-4 mx-auto animate-micro-bounce-delay-${index % 3}`}>
+                  {stat.icon}
+                </div>
+                <div className="text-4xl font-bold text-[#007A55] mb-2">{stat.metric}</div>
+                <div className="text-gray-700 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Strip */}
+      <section className="py-12 bg-gradient-to-r from-[#081E32] to-[#0a2640] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">View Full Status Dashboard</h3>
+          <p className="text-lg mb-6">Subscribe to real-time status updates</p>
+          <button className="lift-ease-cta bg-[#007A55] text-white px-8 py-3 rounded-xl hover:bg-[#006644] font-semibold">
+            Subscribe to Updates
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }

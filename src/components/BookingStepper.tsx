@@ -1,43 +1,33 @@
 import { useState, useEffect } from 'react';
-import { MapPin, Calendar, Check, ArrowRight } from 'lucide-react';
+import { BarChart3, Camera, Calendar, Brain, Check, TrendingUp, AlertCircle } from 'lucide-react';
 
 export function BookingStepper() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [booking, setBooking] = useState({
-    location: '',
-    pickupDate: '',
-    returnDate: '',
-    selectedVehicle: null as any
-  });
 
-  const vehicles = [
-    { 
-      id: 1, 
-      name: 'Economy', 
-      description: 'Compact & fuel efficient', 
-      price: 45, 
-      image: 'https://images.unsplash.com/photo-1673905190370-58c991e71423?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+  const products = [
+    {
+      id: 1,
+      name: 'Smart Dashboard Overview',
+      icon: BarChart3,
+      color: '#007A55'
     },
-    { 
-      id: 2, 
-      name: 'Compact SUV', 
-      description: 'Perfect for city & highway', 
-      price: 69, 
-      image: 'https://images.unsplash.com/photo-1758228674135-ccb8865f1b02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+    {
+      id: 2,
+      name: 'Vehicle Inspection Card',
+      icon: Camera,
+      color: '#007A55'
     },
-    { 
-      id: 3, 
-      name: 'Luxury Sedan', 
-      description: 'Premium comfort', 
-      price: 129, 
-      image: 'https://images.unsplash.com/photo-1758216383800-7023ee8ed42b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+    {
+      id: 3,
+      name: 'Reservation Creation Screen',
+      icon: Calendar,
+      color: '#007A55'
     },
-    { 
-      id: 4, 
-      name: 'Full-Size SUV', 
-      description: 'Spacious family option', 
-      price: 89, 
-      image: 'https://images.unsplash.com/photo-1758216991743-110e7a093f29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+    {
+      id: 4,
+      name: 'AI Insights Widget',
+      icon: Brain,
+      color: '#007A55'
     }
   ];
 
@@ -45,7 +35,7 @@ export function BookingStepper() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentStep((prev) => {
-        if (prev === 3) return 1;
+        if (prev === 4) return 1;
         return prev + 1;
       });
     }, 4000);
@@ -54,191 +44,281 @@ export function BookingStepper() {
   }, []);
 
   const handleNext = () => {
-    if (currentStep < 3) setCurrentStep(currentStep + 1);
+    if (currentStep < 4) setCurrentStep(currentStep + 1);
+    else setCurrentStep(1);
   };
 
   const handleBack = () => {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
+    else setCurrentStep(4);
   };
 
   return (
     <div className="bg-white rounded-2xl shadow-2xl p-6 relative z-10 h-[580px] flex flex-col">
-      {/* Step Indicator */}
+      {/* Product Indicator */}
       <div className="flex items-center justify-between mb-8">
-        {[1, 2, 3].map((step) => (
-          <div key={step} className="flex items-center flex-1">
-            <div className="flex flex-col items-center flex-1">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-700 ${
-                  currentStep >= step
-                    ? 'bg-[#007A55] text-white'
-                    : 'bg-[#F4F5F7] text-gray-400'
-                }`}
-              >
-                {currentStep > step ? (
-                  <Check className="w-5 h-5" />
-                ) : (
-                  <span>{step}</span>
-                )}
+        {[1, 2, 3, 4].map((step) => {
+          const product = products[step - 1];
+          const Icon = product.icon;
+          return (
+            <div key={step} className="flex items-center flex-1">
+              <div className="flex flex-col items-center flex-1">
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-700 ${
+                    currentStep === step
+                      ? 'bg-[#007A55] text-white ring-4 ring-[#007A55]/20'
+                      : 'bg-[#F4F5F7] text-gray-400'
+                  }`}
+                >
+                  <Icon className="w-5 h-5" />
+                </div>
+                <span className={`text-xs mt-2 text-center transition-colors duration-700 ${currentStep === step ? 'text-[#007A55]' : 'text-gray-400'}`}>
+                  {product.name.split(' ')[0]}
+                </span>
               </div>
-              <span className={`text-xs mt-2 transition-colors duration-700 ${currentStep >= step ? 'text-[#007A55]' : 'text-gray-400'}`}>
-                {step === 1 ? 'Location & Date' : step === 2 ? 'Select Vehicle' : 'Complete'}
-              </span>
+              {step < 4 && (
+                <div
+                  className={`h-1 flex-1 mx-2 transition-all duration-700 ${
+                    currentStep > step ? 'bg-[#007A55]' : 'bg-[#F4F5F7]'
+                  }`}
+                />
+              )}
             </div>
-            {step < 3 && (
-              <div
-                className={`h-1 flex-1 mx-2 transition-all duration-700 ${
-                  currentStep > step ? 'bg-[#007A55]' : 'bg-[#F4F5F7]'
-                }`}
-              />
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {/* Step Content - Fixed Height */}
+      {/* Product Content - Fixed Height */}
       <div className="flex-1 relative overflow-hidden">
-        {/* Step 1: Location & Date */}
+        {/* Screen 1: Smart Dashboard Overview */}
         <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'}`}>
           <div className="space-y-4 h-full flex flex-col">
-            <h3 className="text-2xl text-[#081E32] mb-4">Where and when?</h3>
-            
-            <div>
-              <label className="block text-sm text-gray-600 mb-2">Pick-up Location</label>
-              <div className="relative">
-                <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Los Angeles Int'l Airport"
-                  value={currentStep === 1 ? 'Los Angeles Int\'l Airport' : ''}
-                  readOnly
-                  className="w-full pl-11 pr-4 py-3 bg-[#F4F5F7] rounded-lg text-[#081E32] cursor-default"
-                />
+            <h3 className="text-2xl text-[#081E32] mb-4">Smart Dashboard Overview</h3>
+
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-[#F4F5F7] rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-gray-500">Revenue</span>
+                  <TrendingUp className="w-4 h-4 text-[#007A55]" />
+                </div>
+                <p className="text-2xl text-[#081E32]">$45.2K</p>
+                <p className="text-xs text-[#007A55] mt-1">+12.5% ↑</p>
+              </div>
+              <div className="bg-[#F4F5F7] rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-gray-500">Utilization</span>
+                  <BarChart3 className="w-4 h-4 text-[#007A55]" />
+                </div>
+                <p className="text-2xl text-[#081E32]">87%</p>
+                <p className="text-xs text-[#007A55] mt-1">+5.2% ↑</p>
+              </div>
+              <div className="bg-[#F4F5F7] rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-gray-500">RPD</span>
+                  <TrendingUp className="w-4 h-4 text-[#007A55]" />
+                </div>
+                <p className="text-2xl text-[#081E32]">$89</p>
+                <p className="text-xs text-[#007A55] mt-1">+8.3% ↑</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-gray-600 mb-2">Pick-up Date</label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    value={currentStep === 1 ? '2024-12-15' : ''}
-                    readOnly
-                    className="w-full pl-11 pr-4 py-3 bg-[#F4F5F7] rounded-lg text-[#081E32] cursor-default"
-                  />
-                </div>
+            <div className="bg-[#F4F5F7] rounded-xl p-5 flex-1">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-sm text-gray-600">Fleet Status</span>
+                <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full">Live</span>
               </div>
-
-              <div>
-                <label className="block text-sm text-gray-600 mb-2">Return Date</label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    value={currentStep === 1 ? '2024-12-18' : ''}
-                    readOnly
-                    className="w-full pl-11 pr-4 py-3 bg-[#F4F5F7] rounded-lg text-[#081E32] cursor-default"
-                  />
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-700">Available</span>
+                  <span className="text-[#007A55] font-medium">23 vehicles</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-700">On Rental</span>
+                  <span className="text-[#081E32] font-medium">47 vehicles</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-700">Maintenance</span>
+                  <span className="text-orange-600 font-medium">5 vehicles</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#007A55]/10 rounded-lg p-4 mt-4">
+            <div className="bg-[#007A55]/10 rounded-lg p-3">
               <p className="text-sm text-[#007A55]">
-                💡 3 day rental • Book 7+ days and save 15%
+                💡 Real-time insights across all locations
               </p>
             </div>
           </div>
         </div>
 
-        {/* Step 2: Select Vehicle */}
+        {/* Screen 2: Vehicle Inspection Card */}
         <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
           <div className="space-y-4 h-full flex flex-col">
-            <h3 className="text-2xl text-[#081E32] mb-4">Choose your vehicle</h3>
-            
-            <div className="grid grid-cols-2 gap-3 flex-1">
-              {vehicles.map((vehicle) => (
-                <div
-                  key={vehicle.id}
-                  onClick={() => setBooking({ ...booking, selectedVehicle: vehicle })}
-                  className={`rounded-xl cursor-pointer transition-all duration-500 overflow-hidden ${
-                    booking.selectedVehicle?.id === vehicle.id
-                      ? 'ring-4 ring-[#007A55] shadow-xl'
-                      : 'hover:shadow-lg'
-                  }`}
-                >
-                  <div className="relative h-24 bg-gray-200">
-                    <img 
-                      src={vehicle.image} 
-                      alt={vehicle.name}
-                      className="w-full h-full object-cover"
-                    />
-                    {booking.selectedVehicle?.id === vehicle.id && (
-                      <div className="absolute top-2 right-2 bg-[#007A55] text-white rounded-full p-1">
-                        <Check className="w-4 h-4" />
-                      </div>
-                    )}
-                  </div>
-                  <div className={`p-3 ${booking.selectedVehicle?.id === vehicle.id ? 'bg-[#007A55] text-white' : 'bg-[#F4F5F7]'}`}>
-                    <h4 className={`text-sm mb-1 ${booking.selectedVehicle?.id === vehicle.id ? 'text-white' : 'text-[#081E32]'}`}>
-                      {vehicle.name}
-                    </h4>
-                    <p className={`text-xs mb-2 ${booking.selectedVehicle?.id === vehicle.id ? 'text-white/80' : 'text-gray-500'}`}>
-                      {vehicle.description}
-                    </p>
-                    <div className="flex items-baseline space-x-1">
-                      <span className={`text-xl ${booking.selectedVehicle?.id === vehicle.id ? 'text-white' : 'text-[#007A55]'}`}>
-                        ${vehicle.price}
-                      </span>
-                      <span className={`text-xs ${booking.selectedVehicle?.id === vehicle.id ? 'text-white/70' : 'text-gray-500'}`}>
-                        /day
-                      </span>
-                    </div>
-                  </div>
+            <h3 className="text-2xl text-[#081E32] mb-4">Vehicle Inspection Card</h3>
+
+            <div className="bg-[#F4F5F7] rounded-xl p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h4 className="text-[#081E32] font-medium">2024 Toyota RAV4</h4>
+                  <p className="text-sm text-gray-500">VIN: JM1BK32F781234567</p>
                 </div>
-              ))}
+                <span className="bg-[#007A55] text-white text-xs px-3 py-1 rounded-full">Check-In</span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                <div className="bg-white rounded-lg p-3 text-center">
+                  <Camera className="w-6 h-6 text-[#007A55] mx-auto mb-1" />
+                  <p className="text-xs text-gray-600">Front</p>
+                </div>
+                <div className="bg-white rounded-lg p-3 text-center">
+                  <Camera className="w-6 h-6 text-[#007A55] mx-auto mb-1" />
+                  <p className="text-xs text-gray-600">Left</p>
+                </div>
+                <div className="bg-white rounded-lg p-3 text-center">
+                  <Camera className="w-6 h-6 text-[#007A55] mx-auto mb-1" />
+                  <p className="text-xs text-gray-600">Right</p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2 text-sm">
+                  <Check className="w-4 h-4 text-[#007A55]" />
+                  <span className="text-gray-700">Exterior condition verified</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <Check className="w-4 h-4 text-[#007A55]" />
+                  <span className="text-gray-700">Fuel level: Full tank</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <Check className="w-4 h-4 text-[#007A55]" />
+                  <span className="text-gray-700">Mileage: 45,230 miles</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#007A55] rounded-xl p-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-700">Inspection Status</span>
+                <span className="text-[#007A55] font-medium">Complete ✓</span>
+              </div>
+            </div>
+
+            <div className="bg-[#007A55]/10 rounded-lg p-3">
+              <p className="text-sm text-[#007A55]">
+                📸 Digital photo capture with damage AI detection
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Step 3: Complete Reservation */}
+        {/* Screen 3: Reservation Creation Screen */}
         <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
-          <div className="h-full flex flex-col py-4">
-            <div className="text-center flex-1 flex flex-col justify-start">
-              <div className="w-16 h-16 bg-[#007A55]/10 rounded-full flex items-center justify-center mx-auto mb-3 flex-shrink-0">
-                <Check className="w-8 h-8 text-[#007A55]" />
-              </div>
-              <h3 className="text-2xl text-[#081E32] mb-2">Ready to reserve!</h3>
-              <p className="text-gray-600 mb-4 text-sm">Review your booking details</p>
+          <div className="space-y-4 h-full flex flex-col">
+            <h3 className="text-2xl text-[#081E32] mb-4">Reservation Creation</h3>
 
-              <div className="bg-[#F4F5F7] rounded-xl p-5 text-left max-w-md mx-auto space-y-2.5 w-full">
-                <div className="flex items-center justify-between pb-2.5 border-b border-gray-300">
-                  <span className="text-sm text-gray-600">Location</span>
-                  <span className="text-[#081E32] text-sm">LAX Airport</span>
+            <div className="space-y-3">
+              <div className="bg-[#F4F5F7] rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-gray-600">Customer</span>
+                  <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">Verified</span>
                 </div>
-                <div className="flex items-center justify-between pb-2.5 border-b border-gray-300">
-                  <span className="text-sm text-gray-600">Duration</span>
-                  <span className="text-[#081E32] text-sm">3 days</span>
-                </div>
-                <div className="flex items-center justify-between pb-2.5 border-b border-gray-300">
-                  <span className="text-sm text-gray-600">Vehicle</span>
-                  <span className="text-[#081E32] text-sm">
-                    {booking.selectedVehicle?.name || 'Compact SUV'}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-gray-600">Total</span>
-                  <span className="text-2xl text-[#007A55]">
-                    ${(booking.selectedVehicle?.price || 69) * 3}
-                  </span>
+                <p className="text-[#081E32] font-medium">John Smith</p>
+                <p className="text-sm text-gray-500">john.smith@email.com</p>
+              </div>
+
+              <div className="bg-[#F4F5F7] rounded-xl p-4">
+                <span className="text-sm text-gray-600 block mb-2">Vehicle Selection</span>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[#081E32] font-medium">2024 Honda CR-V</p>
+                    <p className="text-sm text-gray-500">Compact SUV</p>
+                  </div>
+                  <span className="text-lg text-[#007A55]">$69/day</span>
                 </div>
               </div>
 
-              <button className="mt-5 bg-[#007A55] text-white px-8 py-3 rounded-lg hover:bg-[#006644] transition-all shadow-lg mx-auto">
-                Complete Reservation
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-[#F4F5F7] rounded-xl p-3">
+                  <span className="text-xs text-gray-600 block mb-1">Pick-up</span>
+                  <p className="text-[#081E32] text-sm">Dec 15, 2024</p>
+                  <p className="text-xs text-gray-500">10:00 AM</p>
+                </div>
+                <div className="bg-[#F4F5F7] rounded-xl p-3">
+                  <span className="text-xs text-gray-600 block mb-1">Return</span>
+                  <p className="text-[#081E32] text-sm">Dec 18, 2024</p>
+                  <p className="text-xs text-gray-500">10:00 AM</p>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-[#007A55] rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-gray-600">Total (3 days)</span>
+                  <span className="text-2xl text-[#007A55]">$207</span>
+                </div>
+                <button className="w-full bg-[#007A55] text-white py-2 rounded-lg hover:bg-[#006644] transition-all text-sm">
+                  Create Reservation
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-[#007A55]/10 rounded-lg p-3">
+              <p className="text-sm text-[#007A55]">
+                ⚡ Instant availability check across all branches
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Screen 4: AI Insights Widget */}
+        <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
+          <div className="space-y-4 h-full flex flex-col">
+            <h3 className="text-2xl text-[#081E32] mb-4">AI Insights Widget</h3>
+
+            <div className="bg-gradient-to-br from-[#007A55] to-[#006644] rounded-xl p-5 text-white">
+              <div className="flex items-center space-x-2 mb-3">
+                <Brain className="w-6 h-6" />
+                <span className="font-medium">CAREN AI Recommendations</span>
+              </div>
+              <p className="text-white/90 text-sm mb-4">
+                Based on current demand and your fleet performance
+              </p>
+              <div className="space-y-2">
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-sm">🚗 Increase SUV rates by 12% this weekend</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-sm">💰 Expected revenue impact: +$2,340</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#F4F5F7] rounded-xl p-4">
+              <div className="flex items-center space-x-2 mb-3">
+                <AlertCircle className="w-5 h-5 text-orange-500" />
+                <span className="text-sm text-gray-700 font-medium">Utilization Alert</span>
+              </div>
+              <p className="text-sm text-gray-600 mb-3">
+                5 vehicles idle for 3+ days. Consider promotional pricing.
+              </p>
+              <button className="text-sm text-[#007A55] hover:underline">
+                View recommendations →
               </button>
+            </div>
+
+            <div className="bg-white border-2 border-gray-200 rounded-xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-600">AI Accuracy</span>
+                <span className="text-[#007A55] font-medium">94%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-[#007A55] h-2 rounded-full" style={{ width: '94%' }}></div>
+              </div>
+            </div>
+
+            <div className="bg-[#007A55]/10 rounded-lg p-3">
+              <p className="text-sm text-[#007A55]">
+                🧠 AI-powered pricing and fleet optimization
+              </p>
             </div>
           </div>
         </div>
@@ -248,18 +328,13 @@ export function BookingStepper() {
       <div className="flex items-center justify-between pt-6 border-t border-gray-200">
         <button
           onClick={handleBack}
-          disabled={currentStep === 1}
-          className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-            currentStep === 1
-              ? 'text-gray-300 cursor-not-allowed'
-              : 'text-[#007A55] hover:bg-[#007A55]/10'
-          }`}
+          className="px-6 py-2 rounded-lg transition-all duration-300 text-[#007A55] hover:bg-[#007A55]/10"
         >
           Back
         </button>
-        
+
         <div className="flex items-center space-x-2">
-          {[1, 2, 3].map((step) => (
+          {[1, 2, 3, 4].map((step) => (
             <div
               key={step}
               onClick={() => setCurrentStep(step)}
@@ -272,15 +347,9 @@ export function BookingStepper() {
 
         <button
           onClick={handleNext}
-          disabled={currentStep === 3}
-          className={`px-6 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 ${
-            currentStep === 3
-              ? 'text-gray-300 cursor-not-allowed'
-              : 'bg-[#007A55] text-white hover:bg-[#006644]'
-          }`}
+          className="px-6 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 bg-[#007A55] text-white hover:bg-[#006644]"
         >
           <span>Next</span>
-          <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>

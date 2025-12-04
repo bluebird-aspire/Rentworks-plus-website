@@ -16,7 +16,7 @@ export function TrustedBy() {
     <section className="bg-[#F4F5F7] py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className="text-center text-[#081E32] text-2xl mb-12">
-          Powering thousands of rental businesses worldwide
+          Clients around the world
         </h3>
         
         {/* Scrolling Animation - Left to Right */}

@@ -31,20 +31,20 @@ export function NewHero() {
             </div>
 
             <h1 className="lg:text-6xl text-[#081E32] leading-tight text-[48px]">
-              The complete car rental platform built for the way you actually work
+              Modern Car Rental Management Software for Growing Fleets
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              RentWorksPlus+ frees your team to focus on delivering great customer experiences while intelligent tools work behind the scenes to maximize fleet utilization, revenue, and operational efficiency.
+              Run your entire car rental operation from one connected platform. Manage reservations, vehicles, pricing, and customers in real time—with smart automation that reduces manual work and increases revenue.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-[#007A55] text-white px-8 py-4 rounded-lg hover:bg-[#006644] transition-all transform hover:scale-105 hover:shadow-xl">
-                Book a Demo
+                Start Free Trial
               </button>
               <button className="flex items-center justify-center text-[#007A55] hover:text-[#006644] transition-colors group border-2 border-[#007A55] px-8 py-4 rounded-lg hover:bg-[#007A55]/5">
-                <span className="mr-2">Explore the Platform</span>
+                <span className="mr-2">Book a Demo</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </button>
             </div>

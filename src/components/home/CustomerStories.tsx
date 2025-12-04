@@ -3,20 +3,20 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 export function CustomerStories() {
   const mainStory = {
-    title: 'How CityDrive Rentals streamlined operations across 12 branches with RentWorksPlus+',
-    stats: ['12 locations', '+22% revenue per vehicle', '60% less manual paperwork'],
+    title: '82% reduction in no-shows and much more predictable revenue',
+    stats: ['CityDrive Rentals', 'Automated reminders', 'Forecasting engine'],
     image: 'https://images.unsplash.com/photo-1633118948215-480c9d78fc24?w=800'
   };
 
   const secondaryStories = [
     {
-      title: 'FleetPro increases fleet utilization by 35%',
-      company: 'FleetPro Rentals',
+      title: '35% increase in fleet utilization and significantly faster daily operations',
+      company: 'Premier Auto Rentals',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600'
     },
     {
-      title: 'Luxury Auto Group reduces booking time from 15min to 3min',
-      company: 'Luxury Auto Group',
+      title: '28% uplift in rental revenue and better control of margins',
+      company: 'Elite Car Hire',
       image: 'https://images.unsplash.com/photo-1683200899447-d398198ed197?w=600'
     }
   ];
