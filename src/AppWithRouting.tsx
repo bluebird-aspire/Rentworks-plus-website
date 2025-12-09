@@ -1,18 +1,29 @@
-import { Router, Route } from './components/Router';
+import { Router, Route, useRouter } from './components/Router';
 import { NavigationWithRouting } from './components/NavigationWithRouting';
 import { HomePage } from './pages/HomePage';
+import { ComingSoonPage } from './pages/ComingSoonPage';
 import * as Platform from './pages/AllPlatformPages';
 import * as Other from './pages/AllOtherPages';
 import { Footer } from './components/Footer';
 
-export default function AppWithRouting() {
+function AppContent() {
+  const { currentPath } = useRouter();
+  const isComingSoon = currentPath === '/' || currentPath === '/new-website';
+
   return (
-    <Router>
-      <div className="min-h-screen bg-white">
-        <NavigationWithRouting />
+    <div className="min-h-screen bg-white">
+      {!isComingSoon && <NavigationWithRouting />}
         
-        {/* HOME */}
+        {/* COMING SOON */}
         <Route path="/">
+          <ComingSoonPage />
+        </Route>
+        <Route path="/new-website">
+          <ComingSoonPage />
+        </Route>
+
+        {/* CURRENT HOME PAGE (for reference) */}
+        <Route path="/home">
           <HomePage />
         </Route>
 
@@ -132,8 +143,15 @@ export default function AppWithRouting() {
           <Other.StatusPage />
         </Route>
 
-        <Footer />
-      </div>
+      {!isComingSoon && <Footer />}
+    </div>
+  );
+}
+
+export default function AppWithRouting() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
