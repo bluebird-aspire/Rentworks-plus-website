@@ -8,18 +8,19 @@ export function GlobalSupport() {
         <div className="relative bg-gradient-to-br from-[#081E32] via-[#0a2438] to-[#081E32] rounded-2xl overflow-hidden p-12">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '30px 30px'
-            }}></div>
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '30px 30px',
+              }}
+            ></div>
           </div>
 
           <div className="relative z-10">
             {/* Header */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl text-white mb-3">
-                RentWorksPlus+
-              </h2>
+              <h2 className="text-4xl text-white mb-3">RentWorksPlus+</h2>
               <p className="text-white/70 text-lg">
                 Modern car rental software, powered by intelligent automation
               </p>

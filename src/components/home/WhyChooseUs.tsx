@@ -8,7 +8,7 @@ export function WhyChooseUs() {
     { icon: Wrench, label: 'Maintenance', color: '#007A55' },
     { icon: DollarSign, label: 'Accounting', color: '#007A55' },
     { icon: Users, label: 'Customer Management', color: '#007A55' },
-    { icon: ClipboardList, label: 'Res Planner', color: '#007A55' }
+    { icon: ClipboardList, label: 'Res Planner', color: '#007A55' },
   ];
 
   return (
@@ -23,7 +23,8 @@ export function WhyChooseUs() {
             Everything You Need to Run Your Rental Business in One Place
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            RentWorksPlus+ unifies all aspects of your car rental operation—from reservations to fleet management—into a single, powerful platform.
+            RentWorksPlus+ unifies all aspects of your car rental operation—from reservations to
+            fleet management—into a single, powerful platform.
           </p>
         </div>
 
@@ -60,15 +61,15 @@ export function WhyChooseUs() {
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                 }}
               >
-                <div 
+                <div
                   className="relative group cursor-pointer animate-float-feature"
                   style={{
-                    animationDelay: `${index * 0.2}s`
+                    animationDelay: `${index * 0.2}s`,
                   }}
                 >
                   {/* Glow Effect */}
                   <div className="absolute inset-0 bg-[#007A55] rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity -z-10 scale-110"></div>
-                  
+
                   {/* Feature Badge */}
                   <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all min-w-[160px]">
                     <div className="flex flex-col items-center gap-3">
@@ -82,13 +83,13 @@ export function WhyChooseUs() {
                   </div>
 
                   {/* Connecting Line to Center */}
-                  <svg 
+                  <svg
                     className="absolute top-1/2 left-1/2 pointer-events-none"
                     style={{
                       width: `${Math.abs(radius * 2)}px`,
                       height: `${Math.abs(radius * 2)}px`,
                       transform: `translate(-50%, -50%)`,
-                      zIndex: -1
+                      zIndex: -1,
                     }}
                   >
                     <line
@@ -121,7 +122,7 @@ export function WhyChooseUs() {
                 className="absolute top-1/2 left-1/2 w-3 h-3 bg-[#007A55] rounded-full animate-pulse-dot"
                 style={{
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  animationDelay: `${index * 0.3}s`
+                  animationDelay: `${index * 0.3}s`,
                 }}
               ></div>
             );

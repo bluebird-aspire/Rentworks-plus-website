@@ -18,10 +18,10 @@ export function PlatformHero({
   badge,
   title,
   subtitle,
-  ctaText = "Book a Demo",
-  ctaLink = "#",
+  ctaText = 'Book a Demo',
+  ctaLink = '#',
   mockupImage,
-  mockupAlt = "Platform mockup"
+  mockupAlt = 'Platform mockup',
 }: PlatformHeroProps) {
   const [scrollY, setScrollY] = useState(0);
 
@@ -72,9 +72,7 @@ export function PlatformHero({
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl text-white/80 mb-8 leading-relaxed">
-              {subtitle}
-            </p>
+            <p className="text-xl text-white/80 mb-8 leading-relaxed">{subtitle}</p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
@@ -103,11 +101,7 @@ export function PlatformHero({
 
                 {/* Mockup Card */}
                 <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-4 border border-white/20 shadow-2xl">
-                  <img
-                    src={mockupImage}
-                    alt={mockupAlt}
-                    className="w-full h-auto rounded-2xl"
-                  />
+                  <img src={mockupImage} alt={mockupAlt} className="w-full h-auto rounded-2xl" />
                 </div>
               </div>
             </div>

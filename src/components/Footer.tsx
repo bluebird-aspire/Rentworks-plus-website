@@ -7,19 +7,19 @@ export function Footer() {
       { label: 'First service', href: '#' },
       { label: 'Next service', href: '#' },
       { label: 'Another service', href: '#' },
-      { label: 'Last service', href: '#' }
+      { label: 'Last service', href: '#' },
     ],
     themeInfo: [
       { label: 'Get the theme', href: '#' },
       { label: 'WebMan Design', href: '#' },
       { label: 'Support Forum', href: '#' },
-      { label: 'User manual', href: '#' }
-    ]
+      { label: 'User manual', href: '#' },
+    ],
   };
 
   const locations = [
     { city: 'London, GB', address: '123 Street Name, Cityname', zip: '56789, COUNTRY' },
-    { city: 'New York, USA', address: '123 Street Name, Cityname', zip: '56789, COUNTRY' }
+    { city: 'New York, USA', address: '123 Street Name, Cityname', zip: '56789, COUNTRY' },
   ];
 
   return (
@@ -28,10 +28,12 @@ export function Footer() {
       <div className="bg-[#081E32] text-white py-8 mb-16 overflow-hidden">
         <div className="whitespace-nowrap animate-scroll">
           <span className="inline-block text-4xl md:text-6xl tracking-wider px-8">
-            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by intelligence. *
+            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by
+            intelligence. *
           </span>
           <span className="inline-block text-4xl md:text-6xl tracking-wider px-8">
-            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by intelligence. *
+            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by
+            intelligence. *
           </span>
         </div>
       </div>
@@ -42,7 +44,8 @@ export function Footer() {
           <div className="md:col-span-4">
             <img src={logo} alt="RentWorksPlus+" className="h-12 mb-6" />
             <p className="text-gray-600 mb-6 leading-relaxed">
-              RentWorksPlus+ is accessibility ready multi-purpose website builder. No coding required!
+              RentWorksPlus+ is accessibility ready multi-purpose website builder. No coding
+              required!
             </p>
             <button className="bg-[#007A55] text-white px-6 py-3 rounded hover:bg-[#006644] transition-colors uppercase tracking-wide">
               Contact
@@ -53,8 +56,8 @@ export function Footer() {
           <div className="md:col-span-4 flex items-start justify-center">
             <div className="w-full max-w-md">
               <div className="relative">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Search..."
                   className="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded focus:outline-none focus:border-[#007A55]"
                 />
@@ -68,16 +71,28 @@ export function Footer() {
           {/* Social Icons */}
           <div className="md:col-span-4 flex items-start justify-end">
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors"
+              >
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -92,8 +107,8 @@ export function Footer() {
             <ul className="space-y-3">
               {links.services.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-gray-600 hover:text-[#007A55] transition-colors"
                   >
                     {link.label}
@@ -109,8 +124,8 @@ export function Footer() {
             <ul className="space-y-3">
               {links.themeInfo.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-gray-600 hover:text-[#007A55] transition-colors"
                   >
                     {link.label}
@@ -142,7 +157,10 @@ export function Footer() {
               <span className="text-white text-xs">©</span>
             </div>
             <p className="text-gray-600 text-sm">
-              Copyright © 2025 • <a href="#" className="text-[#007A55] hover:underline">Privacy Policy</a>
+              Copyright © 2025 •{' '}
+              <a href="#" className="text-[#007A55] hover:underline">
+                Privacy Policy
+              </a>
             </p>
           </div>
         </div>

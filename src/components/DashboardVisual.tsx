@@ -71,7 +71,8 @@ export function DashboardVisual() {
             <div>
               <p className="text-sm mb-1">AI Predictive Insight</p>
               <p className="text-xs opacity-90">
-                Peak demand expected this weekend. Recommend reducing SUV pricing by 8% to maximize utilization.
+                Peak demand expected this weekend. Recommend reducing SUV pricing by 8% to maximize
+                utilization.
               </p>
             </div>
           </div>

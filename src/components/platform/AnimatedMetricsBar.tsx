@@ -19,9 +19,7 @@ export function AnimatedMetricsBar({ metrics }: AnimatedMetricsBarProps) {
           className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#007A55] hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-float-in"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
-          {item.icon && (
-            <div className="mb-4 text-[#007A55]">{item.icon}</div>
-          )}
+          {item.icon && <div className="mb-4 text-[#007A55]">{item.icon}</div>}
           <div className="text-4xl font-bold text-[#007A55] mb-2 animate-pulse-slow">
             {item.metric}
           </div>
@@ -42,7 +40,8 @@ export function AnimatedMetricsBar({ metrics }: AnimatedMetricsBarProps) {
         }
 
         @keyframes pulse-slow {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
             opacity: 1;
           }

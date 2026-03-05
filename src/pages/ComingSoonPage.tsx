@@ -7,7 +7,10 @@ export function ComingSoonPage() {
       <div className="max-w-2xl mx-auto text-center space-y-8 py-20">
         {/* Animated Background Elements */}
         <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-[#007A55]/10 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-[#007A55]/10 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div
+          className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-[#007A55]/10 to-transparent rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: '1s' }}
+        />
 
         {/* Logo/Brand */}
         <div className="relative z-10">
@@ -28,7 +31,8 @@ export function ComingSoonPage() {
           </h1>
 
           <p className="text-xl text-gray-600 leading-relaxed max-w-xl mx-auto">
-            We're putting the finishing touches on our new website. Stay tuned for updates and be the first to experience the future of car rental management.
+            We're putting the finishing touches on our new website. Stay tuned for updates and be
+            the first to experience the future of car rental management.
           </p>
 
           {/* Countdown or Info */}
@@ -40,12 +44,20 @@ export function ComingSoonPage() {
 
         {/* Decorative Elements */}
         <div className="relative z-10 mt-16 flex justify-center gap-4">
-          <div className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-          <div className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-          <div className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+          <div
+            className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce"
+            style={{ animationDelay: '0s' }}
+          />
+          <div
+            className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce"
+            style={{ animationDelay: '0.2s' }}
+          />
+          <div
+            className="w-2 h-2 bg-[#007A55] rounded-full animate-bounce"
+            style={{ animationDelay: '0.4s' }}
+          />
         </div>
       </div>
     </div>
   );
 }
-

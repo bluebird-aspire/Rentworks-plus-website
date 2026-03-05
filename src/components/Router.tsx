@@ -29,9 +29,7 @@ export function Router({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate }}>
-      {children}
-    </RouterContext.Provider>
+    <RouterContext.Provider value={{ currentPath, navigate }}>{children}</RouterContext.Provider>
   );
 }
 

@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    // Essential - Code Quality
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "christian-kohler.path-intellisense",
+    "dsznajder.es7-react-js-snippets",
+
+    // Design & Visual
+    "figma.figma-vscode-extension",
+    "csstools.postcss",
+    "stivo.tailwind-fold",
+    "SimonSiefke.svg-preview",
+    "antfu.iconify",
+
+    // Productivity
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "gruntfuggly.todo-tree",
+    "mikestead.dotenv",
+    "yoavbls.pretty-ts-errors",
+    "streetsidesoftware.code-spell-checker",
+
+    // Testing & Performance
+    "vitest.explorer",
+    "wix.vscode-import-cost"
+  ]
+}

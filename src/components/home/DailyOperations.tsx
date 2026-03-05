@@ -8,23 +8,26 @@ export function DailyOperations() {
     {
       icon: Car,
       title: 'Auto Rental System',
-      description: 'End-to-end workflows for reservations, agreements, extensions, and returns.'
+      description: 'End-to-end workflows for reservations, agreements, extensions, and returns.',
     },
     {
       icon: MessageSquare,
       title: 'Alexa (AI Operator)',
-      description: 'Your AI assistant that answers calls, handles chats, and creates bookings 24/7.'
+      description:
+        'Your AI assistant that answers calls, handles chats, and creates bookings 24/7.',
     },
     {
       icon: CreditCard,
       title: 'RENTALL Payments',
-      description: 'Integrated payments supporting cash, card present, pay by link, direct debit, check, and hosted payment flows.'
+      description:
+        'Integrated payments supporting cash, card present, pay by link, direct debit, check, and hosted payment flows.',
     },
     {
       icon: Smartphone,
       title: 'Web & Mobile Experience',
-      description: 'A responsive web application so customers and staff can use RentWorksPlus+ from any device.'
-    }
+      description:
+        'A responsive web application so customers and staff can use RentWorksPlus+ from any device.',
+    },
   ];
 
   return (
@@ -39,7 +42,8 @@ export function DailyOperations() {
             Daily Operations & Customer Experience Management
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Essential tools that streamline your day-to-day operations while delivering exceptional customer experiences.
+            Essential tools that streamline your day-to-day operations while delivering exceptional
+            customer experiences.
           </p>
         </div>
 
@@ -55,15 +59,17 @@ export function DailyOperations() {
                   key={index}
                   onClick={() => setActiveTab(index)}
                   className={`cursor-pointer rounded-xl p-6 transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-[#007A55] text-white shadow-xl' 
+                    isActive
+                      ? 'bg-[#007A55] text-white shadow-xl'
                       : 'bg-[#F4F5F7] text-[#081E32] hover:bg-gray-200'
                   }`}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      isActive ? 'bg-white/20' : 'bg-white'
-                    }`}>
+                    <div
+                      className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                        isActive ? 'bg-white/20' : 'bg-white'
+                      }`}
+                    >
                       <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-[#007A55]'}`} />
                     </div>
                     <div className="flex-1">
@@ -71,9 +77,7 @@ export function DailyOperations() {
                         {item.title}
                       </h3>
                       {isActive && (
-                        <p className="text-white/90 leading-relaxed">
-                          {item.description}
-                        </p>
+                        <p className="text-white/90 leading-relaxed">{item.description}</p>
                       )}
                     </div>
                   </div>
@@ -115,7 +119,10 @@ export function DailyOperations() {
               {/* Floating Tags */}
               <div className="flex flex-wrap gap-2">
                 {['Digital signature', 'Damage photos', 'Insurance verified'].map((tag, i) => (
-                  <div key={i} className="flex items-center space-x-2 bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full text-sm">
+                  <div
+                    key={i}
+                    className="flex items-center space-x-2 bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full text-sm"
+                  >
                     <Check className="w-4 h-4" />
                     <span>{tag}</span>
                   </div>

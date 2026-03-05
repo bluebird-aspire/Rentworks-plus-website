@@ -137,7 +137,9 @@ function PlatformMegaMenu() {
 
         {/* FINANCE & PAYMENTS */}
         <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Finance & Payments</h3>
+          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">
+            Finance & Payments
+          </h3>
           <div className="space-y-4">
             <MenuFeature
               title="RENTALL Payments"
@@ -152,7 +154,9 @@ function PlatformMegaMenu() {
 
         {/* INTELLIGENCE & AUTOMATION */}
         <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Intelligence & Automation</h3>
+          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">
+            Intelligence & Automation
+          </h3>
           <div className="space-y-4">
             <MenuFeature
               title="Reservation Planner"
@@ -235,10 +239,7 @@ function ResourcesMenu() {
           title="Blogs"
           description="Insights on rental automation, fleet utilization, AI enhancements."
         />
-        <MenuLink
-          title="News"
-          description="Product announcements, releases, industry trends."
-        />
+        <MenuLink title="News" description="Product announcements, releases, industry trends." />
         <MenuLink
           title="Templates"
           description="Checklists, agreement templates, fleet audit templates."
@@ -256,19 +257,34 @@ function CompanyMenu() {
   return (
     <div className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-200 shadow-xl rounded-lg p-4 -ml-16">
       <div className="space-y-2">
-        <a href="#about" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#about"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           About Us
         </a>
-        <a href="#careers" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#careers"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Careers
         </a>
-        <a href="#press" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#press"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Press
         </a>
-        <a href="#partners" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#partners"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Partner Program
         </a>
-        <a href="#contact" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#contact"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Contact
         </a>
       </div>
@@ -280,19 +296,34 @@ function SupportMenu() {
   return (
     <div className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-200 shadow-xl rounded-lg p-4 -ml-16">
       <div className="space-y-2">
-        <a href="#knowledge" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#knowledge"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Knowledge Base
         </a>
-        <a href="#docs" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#docs"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Documentation
         </a>
-        <a href="#api" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#api"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           API Docs
         </a>
-        <a href="#support" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#support"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           Support Center
         </a>
-        <a href="#status" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
+        <a
+          href="#status"
+          className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors"
+        >
           System Status
         </a>
       </div>
@@ -307,9 +338,7 @@ function MenuFeature({ title, description }: { title: string; description: strin
         <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
           {title}
         </h4>
-        <p className="text-gray-600 text-sm leading-snug">
-          {description}
-        </p>
+        <p className="text-gray-600 text-sm leading-snug">{description}</p>
       </div>
     </a>
   );
@@ -318,12 +347,8 @@ function MenuFeature({ title, description }: { title: string; description: strin
 function MenuLink({ title, description }: { title: string; description: string }) {
   return (
     <a href="#" className="block group p-3 rounded-lg hover:bg-[#F4F5F7] transition-colors">
-      <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
-        {title}
-      </h4>
-      <p className="text-gray-600 text-sm leading-snug">
-        {description}
-      </p>
+      <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">{title}</h4>
+      <p className="text-gray-600 text-sm leading-snug">{description}</p>
     </a>
   );
 }

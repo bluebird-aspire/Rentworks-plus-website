@@ -5,27 +5,28 @@ export function MainFeatures() {
     {
       icon: Car,
       title: 'Fleet Management',
-      description: 'AI-optimized fleet tracking, maintenance forecasting, and utilization analytics.',
-      accent: '#007A55'
+      description:
+        'AI-optimized fleet tracking, maintenance forecasting, and utilization analytics.',
+      accent: '#007A55',
     },
     {
       icon: Calendar,
       title: 'Smart Booking',
       description: 'Intelligent booking engine with dynamic pricing and demand prediction.',
-      accent: '#007A55'
+      accent: '#007A55',
     },
     {
       icon: Users,
       title: 'Customer Portal',
       description: 'Personalized customer experience, multi-language support, digital agreements.',
-      accent: '#007A55'
+      accent: '#007A55',
     },
     {
       icon: BarChart3,
       title: 'Advanced Analytics',
       description: 'Predictive analytics, market trends, operational dashboards.',
-      accent: '#007A55'
-    }
+      accent: '#007A55',
+    },
   ];
 
   return (
@@ -47,8 +48,8 @@ export function MainFeatures() {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-b-4 border-transparent hover:border-[#007A55]"
               >
                 <div className="flex items-start space-x-4">
@@ -59,9 +60,7 @@ export function MainFeatures() {
                   </div>
                   <div>
                     <h3 className="text-[#081E32] mb-3">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
+                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               </div>

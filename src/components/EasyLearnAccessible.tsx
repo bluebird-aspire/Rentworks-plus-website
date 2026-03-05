@@ -9,7 +9,8 @@ export function EasyLearnAccessible() {
               Easy to Learn
             </h2>
             <p className="text-gray-600 leading-relaxed mb-12">
-              Our system is so easy to use that staff can learn essential functions in hours, not weeks, reducing training time by up to 50%.
+              Our system is so easy to use that staff can learn essential functions in hours, not
+              weeks, reducing training time by up to 50%.
             </p>
 
             {/* Visual - Training Cards */}
@@ -17,7 +18,7 @@ export function EasyLearnAccessible() {
               {/* Save 50% Badge */}
               <div className="absolute -top-6 right-8 bg-[#007A55] text-white px-4 py-2 rounded-full text-sm shadow-lg z-20 flex items-center space-x-2">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
                 <span>Save 50% Training Time</span>
               </div>
@@ -26,8 +27,18 @@ export function EasyLearnAccessible() {
               <div className="bg-[#F4F5F7] rounded-xl p-4 transform hover:-translate-y-1 transition-all">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#007A55]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    <svg
+                      className="w-5 h-5 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -36,7 +47,10 @@ export function EasyLearnAccessible() {
                   </div>
                 </div>
                 <div className="w-full bg-white rounded-full h-2 mt-3">
-                  <div className="bg-[#007A55] h-2 rounded-full transition-all duration-500" style={{ width: '100%' }}></div>
+                  <div
+                    className="bg-[#007A55] h-2 rounded-full transition-all duration-500"
+                    style={{ width: '100%' }}
+                  ></div>
                 </div>
               </div>
 
@@ -44,8 +58,18 @@ export function EasyLearnAccessible() {
               <div className="bg-[#F4F5F7] rounded-xl p-4">
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="w-10 h-10 bg-[#007A55]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    <svg
+                      className="w-5 h-5 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -57,7 +81,9 @@ export function EasyLearnAccessible() {
                   <p className="text-xs text-gray-500 mb-2">Avg. Training Time per Employee</p>
                   <div className="flex items-baseline space-x-2">
                     <p className="text-3xl text-[#007A55]">2h 30m</p>
-                    <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded">-50%</span>
+                    <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded">
+                      -50%
+                    </span>
                   </div>
                 </div>
               </div>
@@ -66,8 +92,18 @@ export function EasyLearnAccessible() {
               <div className="bg-[#F4F5F7] rounded-xl p-4 transform hover:-translate-y-1 transition-all">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#007A55]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                    <svg
+                      className="w-5 h-5 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -76,7 +112,10 @@ export function EasyLearnAccessible() {
                   </div>
                 </div>
                 <div className="w-full bg-white rounded-full h-2 mt-3">
-                  <div className="bg-[#007A55] h-2 rounded-full transition-all duration-500" style={{ width: '40%' }}></div>
+                  <div
+                    className="bg-[#007A55] h-2 rounded-full transition-all duration-500"
+                    style={{ width: '40%' }}
+                  ></div>
                 </div>
               </div>
             </div>
@@ -88,7 +127,8 @@ export function EasyLearnAccessible() {
               Accessible Anywhere, Anytime
             </h2>
             <p className="text-gray-600 leading-relaxed mb-12">
-              Access your property management system securely from anywhere, on any device. All updates and backups happen automatically with 99.95% uptime guaranteed.
+              Access your property management system securely from anywhere, on any device. All
+              updates and backups happen automatically with 99.95% uptime guaranteed.
             </p>
 
             {/* Visual - Multi Device */}
@@ -96,7 +136,12 @@ export function EasyLearnAccessible() {
               {/* Access Badge */}
               <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#007A55] text-white px-4 py-2 rounded-full text-sm shadow-lg z-30 flex items-center space-x-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
                 </svg>
                 <span>Access on Any Device</span>
               </div>
@@ -124,12 +169,14 @@ export function EasyLearnAccessible() {
                     {[...Array(4)].map((_, i) => (
                       <div key={i} className="flex space-x-1">
                         {[...Array(7)].map((_, j) => (
-                          <div 
-                            key={j} 
+                          <div
+                            key={j}
                             className={`flex-1 h-6 rounded ${
-                              i === 2 && j === 3 ? 'bg-[#007A55]/30' : 
-                              i === 1 && j === 5 ? 'bg-[#007A55]/20' : 
-                              'bg-gray-100'
+                              i === 2 && j === 3
+                                ? 'bg-[#007A55]/30'
+                                : i === 1 && j === 5
+                                  ? 'bg-[#007A55]/20'
+                                  : 'bg-gray-100'
                             }`}
                           ></div>
                         ))}
@@ -151,9 +198,11 @@ export function EasyLearnAccessible() {
                     {[...Array(6)].map((_, i) => (
                       <div key={i} className="flex items-center space-x-2">
                         <div className="w-1 h-8 bg-[#007A55]/40 rounded"></div>
-                        <div className={`flex-1 h-8 rounded ${
-                          i === 2 ? 'bg-[#007A55]/30' : 'bg-gray-100'
-                        }`}></div>
+                        <div
+                          className={`flex-1 h-8 rounded ${
+                            i === 2 ? 'bg-[#007A55]/30' : 'bg-gray-100'
+                          }`}
+                        ></div>
                       </div>
                     ))}
                   </div>
@@ -173,12 +222,16 @@ export function EasyLearnAccessible() {
                   <div className="p-2 space-y-1.5">
                     {[...Array(8)].map((_, i) => (
                       <div key={i} className="flex items-center space-x-1.5">
-                        <div className={`w-1 h-6 rounded ${
-                          i === 3 ? 'bg-[#007A55]' : 'bg-[#007A55]/20'
-                        }`}></div>
-                        <div className={`flex-1 h-6 rounded ${
-                          i === 3 ? 'bg-[#007A55]/30' : 'bg-gray-100'
-                        }`}></div>
+                        <div
+                          className={`w-1 h-6 rounded ${
+                            i === 3 ? 'bg-[#007A55]' : 'bg-[#007A55]/20'
+                          }`}
+                        ></div>
+                        <div
+                          className={`flex-1 h-6 rounded ${
+                            i === 3 ? 'bg-[#007A55]/30' : 'bg-gray-100'
+                          }`}
+                        ></div>
                       </div>
                     ))}
                   </div>

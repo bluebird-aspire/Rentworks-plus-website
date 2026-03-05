@@ -14,7 +14,7 @@ export function NewHero() {
   return (
     <section className="relative bg-white pt-8 pb-20 overflow-hidden">
       {/* Animated Background Elements */}
-      <div 
+      <div
         className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-[#007A55]/10 to-transparent rounded-full blur-3xl"
         style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       />
@@ -35,7 +35,9 @@ export function NewHero() {
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              Run your entire car rental operation from one connected platform. Manage reservations, vehicles, pricing, and customers in real time—with smart automation that reduces manual work and increases revenue.
+              Run your entire car rental operation from one connected platform. Manage reservations,
+              vehicles, pricing, and customers in real time—with smart automation that reduces
+              manual work and increases revenue.
             </p>
 
             {/* CTA Buttons */}

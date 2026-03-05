@@ -9,7 +9,7 @@ export function ExpertSupport() {
     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200',
     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
     'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200',
-    'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200'
+    'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200',
   ];
 
   const supportChannels = [
@@ -18,7 +18,7 @@ export function ExpertSupport() {
     { icon: MessageCircle, label: 'Live Chat', color: '#007A55' },
     { icon: BookOpen, label: 'Knowledge Base', color: '#007A55' },
     { icon: Phone, label: 'Phone', color: '#007A55' },
-    { icon: Bot, label: 'AI Support', color: '#007A55' }
+    { icon: Bot, label: 'AI Support', color: '#007A55' },
   ];
 
   return (
@@ -44,11 +44,10 @@ export function ExpertSupport() {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-3xl text-[#081E32] mb-4">
-                Car Rental Industry Experts
-              </h3>
+              <h3 className="text-3xl text-[#081E32] mb-4">Car Rental Industry Experts</h3>
               <p className="text-gray-600 mb-12 leading-relaxed max-w-md">
-                Our team has extensive experience in car rental operations, ensuring they understand your business challenges and can provide solutions that work.
+                Our team has extensive experience in car rental operations, ensuring they understand
+                your business challenges and can provide solutions that work.
               </p>
 
               {/* Orbital Team Avatars System */}
@@ -72,8 +71,16 @@ export function ExpertSupport() {
                       const radius = 144; // Circle radius matches w-72 (288px / 2 = 144px)
                       const x = Math.cos((angle * Math.PI) / 180) * radius;
                       const y = Math.sin((angle * Math.PI) / 180) * radius;
-                      const glowColors = ['#007A55', '#00A575', '#007A55', '#005F44', '#007A55', '#00A575', '#007A55'];
-                      
+                      const glowColors = [
+                        '#007A55',
+                        '#00A575',
+                        '#007A55',
+                        '#005F44',
+                        '#007A55',
+                        '#00A575',
+                        '#007A55',
+                      ];
+
                       return (
                         <div
                           key={`expert-${index}`}
@@ -86,17 +93,17 @@ export function ExpertSupport() {
                         >
                           {/* Glow background for select avatars */}
                           {[1, 3, 5].includes(index) && (
-                            <div 
+                            <div
                               className="absolute inset-0 -z-10 w-20 h-20 rounded-full blur-xl opacity-40"
-                              style={{ 
+                              style={{
                                 backgroundColor: glowColors[index],
-                                transform: 'translate(-25%, -25%)'
+                                transform: 'translate(-25%, -25%)',
                               }}
                             ></div>
                           )}
                           <div className="w-14 h-14 rounded-full border-4 border-white shadow-xl overflow-hidden bg-gray-200 hover:scale-110 transition-transform">
-                            <img 
-                              src={avatar} 
+                            <img
+                              src={avatar}
                               alt={`Expert ${index + 1}`}
                               className="w-full h-full object-cover"
                             />
@@ -119,11 +126,10 @@ export function ExpertSupport() {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-3xl text-[#081E32] mb-4">
-                Multiple Support Channels
-              </h3>
+              <h3 className="text-3xl text-[#081E32] mb-4">Multiple Support Channels</h3>
               <p className="text-gray-600 mb-12 leading-relaxed max-w-md">
-                Get help via chat, phone, email, or our comprehensive online knowledge base. Choose the channel that works best for you.
+                Get help via chat, phone, email, or our comprehensive online knowledge base. Choose
+                the channel that works best for you.
               </p>
 
               {/* Support Channels Network */}
@@ -146,7 +152,7 @@ export function ExpertSupport() {
                       <stop offset="100%" style={{ stopColor: '#007A55', stopOpacity: 0.1 }} />
                     </linearGradient>
                   </defs>
-                  
+
                   {supportChannels.map((_, index) => {
                     const angle = (index * 360) / supportChannels.length - 90;
                     const radius = 140;
@@ -154,7 +160,7 @@ export function ExpertSupport() {
                     const centerY = 160;
                     const x = centerX + Math.cos((angle * Math.PI) / 180) * radius;
                     const y = centerY + Math.sin((angle * Math.PI) / 180) * radius;
-                    
+
                     return (
                       <g key={index}>
                         <path
@@ -185,14 +191,14 @@ export function ExpertSupport() {
                   const x = Math.cos((angle * Math.PI) / 180) * radius;
                   const y = Math.sin((angle * Math.PI) / 180) * radius;
                   const Icon = channel.icon;
-                  
+
                   return (
                     <div
                       key={index}
                       className="absolute top-1/2 left-1/2 transition-all duration-500 hover:scale-110"
                       style={{
                         transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                        zIndex: 10
+                        zIndex: 10,
                       }}
                     >
                       <div className="relative group cursor-pointer">

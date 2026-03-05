@@ -1,5 +1,33 @@
 import { useState } from 'react';
-import { ChevronDown, Car, Calendar, Cloud, Smartphone, CreditCard, Settings, Building2, Users, Briefcase, Wrench, BookOpen, FileText, Clipboard, Megaphone, Calendar as CalendarIcon, Info, Handshake, UserPlus, Newspaper, HelpCircle, Book, Code, GraduationCap, Phone, Activity, Zap } from 'lucide-react';
+import {
+  ChevronDown,
+  Car,
+  Calendar,
+  Cloud,
+  Smartphone,
+  CreditCard,
+  Settings,
+  Building2,
+  Users,
+  Briefcase,
+  Wrench,
+  BookOpen,
+  FileText,
+  Clipboard,
+  Megaphone,
+  Calendar as CalendarIcon,
+  Info,
+  Handshake,
+  UserPlus,
+  Newspaper,
+  HelpCircle,
+  Book,
+  Code,
+  GraduationCap,
+  Phone,
+  Activity,
+  Zap,
+} from 'lucide-react';
 import { Link } from './Router';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import logo from 'figma:asset/82b6f4b94e67a09f71951541678541a2738fc1b4.png';
@@ -27,7 +55,9 @@ export function NavigationWithRouting() {
                 Platform
                 <ChevronDown size={16} />
               </button>
-              {activeMenu === 'platform' && <PlatformMegaMenu onClose={() => setActiveMenu(null)} />}
+              {activeMenu === 'platform' && (
+                <PlatformMegaMenu onClose={() => setActiveMenu(null)} />
+              )}
             </div>
 
             <div
@@ -39,7 +69,9 @@ export function NavigationWithRouting() {
                 Solutions
                 <ChevronDown size={16} />
               </button>
-              {activeMenu === 'solutions' && <SolutionsMegaMenu onClose={() => setActiveMenu(null)} />}
+              {activeMenu === 'solutions' && (
+                <SolutionsMegaMenu onClose={() => setActiveMenu(null)} />
+              )}
             </div>
 
             <div
@@ -121,40 +153,40 @@ function PlatformMegaMenu({ onClose }: { onClose: () => void }) {
   const items = [
     {
       icon: <Car className="w-5 h-5" />,
-      title: "Auto Rental System",
-      description: "End-to-end solution for vehicle and machinery rental operators.",
-      link: "/platform/auto-rental-system"
+      title: 'Auto Rental System',
+      description: 'End-to-end solution for vehicle and machinery rental operators.',
+      link: '/platform/auto-rental-system',
     },
     {
       icon: <Calendar className="w-5 h-5" />,
-      title: "Online Reservation Plugin",
-      description: "Let your customers reserve online instantly.",
-      link: "/platform/online-reservation"
+      title: 'Online Reservation Plugin',
+      description: 'Let your customers reserve online instantly.',
+      link: '/platform/online-reservation',
     },
     {
       icon: <Cloud className="w-5 h-5" />,
-      title: "RentWorksPlus+ API",
-      description: "Build your mobile experience with our developer-friendly API.",
-      link: "/platform/api"
+      title: 'RentWorksPlus+ API',
+      description: 'Build your mobile experience with our developer-friendly API.',
+      link: '/platform/api',
     },
     {
       icon: <Smartphone className="w-5 h-5" />,
-      title: "Mobile-Responsive Web App",
-      description: "Check-out & check-in made simple on any device.",
-      link: "/platform/mobile-app"
+      title: 'Mobile-Responsive Web App',
+      description: 'Check-out & check-in made simple on any device.',
+      link: '/platform/mobile-app',
     },
     {
       icon: <CreditCard className="w-5 h-5" />,
-      title: "RentWorksPlus+ Payments",
-      description: "Integrated payment processing with 5 methods.",
-      link: "/platform/payments"
+      title: 'RentWorksPlus+ Payments',
+      description: 'Integrated payment processing with 5 methods.',
+      link: '/platform/payments',
     },
     {
       icon: <Settings className="w-5 h-5" />,
-      title: "Add-on Modules",
-      description: "Extend your workflows with powerful rental add-ons.",
-      link: "/platform/addons"
-    }
+      title: 'Add-on Modules',
+      description: 'Extend your workflows with powerful rental add-ons.',
+      link: '/platform/addons',
+    },
   ];
 
   return (
@@ -177,9 +209,7 @@ function PlatformMegaMenu({ onClose }: { onClose: () => void }) {
                   <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-gray-600 text-sm">
-                    {item.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               </Link>
             ))}
@@ -199,49 +229,49 @@ function SolutionsMegaMenu({ onClose }: { onClose: () => void }) {
   const businessTypes = [
     {
       icon: <Building2 className="w-5 h-5" />,
-      title: "Multi-Location & Franchise Operators",
-      description: "Centralized control with synchronized branch performance.",
-      link: "/solutions/multi-location"
+      title: 'Multi-Location & Franchise Operators',
+      description: 'Centralized control with synchronized branch performance.',
+      link: '/solutions/multi-location',
     },
     {
       icon: <Briefcase className="w-5 h-5" />,
-      title: "Corporate & Long-Term Fleets",
-      description: "Advanced contract, billing, and vehicle lifecycle intelligence.",
-      link: "/solutions/corporate-fleets"
+      title: 'Corporate & Long-Term Fleets',
+      description: 'Advanced contract, billing, and vehicle lifecycle intelligence.',
+      link: '/solutions/corporate-fleets',
     },
     {
       icon: <Car className="w-5 h-5" />,
-      title: "Truck, Van & Commercial Vehicle Rentals",
-      description: "Purpose-built tools for commercial and utility fleet operators.",
-      link: "/solutions/truck-commercial"
+      title: 'Truck, Van & Commercial Vehicle Rentals',
+      description: 'Purpose-built tools for commercial and utility fleet operators.',
+      link: '/solutions/truck-commercial',
     },
     {
       icon: <Zap className="w-5 h-5" />,
-      title: "EV, Scooter & Micro-Mobility Providers",
-      description: "Charging-aware intelligence for modern urban and electric fleets.",
-      link: "/solutions/ev-micromobility"
-    }
+      title: 'EV, Scooter & Micro-Mobility Providers',
+      description: 'Charging-aware intelligence for modern urban and electric fleets.',
+      link: '/solutions/ev-micromobility',
+    },
   ];
 
   const roles = [
     {
       icon: <Users className="w-5 h-5" />,
-      title: "Owners & General Managers",
-      description: "Strategic clarity with real-time rental intelligence.",
-      link: "/solutions/owners"
+      title: 'Owners & General Managers',
+      description: 'Strategic clarity with real-time rental intelligence.',
+      link: '/solutions/owners',
     },
     {
       icon: <Wrench className="w-5 h-5" />,
-      title: "Operations & Fleet Managers",
-      description: "Optimized fleet health, utilization, and operational efficiency.",
-      link: "/solutions/operations"
+      title: 'Operations & Fleet Managers',
+      description: 'Optimized fleet health, utilization, and operational efficiency.',
+      link: '/solutions/operations',
     },
     {
       icon: <Users className="w-5 h-5" />,
-      title: "Front Desk & Rental Agents",
-      description: "Fast, intuitive workflows for high-volume customer service.",
-      link: "/solutions/front-desk"
-    }
+      title: 'Front Desk & Rental Agents',
+      description: 'Fast, intuitive workflows for high-volume customer service.',
+      link: '/solutions/front-desk',
+    },
   ];
 
   return (
@@ -252,7 +282,9 @@ function SolutionsMegaMenu({ onClose }: { onClose: () => void }) {
           <div className="grid grid-cols-2 gap-x-6">
             {/* By Business Type */}
             <div>
-              <h3 className="text-[#007A55] uppercase tracking-wider text-xs mb-4">By Business Type</h3>
+              <h3 className="text-[#007A55] uppercase tracking-wider text-xs mb-4">
+                By Business Type
+              </h3>
               <div className="space-y-2">
                 {businessTypes.map((item, index) => (
                   <Link
@@ -268,9 +300,7 @@ function SolutionsMegaMenu({ onClose }: { onClose: () => void }) {
                       <h4 className="text-[#081E32] text-sm group-hover:text-[#007A55] transition-colors">
                         {item.title}
                       </h4>
-                      <p className="text-gray-600 text-xs">
-                        {item.description}
-                      </p>
+                      <p className="text-gray-600 text-xs">{item.description}</p>
                     </div>
                   </Link>
                 ))}
@@ -295,9 +325,7 @@ function SolutionsMegaMenu({ onClose }: { onClose: () => void }) {
                       <h4 className="text-[#081E32] text-sm group-hover:text-[#007A55] transition-colors">
                         {item.title}
                       </h4>
-                      <p className="text-gray-600 text-xs">
-                        {item.description}
-                      </p>
+                      <p className="text-gray-600 text-xs">{item.description}</p>
                     </div>
                   </Link>
                 ))}
@@ -319,34 +347,34 @@ function ResourcesMenu({ onClose }: { onClose: () => void }) {
   const items = [
     {
       icon: <BookOpen className="w-5 h-5" />,
-      title: "Blog",
-      description: "Insights on rental automation, AI, fleet performance & industry trends.",
-      link: "/resources/blog"
+      title: 'Blog',
+      description: 'Insights on rental automation, AI, fleet performance & industry trends.',
+      link: '/resources/blog',
     },
     {
       icon: <FileText className="w-5 h-5" />,
-      title: "Guides & Playbooks",
-      description: "Step-by-step manuals for scaling rental operations with AI.",
-      link: "/resources/guides"
+      title: 'Guides & Playbooks',
+      description: 'Step-by-step manuals for scaling rental operations with AI.',
+      link: '/resources/guides',
     },
     {
       icon: <Clipboard className="w-5 h-5" />,
-      title: "Templates & Checklists",
-      description: "Free downloadable tools for inspections, audits & workflows.",
-      link: "/resources/templates"
+      title: 'Templates & Checklists',
+      description: 'Free downloadable tools for inspections, audits & workflows.',
+      link: '/resources/templates',
     },
     {
       icon: <Megaphone className="w-5 h-5" />,
-      title: "Product Updates & Release Notes",
-      description: "Stay informed on new features, improvements & AI enhancements.",
-      link: "/resources/updates"
+      title: 'Product Updates & Release Notes',
+      description: 'Stay informed on new features, improvements & AI enhancements.',
+      link: '/resources/updates',
     },
     {
       icon: <CalendarIcon className="w-5 h-5" />,
-      title: "Webinars & Events",
-      description: "Live sessions, virtual demos & expert talks for rental operators.",
-      link: "/resources/webinars"
-    }
+      title: 'Webinars & Events',
+      description: 'Live sessions, virtual demos & expert talks for rental operators.',
+      link: '/resources/webinars',
+    },
   ];
 
   return (
@@ -369,9 +397,7 @@ function ResourcesMenu({ onClose }: { onClose: () => void }) {
                   <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-gray-600 text-sm">
-                    {item.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               </Link>
             ))}
@@ -391,28 +417,28 @@ function CompanyMenu({ onClose }: { onClose: () => void }) {
   const items = [
     {
       icon: <Info className="w-5 h-5" />,
-      title: "About Us",
-      description: "The story, mission, and values behind RentWorksPlus+.",
-      link: "/company/about"
+      title: 'About Us',
+      description: 'The story, mission, and values behind RentWorksPlus+.',
+      link: '/company/about',
     },
     {
       icon: <Handshake className="w-5 h-5" />,
-      title: "Partners & Integrations",
-      description: "Technology partners and ecosystem connections that power our platform.",
-      link: "/company/partners"
+      title: 'Partners & Integrations',
+      description: 'Technology partners and ecosystem connections that power our platform.',
+      link: '/company/partners',
     },
     {
       icon: <UserPlus className="w-5 h-5" />,
-      title: "Careers",
-      description: "Join a global team building the future of intelligent mobility.",
-      link: "/company/careers"
+      title: 'Careers',
+      description: 'Join a global team building the future of intelligent mobility.',
+      link: '/company/careers',
     },
     {
       icon: <Newspaper className="w-5 h-5" />,
-      title: "Press & Media",
-      description: "Newsroom, announcements, brand assets, and media kit.",
-      link: "/company/press"
-    }
+      title: 'Press & Media',
+      description: 'Newsroom, announcements, brand assets, and media kit.',
+      link: '/company/press',
+    },
   ];
 
   return (
@@ -435,9 +461,7 @@ function CompanyMenu({ onClose }: { onClose: () => void }) {
                   <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-gray-600 text-sm">
-                    {item.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               </Link>
             ))}
@@ -457,40 +481,40 @@ function SupportMenu({ onClose }: { onClose: () => void }) {
   const items = [
     {
       icon: <HelpCircle className="w-5 h-5" />,
-      title: "Help Center",
-      description: "Browse articles, tutorials & step-by-step guides",
-      link: "/support/help-center"
+      title: 'Help Center',
+      description: 'Browse articles, tutorials & step-by-step guides',
+      link: '/support/help-center',
     },
     {
       icon: <Book className="w-5 h-5" />,
-      title: "Documentation",
-      description: "Technical documentation for workflows & system features",
-      link: "/support/documentation"
+      title: 'Documentation',
+      description: 'Technical documentation for workflows & system features',
+      link: '/support/documentation',
     },
     {
       icon: <Code className="w-5 h-5" />,
-      title: "API Docs",
-      description: "Developer resources for building integrations and apps",
-      link: "/support/api-docs"
+      title: 'API Docs',
+      description: 'Developer resources for building integrations and apps',
+      link: '/support/api-docs',
     },
     {
       icon: <GraduationCap className="w-5 h-5" />,
-      title: "Training & Onboarding",
-      description: "Personalized setup, team training & implementation programs",
-      link: "/support/training"
+      title: 'Training & Onboarding',
+      description: 'Personalized setup, team training & implementation programs',
+      link: '/support/training',
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      title: "Contact Support",
-      description: "Chat, email, phone & priority support options",
-      link: "/support/contact"
+      title: 'Contact Support',
+      description: 'Chat, email, phone & priority support options',
+      link: '/support/contact',
     },
     {
       icon: <Activity className="w-5 h-5" />,
-      title: "System Status",
-      description: "Live uptime reports & service health indicators",
-      link: "/support/status"
-    }
+      title: 'System Status',
+      description: 'Live uptime reports & service health indicators',
+      link: '/support/status',
+    },
   ];
 
   return (
@@ -513,9 +537,7 @@ function SupportMenu({ onClose }: { onClose: () => void }) {
                   <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-gray-600 text-sm">
-                    {item.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               </Link>
             ))}

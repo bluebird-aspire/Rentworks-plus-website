@@ -6,35 +6,39 @@ export function ProductPackages() {
     {
       title: 'Built for Speed on All Devices',
       letter: 'N',
-      subtitle: 'o coding, no page builders. Build beautifully designed websites faster with native tools.',
-      image: 'https://images.unsplash.com/photo-1758626099012-2904337e9c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBhdXRvbWF0aW9ufGVufDF8fHx8MTc2NDIzODQ2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      subtitle:
+        'o coding, no page builders. Build beautifully designed websites faster with native tools.',
+      image:
+        'https://images.unsplash.com/photo-1758626099012-2904337e9c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBhdXRvbWF0aW9ufGVufDF8fHx8MTc2NDIzODQ2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: [
         'Full Site Editing',
         '200+ content patterns',
         '35+ predesigned page layouts',
         'Creative & useful block styles',
-        'WooCommerce shop support'
+        'WooCommerce shop support',
       ],
       cta: 'Get It Now!',
       ctaColor: 'bg-[#007A55]',
-      icon: '🚀'
+      icon: '🚀',
     },
     {
       title: 'Fair Product with No Lock-in Effect',
       letter: 'M',
-      subtitle: 'anage patterns and enable only the ones you need. Speed up the build process, unlock your potential!',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc2NDE0OTc0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      subtitle:
+        'anage patterns and enable only the ones you need. Speed up the build process, unlock your potential!',
+      image:
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc2NDE0OTc0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       features: [
         'Fair product & service',
         'SEO optimized',
         'Barrier-less, inclusive',
         'Universal WordPress theme',
-        'Privacy compliant'
+        'Privacy compliant',
       ],
       cta: 'Purchase',
       ctaColor: 'bg-[#007A55]',
-      icon: '🤝'
-    }
+      icon: '🤝',
+    },
   ];
 
   return (
@@ -42,7 +46,7 @@ export function ProductPackages() {
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#007A55]/10 to-transparent rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#081E32]/5 to-transparent rounded-full blur-3xl" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header with Wave Decorator */}
         <div className="text-center mb-16">
@@ -52,14 +56,15 @@ export function ProductPackages() {
             <span>∿∿∿</span>
           </div>
           <h2 className="text-4xl lg:text-5xl text-[#081E32] mb-4">
-            Create stunning, responsive websites faster with <span className="border-b-4 border-[#007A55]">RentWorksPlus+</span>
+            Create stunning, responsive websites faster with{' '}
+            <span className="border-b-4 border-[#007A55]">RentWorksPlus+</span>
           </h2>
         </div>
 
         <div className="space-y-8">
           {packages.map((pkg, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="bg-white rounded-2xl p-8 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -71,7 +76,8 @@ export function ProductPackages() {
                       <span className="text-2xl">{pkg.letter}</span>
                     </div>
                     <p className="text-gray-600 leading-relaxed pt-2">
-                      <span className="text-[#081E32]">{pkg.letter.toLowerCase()}</span>{pkg.subtitle}
+                      <span className="text-[#081E32]">{pkg.letter.toLowerCase()}</span>
+                      {pkg.subtitle}
                     </p>
                   </div>
 
@@ -94,7 +100,9 @@ export function ProductPackages() {
                   </div>
 
                   {/* CTA Button */}
-                  <button className={`${pkg.ctaColor} text-white px-8 py-4 rounded-lg hover:opacity-90 transition-all uppercase tracking-wide`}>
+                  <button
+                    className={`${pkg.ctaColor} text-white px-8 py-4 rounded-lg hover:opacity-90 transition-all uppercase tracking-wide`}
+                  >
                     {pkg.cta}
                   </button>
                 </div>
@@ -102,15 +110,14 @@ export function ProductPackages() {
                 {/* Right Image/Visual */}
                 <div className="relative">
                   <div className="relative rounded-xl overflow-hidden shadow-xl">
-                    <ImageWithFallback
-                      src={pkg.image}
-                      alt={pkg.title}
-                      className="w-full h-auto"
-                    />
+                    <ImageWithFallback src={pkg.image} alt={pkg.title} className="w-full h-auto" />
                     {/* Decorative plant overlay like Josephine */}
                     <div className="absolute -bottom-4 -right-4 w-48 h-48 opacity-20">
                       <svg viewBox="0 0 200 200" className="w-full h-full text-[#007A55]">
-                        <path fill="currentColor" d="M100,50 Q120,70 100,100 Q80,70 100,50 M100,100 Q130,120 120,150 Q110,130 100,100 M100,100 Q70,120 80,150 Q90,130 100,100" />
+                        <path
+                          fill="currentColor"
+                          d="M100,50 Q120,70 100,100 Q80,70 100,50 M100,100 Q130,120 120,150 Q110,130 100,100 M100,100 Q70,120 80,150 Q90,130 100,100"
+                        />
                       </svg>
                     </div>
                   </div>

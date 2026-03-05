@@ -8,15 +8,17 @@ export function BlogPreview() {
       date: 'Nov 15, 2024',
       category: 'Technology',
       tags: ['AI', 'Automation'],
-      image: 'https://images.unsplash.com/photo-1683200899447-d398198ed197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBkYXNoYm9hcmQlMjBkaWdpdGFsJTIwc2NyZWVufGVufDF8fHx8MTc2NDI0OTkyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      image:
+        'https://images.unsplash.com/photo-1683200899447-d398198ed197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBkYXNoYm9hcmQlMjBkaWdpdGFsJTIwc2NyZWVufGVufDF8fHx8MTc2NDI0OTkyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     },
     {
       title: 'Predictive Maintenance Explained',
       date: 'Nov 10, 2024',
       category: 'Operations',
       tags: ['Maintenance', 'Fleet'],
-      image: 'https://images.unsplash.com/photo-1668172692593-962bce37d539?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnNwZWN0aW9uJTIwbWVjaGFuaWN8ZW58MXx8fHwxNzY0MTUyMzk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
-    }
+      image:
+        'https://images.unsplash.com/photo-1668172692593-962bce37d539?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnNwZWN0aW9uJTIwbWVjaGFuaWN8ZW58MXx8fHwxNzY0MTUyMzk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    },
   ];
 
   return (
@@ -34,7 +36,8 @@ export function BlogPreview() {
                 Check out how the blog displays in RentWorksPlus+
               </h2>
               <p className="text-gray-600">
-                You can even choose from multiple blog layouts in theme options or editing templates part to your liking. Options are limitless!
+                You can even choose from multiple blog layouts in theme options or editing templates
+                part to your liking. Options are limitless!
               </p>
             </div>
             <button className="hidden md:block border-2 border-[#081E32] text-[#081E32] px-6 py-3 hover:bg-[#081E32] hover:text-white transition-all uppercase tracking-wide">
@@ -46,8 +49,8 @@ export function BlogPreview() {
         {/* Blog Posts Grid - Josephine Style */}
         <div className="grid md:grid-cols-2 gap-8">
           {posts.map((post, index) => (
-            <article 
-              key={index} 
+            <article
+              key={index}
               className="bg-[#081E32] rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
             >
               {/* Image */}

@@ -6,20 +6,20 @@ export function OnboardingSteps() {
       number: '01',
       title: 'Schedule a 30-minute call with a RentWorksPlus+ specialist.',
       bgColor: 'bg-[#E8EEF2]',
-      delay: 0.1
+      delay: 0.1,
     },
     {
       number: '02',
       title: 'See a personalized demo of how RentWorksPlus+ streamlines your operations.',
       bgColor: 'bg-[#D4E5E0]',
-      delay: 0.2
+      delay: 0.2,
     },
     {
       number: '03',
       title: 'Get onboarded quickly with expert support and start optimizing your fleet.',
       bgColor: 'bg-[#B8D9CE]',
-      delay: 0.3
-    }
+      delay: 0.3,
+    },
   ];
 
   return (
@@ -34,7 +34,9 @@ export function OnboardingSteps() {
           className="text-center mb-16"
         >
           <h2 className="text-[#081E32] mb-4">
-            Get started with RentWorksPlus+ in<br />three easy steps
+            Get started with RentWorksPlus+ in
+            <br />
+            three easy steps
           </h2>
         </motion.div>
 
@@ -49,7 +51,7 @@ export function OnboardingSteps() {
               transition={{ duration: 0.6, delay: step.delay }}
               className={`relative ${step.bgColor} rounded-2xl p-8 md:p-10 shadow-lg`}
               style={{
-                marginTop: index === 0 ? '0' : index === 1 ? '2rem' : '4rem'
+                marginTop: index === 0 ? '0' : index === 1 ? '2rem' : '4rem',
               }}
             >
               {/* Number Badge */}
@@ -61,9 +63,7 @@ export function OnboardingSteps() {
 
               {/* Card Content */}
               <div className="pt-8">
-                <p className="text-[#081E32] text-lg leading-relaxed">
-                  {step.title}
-                </p>
+                <p className="text-[#081E32] text-lg leading-relaxed">{step.title}</p>
               </div>
 
               {/* Decorative elements */}

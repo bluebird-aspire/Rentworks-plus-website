@@ -8,27 +8,29 @@ export function DailyOperationsTabs() {
     {
       icon: Car,
       title: 'Auto Rental System',
-      description: 'Streamline your entire rental workflow—from first quote to vehicle return—using one car rental management system.',
-      visual: 'rental'
+      description:
+        'Streamline your entire rental workflow—from first quote to vehicle return—using one car rental management system.',
+      visual: 'rental',
     },
     {
       icon: MessageSquare,
       title: 'CAREN (AI Operator)',
       description: 'Your always-on digital assistant for rental operations and customer support.',
-      visual: 'ai'
+      visual: 'ai',
     },
     {
       icon: CreditCard,
       title: 'Payments',
       description: 'Secure, flexible payment processing designed for vehicle rental businesses.',
-      visual: 'payments'
+      visual: 'payments',
     },
     {
       icon: Smartphone,
       title: 'Smart Res Planner',
-      description: 'A visual reservation planner that lets you manage bookings and vehicles in a calendar timeline.',
-      visual: 'mobile'
-    }
+      description:
+        'A visual reservation planner that lets you manage bookings and vehicles in a calendar timeline.',
+      visual: 'mobile',
+    },
   ];
 
   return (
@@ -43,7 +45,8 @@ export function DailyOperationsTabs() {
             Daily Operations & Customer Experience Management
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Essential tools that streamline your day-to-day operations while delivering exceptional customer experiences.
+            Essential tools that streamline your day-to-day operations while delivering exceptional
+            customer experiences.
           </p>
         </div>
 
@@ -59,15 +62,17 @@ export function DailyOperationsTabs() {
                   key={index}
                   onClick={() => setActiveTab(index)}
                   className={`cursor-pointer rounded-xl p-6 transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-[#007A55] text-white shadow-xl' 
+                    isActive
+                      ? 'bg-[#007A55] text-white shadow-xl'
                       : 'bg-[#F4F5F7] text-[#081E32] hover:bg-gray-200'
                   }`}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      isActive ? 'bg-white/20' : 'bg-white'
-                    }`}>
+                    <div
+                      className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                        isActive ? 'bg-white/20' : 'bg-white'
+                      }`}
+                    >
                       <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-[#007A55]'}`} />
                     </div>
                     <div className="flex-1">
@@ -75,9 +80,7 @@ export function DailyOperationsTabs() {
                         {item.title}
                       </h3>
                       {isActive && (
-                        <p className="text-white/90 leading-relaxed">
-                          {item.description}
-                        </p>
+                        <p className="text-white/90 leading-relaxed">{item.description}</p>
                       )}
                     </div>
                   </div>
@@ -120,7 +123,10 @@ export function DailyOperationsTabs() {
 
                 <div className="flex flex-wrap gap-2">
                   {['Digital signature', 'Damage photos', 'Insurance verified'].map((tag, i) => (
-                    <div key={i} className="flex items-center space-x-2 bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full text-sm">
+                    <div
+                      key={i}
+                      className="flex items-center space-x-2 bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full text-sm"
+                    >
                       <Check className="w-4 h-4" />
                       <span>{tag}</span>
                     </div>
@@ -162,7 +168,7 @@ export function DailyOperationsTabs() {
                               className="animate-pulse"
                               style={{
                                 animationDelay: `${i * 0.05}s`,
-                                animationDuration: '1.5s'
+                                animationDuration: '1.5s',
                               }}
                             />
                           );
@@ -173,8 +179,18 @@ export function DailyOperationsTabs() {
                     {/* Operator Icon */}
                     <div className="relative z-10 flex flex-col items-center justify-center h-full">
                       <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                        <svg className="w-8 h-8 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        <svg
+                          className="w-8 h-8 text-[#007A55]"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                          />
                         </svg>
                       </div>
                       <span className="text-[#081E32] text-sm">CAREN AI</span>
@@ -219,7 +235,9 @@ export function DailyOperationsTabs() {
                         <div className="text-xs text-gray-500">Total Bookings</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-[#007A55] bg-[#007A55]/10 px-2 py-1 rounded">+18%</div>
+                        <div className="text-sm text-[#007A55] bg-[#007A55]/10 px-2 py-1 rounded">
+                          +18%
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -269,7 +287,10 @@ export function DailyOperationsTabs() {
                     </div>
                     <div className="grid grid-cols-4 gap-2">
                       {['Visa', 'Mastercard', 'Amex', 'Discover'].map((card) => (
-                        <div key={card} className="bg-white rounded p-2 text-center text-xs text-gray-600 border border-gray-200">
+                        <div
+                          key={card}
+                          className="bg-white rounded p-2 text-center text-xs text-gray-600 border border-gray-200"
+                        >
                           {card}
                         </div>
                       ))}
@@ -378,13 +399,23 @@ export function DailyOperationsTabs() {
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <button className="flex items-center justify-center gap-2 bg-[#007A55] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#006644] transition-all">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
                     </svg>
                     New Reservation
                   </button>
                   <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#007A55] to-[#00A575] text-white px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-all">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                     AI Auto-Assign
                   </button>

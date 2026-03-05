@@ -5,29 +5,39 @@ export function FleetTypes() {
   const fleetTypes = [
     {
       title: 'Independent Car Rental Agencies',
-      description: 'Ideal for independent or regional brands. Control over pricing, reservations, and customer experience.',
-      image: 'https://images.unsplash.com/photo-1744360817433-0d9386ddb9e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBjYXIlMjByZW50YWwlMjBvZmZpY2V8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      description:
+        'Ideal for independent or regional brands. Control over pricing, reservations, and customer experience.',
+      image:
+        'https://images.unsplash.com/photo-1744360817433-0d9386ddb9e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBjYXIlMjByZW50YWwlMjBvZmZpY2V8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     },
     {
       title: 'Multi-Brand Networks',
-      description: 'Operate multiple brands under one platform. Maintain unique branding, policies, and rate structures per brand.',
-      image: 'https://images.unsplash.com/photo-1664800529890-68258dc4ccf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGZsZWV0JTIwdmVoaWNsZXN8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      description:
+        'Operate multiple brands under one platform. Maintain unique branding, policies, and rate structures per brand.',
+      image:
+        'https://images.unsplash.com/photo-1664800529890-68258dc4ccf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGZsZWV0JTIwdmVoaWNsZXN8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     },
     {
       title: 'Scooter & Bike Rental',
-      description: 'Track smaller vehicles and micro-mobility fleets. Manage battery cycles, short-term rentals, and quick turnovers.',
-      image: 'https://images.unsplash.com/photo-1728039190626-ceea378d0419?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBlcXVpcG1lbnQlMjByZW50YWx8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      description:
+        'Track smaller vehicles and micro-mobility fleets. Manage battery cycles, short-term rentals, and quick turnovers.',
+      image:
+        'https://images.unsplash.com/photo-1728039190626-ceea378d0419?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBlcXVpcG1lbnQlMjByZW50YWx8ZW58MXx8fHwxNzY0Mjc0MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     },
     {
       title: 'Corporate & Long-Term Fleets',
-      description: 'Manage long-term contracts and employee vehicles. Automate billing, renewals, and compliance.',
-      image: 'https://images.unsplash.com/photo-1585937169521-4428971aaab6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB2ZWhpY2xlJTIwZmxlZXR8ZW58MXx8fHwxNzY0Mjc0MTA2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      description:
+        'Manage long-term contracts and employee vehicles. Automate billing, renewals, and compliance.',
+      image:
+        'https://images.unsplash.com/photo-1585937169521-4428971aaab6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB2ZWhpY2xlJTIwZmxlZXR8ZW58MXx8fHwxNzY0Mjc0MTA2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     },
     {
       title: 'Insurance Rental Fleets',
-      description: 'Handle replacement rentals during claim periods. Coordinate with insurers and track claim-related rentals.',
-      image: 'https://images.unsplash.com/photo-1711921345010-d1147f78db35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjYXIlMjBkZWFsZXJzaGlwfGVufDF8fHx8MTc2NDI3NDEwNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
-    }
+      description:
+        'Handle replacement rentals during claim periods. Coordinate with insurers and track claim-related rentals.',
+      image:
+        'https://images.unsplash.com/photo-1711921345010-d1147f78db35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjYXIlMjBkZWFsZXJzaGlwfGVufDF8fHx8MTc2NDI3NDEwNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    },
   ];
 
   return (
@@ -46,7 +56,7 @@ export function FleetTypes() {
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {fleetTypes.map((type, index) => (
-            <div 
+            <div
               key={index}
               className="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-[#007A55] hover:shadow-xl transition-all duration-300"
             >
@@ -62,9 +72,7 @@ export function FleetTypes() {
                 <h3 className="text-xl text-[#081E32] mb-3 group-hover:text-[#007A55] transition-colors">
                   {type.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {type.description}
-                </p>
+                <p className="text-gray-600 mb-4 leading-relaxed">{type.description}</p>
                 <button className="inline-flex items-center text-[#007A55] hover:text-[#006644] transition-colors group/link">
                   <span className="mr-2">Learn More</span>
                   <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

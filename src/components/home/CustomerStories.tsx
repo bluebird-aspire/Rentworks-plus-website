@@ -5,20 +5,20 @@ export function CustomerStories() {
   const mainStory = {
     title: '82% reduction in no-shows and much more predictable revenue',
     stats: ['CityDrive Rentals', 'Automated reminders', 'Forecasting engine'],
-    image: 'https://images.unsplash.com/photo-1633118948215-480c9d78fc24?w=800'
+    image: 'https://images.unsplash.com/photo-1633118948215-480c9d78fc24?w=800',
   };
 
   const secondaryStories = [
     {
       title: '35% increase in fleet utilization and significantly faster daily operations',
       company: 'Premier Auto Rentals',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600'
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600',
     },
     {
       title: '28% uplift in rental revenue and better control of margins',
       company: 'Elite Car Hire',
-      image: 'https://images.unsplash.com/photo-1683200899447-d398198ed197?w=600'
-    }
+      image: 'https://images.unsplash.com/photo-1683200899447-d398198ed197?w=600',
+    },
   ];
 
   return (
@@ -41,7 +41,7 @@ export function CustomerStories() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#081E32]/80 via-[#081E32]/40 to-transparent" />
-              
+
               {/* Play Button */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center hover:bg-[#007A55] hover:text-white transition-all transform hover:scale-110 shadow-xl">
@@ -53,14 +53,15 @@ export function CustomerStories() {
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {mainStory.stats.map((stat, i) => (
-                    <span key={i} className="bg-[#007A55] text-white px-3 py-1 rounded-full text-sm">
+                    <span
+                      key={i}
+                      className="bg-[#007A55] text-white px-3 py-1 rounded-full text-sm"
+                    >
                       {stat}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-white text-2xl leading-tight">
-                  {mainStory.title}
-                </h3>
+                <h3 className="text-white text-2xl leading-tight">{mainStory.title}</h3>
               </div>
             </div>
           </div>
@@ -68,7 +69,7 @@ export function CustomerStories() {
           {/* Secondary Stories */}
           <div className="space-y-8">
             {secondaryStories.map((story, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group"
               >
@@ -81,9 +82,7 @@ export function CustomerStories() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#081E32]/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <p className="text-white/80 text-sm mb-2">{story.company}</p>
-                    <h4 className="text-white leading-tight">
-                      {story.title}
-                    </h4>
+                    <h4 className="text-white leading-tight">{story.title}</h4>
                   </div>
                 </div>
               </div>

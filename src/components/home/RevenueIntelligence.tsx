@@ -5,23 +5,27 @@ export function RevenueIntelligence() {
     {
       icon: Zap,
       title: 'Dynamic Pricing Engine',
-      description: 'AI-driven pricing that adjusts rates by demand, seasonality, and channel performance.'
+      description:
+        'AI-driven pricing that adjusts rates by demand, seasonality, and channel performance.',
     },
     {
       icon: Settings,
       title: 'Rate Configuration Studio',
-      description: 'Flexible rate tables for daily, weekly, monthly, corporate, and long-term rentals.'
+      description:
+        'Flexible rate tables for daily, weekly, monthly, corporate, and long-term rentals.',
     },
     {
       icon: BarChart3,
       title: 'Advanced Dashboard KPIs',
-      description: 'Real-time dashboards for revenue per vehicle, utilization, occupancy, and branch performance.'
+      description:
+        'Real-time dashboards for revenue per vehicle, utilization, occupancy, and branch performance.',
     },
     {
       icon: Calendar,
       title: 'Reservation Planner',
-      description: 'A visual planning calendar to balance demand, reduce idle days, and avoid overbooking.'
-    }
+      description:
+        'A visual planning calendar to balance demand, reduce idle days, and avoid overbooking.',
+    },
   ];
 
   return (
@@ -36,7 +40,8 @@ export function RevenueIntelligence() {
             AI Revenue Intelligence & Fleet Visibility
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Powerful tools to maximize your revenue potential, control discounts, and keep every vehicle working for your business.
+            Powerful tools to maximize your revenue potential, control discounts, and keep every
+            vehicle working for your business.
           </p>
         </div>
 
@@ -49,13 +54,27 @@ export function RevenueIntelligence() {
               <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-[#007A55]/10 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-6 h-6 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <span className="inline-flex items-center text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">
                     <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                      <path
+                        fillRule="evenodd"
+                        d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     +12.5%
                   </span>
@@ -69,13 +88,27 @@ export function RevenueIntelligence() {
               <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-[#007A55]/10 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    <svg
+                      className="w-6 h-6 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
                     </svg>
                   </div>
                   <span className="inline-flex items-center text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">
                     <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                      <path
+                        fillRule="evenodd"
+                        d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     +5.2%
                   </span>
@@ -89,13 +122,27 @@ export function RevenueIntelligence() {
               <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-[#007A55]/10 rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#007A55]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg
+                      className="w-6 h-6 text-[#007A55]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
                     </svg>
                   </div>
                   <span className="inline-flex items-center text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">
                     <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                      <path
+                        fillRule="evenodd"
+                        d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     +8.3%
                   </span>
@@ -134,7 +181,7 @@ export function RevenueIntelligence() {
                     <span>$2.5k</span>
                     <span>$0</span>
                   </div>
-                  
+
                   {/* Chart area with smooth lines */}
                   <div className="flex-1 h-56 relative">
                     {/* Grid lines */}
@@ -153,13 +200,13 @@ export function RevenueIntelligence() {
                           <stop offset="100%" style={{ stopColor: '#007A55', stopOpacity: 0 }} />
                         </linearGradient>
                       </defs>
-                      
+
                       {/* Area fill */}
                       <path
                         d="M 0 134 Q 25 110, 50 90 T 100 75 T 150 45 T 200 67 T 250 22 T 300 45 L 300 224 L 0 224 Z"
                         fill="url(#lineGradient)"
                       />
-                      
+
                       {/* Line */}
                       <path
                         d="M 0 134 Q 25 110, 50 90 T 100 75 T 150 45 T 200 67 T 250 22 T 300 45"
@@ -168,7 +215,7 @@ export function RevenueIntelligence() {
                         strokeWidth="3"
                         strokeLinecap="round"
                       />
-                      
+
                       {/* Data points */}
                       {[
                         { x: 0, y: 134 },
@@ -177,7 +224,7 @@ export function RevenueIntelligence() {
                         { x: 150, y: 45 },
                         { x: 200, y: 67 },
                         { x: 250, y: 22 },
-                        { x: 300, y: 45 }
+                        { x: 300, y: 45 },
                       ].map((point, i) => (
                         <g key={i}>
                           <circle
@@ -198,7 +245,11 @@ export function RevenueIntelligence() {
                       <div className="flex items-center space-x-2">
                         <span>$9.3k</span>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                          <path
+                            fillRule="evenodd"
+                            d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -236,7 +287,7 @@ export function RevenueIntelligence() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
                 >

@@ -9,26 +9,26 @@ export function BookingStepper() {
       id: 1,
       name: 'Smart Dashboard Overview',
       icon: BarChart3,
-      color: '#007A55'
+      color: '#007A55',
     },
     {
       id: 2,
       name: 'Vehicle Inspection Card',
       icon: Camera,
-      color: '#007A55'
+      color: '#007A55',
     },
     {
       id: 3,
       name: 'Reservation Creation Screen',
       icon: Calendar,
-      color: '#007A55'
+      color: '#007A55',
     },
     {
       id: 4,
       name: 'AI Insights Widget',
       icon: Brain,
-      color: '#007A55'
-    }
+      color: '#007A55',
+    },
   ];
 
   // Auto-advance animation
@@ -72,7 +72,9 @@ export function BookingStepper() {
                 >
                   <Icon className="w-5 h-5" />
                 </div>
-                <span className={`text-xs mt-2 text-center transition-colors duration-700 ${currentStep === step ? 'text-[#007A55]' : 'text-gray-400'}`}>
+                <span
+                  className={`text-xs mt-2 text-center transition-colors duration-700 ${currentStep === step ? 'text-[#007A55]' : 'text-gray-400'}`}
+                >
                   {product.name.split(' ')[0]}
                 </span>
               </div>
@@ -91,7 +93,9 @@ export function BookingStepper() {
       {/* Product Content - Fixed Height */}
       <div className="flex-1 relative overflow-hidden">
         {/* Screen 1: Smart Dashboard Overview */}
-        <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'}`}>
+        <div
+          className={`absolute inset-0 transition-all duration-700 ${currentStep === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'}`}
+        >
           <div className="space-y-4 h-full flex flex-col">
             <h3 className="text-2xl text-[#081E32] mb-4">Smart Dashboard Overview</h3>
 
@@ -125,7 +129,9 @@ export function BookingStepper() {
             <div className="bg-[#F4F5F7] rounded-xl p-5 flex-1">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm text-gray-600">Fleet Status</span>
-                <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full">Live</span>
+                <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-3 py-1 rounded-full">
+                  Live
+                </span>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -144,15 +150,15 @@ export function BookingStepper() {
             </div>
 
             <div className="bg-[#007A55]/10 rounded-lg p-3">
-              <p className="text-sm text-[#007A55]">
-                💡 Real-time insights across all locations
-              </p>
+              <p className="text-sm text-[#007A55]">💡 Real-time insights across all locations</p>
             </div>
           </div>
         </div>
 
         {/* Screen 2: Vehicle Inspection Card */}
-        <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
+        <div
+          className={`absolute inset-0 transition-all duration-700 ${currentStep === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}
+        >
           <div className="space-y-4 h-full flex flex-col">
             <h3 className="text-2xl text-[#081E32] mb-4">Vehicle Inspection Card</h3>
 
@@ -162,7 +168,9 @@ export function BookingStepper() {
                   <h4 className="text-[#081E32] font-medium">2024 Toyota RAV4</h4>
                   <p className="text-sm text-gray-500">VIN: JM1BK32F781234567</p>
                 </div>
-                <span className="bg-[#007A55] text-white text-xs px-3 py-1 rounded-full">Check-In</span>
+                <span className="bg-[#007A55] text-white text-xs px-3 py-1 rounded-full">
+                  Check-In
+                </span>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
@@ -212,7 +220,9 @@ export function BookingStepper() {
         </div>
 
         {/* Screen 3: Reservation Creation Screen */}
-        <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
+        <div
+          className={`absolute inset-0 transition-all duration-700 ${currentStep === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}
+        >
           <div className="space-y-4 h-full flex flex-col">
             <h3 className="text-2xl text-[#081E32] mb-4">Reservation Creation</h3>
 
@@ -220,7 +230,9 @@ export function BookingStepper() {
               <div className="bg-[#F4F5F7] rounded-xl p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-gray-600">Customer</span>
-                  <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">Verified</span>
+                  <span className="text-xs bg-[#007A55]/10 text-[#007A55] px-2 py-1 rounded-full">
+                    Verified
+                  </span>
                 </div>
                 <p className="text-[#081E32] font-medium">John Smith</p>
                 <p className="text-sm text-gray-500">john.smith@email.com</p>
@@ -270,7 +282,9 @@ export function BookingStepper() {
         </div>
 
         {/* Screen 4: AI Insights Widget */}
-        <div className={`absolute inset-0 transition-all duration-700 ${currentStep === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
+        <div
+          className={`absolute inset-0 transition-all duration-700 ${currentStep === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}
+        >
           <div className="space-y-4 h-full flex flex-col">
             <h3 className="text-2xl text-[#081E32] mb-4">AI Insights Widget</h3>
 
@@ -316,9 +330,7 @@ export function BookingStepper() {
             </div>
 
             <div className="bg-[#007A55]/10 rounded-lg p-3">
-              <p className="text-sm text-[#007A55]">
-                🧠 AI-powered pricing and fleet optimization
-              </p>
+              <p className="text-sm text-[#007A55]">🧠 AI-powered pricing and fleet optimization</p>
             </div>
           </div>
         </div>

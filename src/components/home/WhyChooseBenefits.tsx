@@ -27,9 +27,7 @@ export function WhyChooseBenefits() {
                 <Target className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Industry-Specific Features
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Industry-Specific Features</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -62,9 +60,7 @@ export function WhyChooseBenefits() {
                 <Zap className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Powerful Automation
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Powerful Automation</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -97,9 +93,7 @@ export function WhyChooseBenefits() {
                 <TrendingUp className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Real-Time Insights
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Real-Time Insights</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -132,9 +126,7 @@ export function WhyChooseBenefits() {
                 <Smile className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Easy to Use
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Easy to Use</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -167,9 +159,7 @@ export function WhyChooseBenefits() {
                 <Scale className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Scalable & Flexible
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Scalable & Flexible</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -202,9 +192,7 @@ export function WhyChooseBenefits() {
                 <Users className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Expert Support
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Expert Support</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">

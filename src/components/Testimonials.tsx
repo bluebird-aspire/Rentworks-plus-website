@@ -8,34 +8,39 @@ export function Testimonials() {
   const testimonials = [
     {
       rating: 5,
-      quote: "I don't know what could be done better. The design is awesome, the demo import is much better than any other theme, the FSE support including WooCommerce. The ease of setup and the whole experience makes it so much fun to work with. And of course the astonishing & very human. This is a truly outstanding experience!",
-      author: "Sarah Mitchell",
-      role: "CEO, DriveNow Rentals"
+      quote:
+        "I don't know what could be done better. The design is awesome, the demo import is much better than any other theme, the FSE support including WooCommerce. The ease of setup and the whole experience makes it so much fun to work with. And of course the astonishing & very human. This is a truly outstanding experience!",
+      author: 'Sarah Mitchell',
+      role: 'CEO, DriveNow Rentals',
     },
     {
       rating: 5,
-      quote: "Great hybrid theme which gives the developer plenty of options. As I've seen on other WebMan Design themes, I can confirm that the support and bug fixing is fast and gives me the feeling it's done with a personal touch. Also well written documentation. Top product!",
-      author: "David Chen",
-      role: "Operations Director"
+      quote:
+        "Great hybrid theme which gives the developer plenty of options. As I've seen on other WebMan Design themes, I can confirm that the support and bug fixing is fast and gives me the feeling it's done with a personal touch. Also well written documentation. Top product!",
+      author: 'David Chen',
+      role: 'Operations Director',
     },
     {
       rating: 5,
-      quote: "Customer support is more than excellent. Five-star rating also for the theme quality, customizability and documentation quality.",
-      author: "Maria Rodriguez",
-      role: "Founder, Luxury Wheels"
+      quote:
+        'Customer support is more than excellent. Five-star rating also for the theme quality, customizability and documentation quality.',
+      author: 'Maria Rodriguez',
+      role: 'Founder, Luxury Wheels',
     },
     {
       rating: 5,
-      quote: "A complete transformation of our rental operations. Automation alone saves us 30 hours weekly. The AI predictions are incredibly accurate.",
-      author: "James Wilson",
-      role: "Fleet Manager, EasyRent"
+      quote:
+        'A complete transformation of our rental operations. Automation alone saves us 30 hours weekly. The AI predictions are incredibly accurate.',
+      author: 'James Wilson',
+      role: 'Fleet Manager, EasyRent',
     },
     {
       rating: 5,
-      quote: "Fleet optimization and pricing recommendations increased our revenue by 22%. Best investment we've made in our business.",
-      author: "Lisa Anderson",
-      role: "Owner, Premium Auto Rentals"
-    }
+      quote:
+        "Fleet optimization and pricing recommendations increased our revenue by 22%. Best investment we've made in our business.",
+      author: 'Lisa Anderson',
+      role: 'Owner, Premium Auto Rentals',
+    },
   ];
 
   const itemsPerSlide = 3;
@@ -43,7 +48,7 @@ export function Testimonials() {
 
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
     }, 5000);
@@ -67,20 +72,21 @@ export function Testimonials() {
   };
 
   return (
-    <section 
+    <section
       className="relative py-20 bg-cover bg-center overflow-hidden"
       style={{
-        backgroundImage: 'url(https://images.unsplash.com/photo-1668900016730-75a72135f96d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGxhbmRzY2FwZSUyMHNjZW5pY3xlbnwxfHx8fDE3NjQyNDA1MTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)'
+        backgroundImage:
+          'url(https://images.unsplash.com/photo-1668900016730-75a72135f96d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGxhbmRzY2FwZSUyMHNjZW5pY3xlbnwxfHx8fDE3NjQyNDA1MTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)',
       }}
     >
       {/* Light overlay */}
       <div className="absolute inset-0 bg-white/90" />
-      
+
       {/* Animated decorative spheres */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-[#007A55] to-[#00A575] rounded-full opacity-60 blur-sm animate-float" />
       <div className="absolute bottom-32 left-10 w-24 h-24 bg-gradient-to-br from-[#007A55] to-[#00A575] rounded-full opacity-40 blur-sm animate-float-delayed" />
       <div className="absolute top-40 left-1/3 w-48 h-48 bg-gradient-to-br from-[#007A55] to-[#00A575] rounded-full opacity-30 blur-xl animate-pulse-slow" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
@@ -89,7 +95,8 @@ export function Testimonials() {
             <span className="uppercase tracking-wide">What Customers Say</span>
           </div>
           <h2 className="text-4xl lg:text-5xl text-[#081E32] mb-4">
-            Enough of bragging! Let's hear what <span className="text-[#007A55]">users</span> of RentWorksPlus+ have to say...
+            Enough of bragging! Let's hear what <span className="text-[#007A55]">users</span> of
+            RentWorksPlus+ have to say...
           </h2>
         </div>
 
@@ -111,7 +118,7 @@ export function Testimonials() {
 
         {/* Testimonials Carousel */}
         <div className="relative overflow-hidden">
-          <div 
+          <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
@@ -121,19 +128,14 @@ export function Testimonials() {
                   {/* Stars */}
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className="w-5 h-5 text-[#007A55] fill-current"
-                      />
+                      <Star key={i} className="w-5 h-5 text-[#007A55] fill-current" />
                     ))}
                   </div>
 
                   {/* Quote */}
                   <div className="mb-6">
                     <span className="text-6xl text-gray-300 leading-none">"</span>
-                    <p className="text-gray-700 leading-relaxed mt-2">
-                      {testimonial.quote}
-                    </p>
+                    <p className="text-gray-700 leading-relaxed mt-2">{testimonial.quote}</p>
                   </div>
 
                   {/* Author Info */}
@@ -159,9 +161,7 @@ export function Testimonials() {
                 setIsAutoPlaying(false);
               }}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index 
-                  ? 'bg-[#007A55] w-8' 
-                  : 'bg-gray-300 hover:bg-[#007A55]/50'
+                currentSlide === index ? 'bg-[#007A55] w-8' : 'bg-gray-300 hover:bg-[#007A55]/50'
               }`}
             />
           ))}

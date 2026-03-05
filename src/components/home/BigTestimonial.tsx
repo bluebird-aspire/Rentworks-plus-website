@@ -6,19 +6,23 @@ export function BigTestimonial() {
 
   const testimonials = [
     {
-      quote: "RentWorksPlus+ completely changed how we manage our rental branches. The automation and smart tools save us more than 15 hours every week, and our revenue grew by 28% in just six months.",
-      name: "Sarah Mitchell",
-      role: "Owner",
-      company: "Premier Rentals",
-      image: "https://images.unsplash.com/photo-1655249493799-9cee4fe983bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200"
+      quote:
+        'RentWorksPlus+ completely changed how we manage our rental branches. The automation and smart tools save us more than 15 hours every week, and our revenue grew by 28% in just six months.',
+      name: 'Sarah Mitchell',
+      role: 'Owner',
+      company: 'Premier Rentals',
+      image:
+        'https://images.unsplash.com/photo-1655249493799-9cee4fe983bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200',
     },
     {
-      quote: "The AI pricing engine alone has increased our revenue per vehicle by 18%. Combined with the automated workflows, we've cut our admin time in half while growing our fleet.",
-      name: "Marcus Chen",
-      role: "CEO",
-      company: "FleetPro Rentals",
-      image: "https://images.unsplash.com/photo-1584940121258-c2553b66a739?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200"
-    }
+      quote:
+        "The AI pricing engine alone has increased our revenue per vehicle by 18%. Combined with the automated workflows, we've cut our admin time in half while growing our fleet.",
+      name: 'Marcus Chen',
+      role: 'CEO',
+      company: 'FleetPro Rentals',
+      image:
+        'https://images.unsplash.com/photo-1584940121258-c2553b66a739?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200',
+    },
   ];
 
   const reviews = [
@@ -26,14 +30,14 @@ export function BigTestimonial() {
       platform: 'Capterra',
       rating: 4.7,
       total: 5,
-      logo: '/capterra-logo.png'
+      logo: '/capterra-logo.png',
     },
     {
       platform: 'Software Advice',
       rating: 4.7,
       total: 5,
-      logo: '/software-advice-logo.png'
-    }
+      logo: '/software-advice-logo.png',
+    },
   ];
 
   return (
@@ -49,7 +53,7 @@ export function BigTestimonial() {
             {/* Quote Icon - Top Right */}
             <div className="absolute top-8 right-8">
               <svg className="w-12 h-12 text-white/30" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
               </svg>
             </div>
 
@@ -59,10 +63,10 @@ export function BigTestimonial() {
                   <p className="text-white text-2xl md:text-3xl leading-relaxed mb-12 max-w-4xl">
                     {testimonials[currentSlide].quote}
                   </p>
-                  
+
                   {/* Reviewer Info with Profile Picture */}
                   <div className="flex items-center space-x-4">
-                    <img 
+                    <img
                       src={testimonials[currentSlide].image}
                       alt={testimonials[currentSlide].name}
                       className="w-16 h-16 rounded-lg object-cover ring-2 ring-white/30"
@@ -93,13 +97,17 @@ export function BigTestimonial() {
             {testimonials.length > 1 && (
               <div className="absolute bottom-8 right-8 flex space-x-3">
                 <button
-                  onClick={() => setCurrentSlide(prev => prev === 0 ? testimonials.length - 1 : prev - 1)}
+                  onClick={() =>
+                    setCurrentSlide((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
+                  }
                   className="w-12 h-12 bg-[#081E32] hover:bg-[#0a2438] rounded-lg flex items-center justify-center transition-all"
                 >
                   <ChevronLeft className="w-5 h-5 text-white" />
                 </button>
                 <button
-                  onClick={() => setCurrentSlide(prev => prev === testimonials.length - 1 ? 0 : prev + 1)}
+                  onClick={() =>
+                    setCurrentSlide((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
+                  }
                   className="w-12 h-12 bg-[#081E32] hover:bg-[#0a2438] rounded-lg flex items-center justify-center transition-all"
                 >
                   <ChevronRight className="w-5 h-5 text-white" />

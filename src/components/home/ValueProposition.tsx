@@ -28,9 +28,7 @@ export function ValueProposition() {
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Smart Automation
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Smart Automation</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -70,9 +68,7 @@ export function ValueProposition() {
                 <TrendingUp className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Real-Time Intelligence
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Real-Time Intelligence</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
@@ -112,9 +108,7 @@ export function ValueProposition() {
                 <LayoutGrid className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-2xl text-[#081E32] mb-4">
-                Seamless Operations
-              </h3>
+              <h3 className="text-2xl text-[#081E32] mb-4">Seamless Operations</h3>
 
               <ul className="space-y-3 text-[#081E32]/70 text-base">
                 <li className="flex items-start gap-2">
