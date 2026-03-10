@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { CreditCard, Check, Shield, Zap, Globe, Building2, ClipboardCheck, Coins, Tag } from 'lucide-react';
+import { CreditCard, Check, Shield, Globe, Building2, ClipboardCheck, Coins, Tag } from 'lucide-react';
 
 const paymentGateways = [
   { name: 'Adyen', icon: Globe, color: '#0ABF53' },
