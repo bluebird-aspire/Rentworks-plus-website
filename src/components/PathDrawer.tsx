@@ -5,6 +5,10 @@ interface Point {
   y: number;
 }
 
+interface PathDrawerProps {
+  initialPoints?: Point[];
+}
+
 function catmullRomToBezier(points: Point[]): string {
   if (points.length < 2) return '';
   if (points.length === 2) {
@@ -30,11 +34,13 @@ function catmullRomToBezier(points: Point[]): string {
   return d;
 }
 
-export default function PathDrawer() {
-  const [points, setPoints] = useState<Point[]>([]);
+export default function PathDrawer({ initialPoints }: PathDrawerProps) {
+  const [points, setPoints] = useState<Point[]>(initialPoints ?? []);
   const [docHeight, setDocHeight] = useState(1);
   const [copied, setCopied] = useState(false);
   const [active, setActive] = useState(true);
+  const [dragging, setDragging] = useState<number | null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -51,33 +57,147 @@ export default function PathDrawer() {
     };
   }, []);
 
+  // Convert page coordinates to point format
+  const toPoint = useCallback(
+    (clientX: number, clientY: number): Point => ({
+      x: (clientX / window.innerWidth) * 100,
+      y: ((clientY + window.scrollY) / docHeight) * 100,
+    }),
+    [docHeight]
+  );
+
+  // Convert point to pixel position on page
+  const toPixel = useCallback(
+    (p: Point) => ({
+      px: (p.x / 100) * window.innerWidth,
+      py: (p.y / 100) * docHeight,
+    }),
+    [docHeight]
+  );
+
+  // Find if click is near an existing point (within 20px)
+  const findNearPoint = useCallback(
+    (clientX: number, clientY: number): number | null => {
+      const pageY = clientY + window.scrollY;
+      for (let i = 0; i < points.length; i++) {
+        const { px, py } = toPixel(points[i]);
+        const dist = Math.sqrt((clientX - px) ** 2 + (pageY - py) ** 2);
+        if (dist < 20) return i;
+      }
+      return null;
+    },
+    [points, toPixel]
+  );
+
+  // Find nearest segment to insert a new point between existing ones
+  const findInsertIndex = useCallback(
+    (p: Point): number => {
+      if (points.length < 2) return points.length;
+      // Insert based on y position (path goes top to bottom)
+      for (let i = 0; i < points.length; i++) {
+        if (p.y < points[i].y) return i;
+      }
+      return points.length;
+    },
+    [points]
+  );
+
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (!active) return;
+      if ((e.target as HTMLElement).closest('.path-toolbar')) return;
+
+      const nearIdx = findNearPoint(e.clientX, e.clientY);
+
+      if (nearIdx !== null) {
+        // Start dragging existing point
+        e.preventDefault();
+        setDragging(nearIdx);
+        setSelected(nearIdx);
+        setCopied(false);
+      }
+    },
+    [active, findNearPoint]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (dragging === null) return;
+      e.preventDefault();
+      const p = toPoint(e.clientX, e.clientY);
+      setPoints((prev) => {
+        const next = [...prev];
+        next[dragging] = p;
+        return next;
+      });
+      setCopied(false);
+    },
+    [dragging, toPoint]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setDragging(null);
+  }, []);
+
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       if (!active) return;
       if ((e.target as HTMLElement).closest('.path-toolbar')) return;
 
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = ((e.clientY + window.scrollY) / docHeight) * 100;
-      setPoints((prev) => [...prev, { x, y }]);
+      // Don't add point if we were dragging
+      if (dragging !== null) return;
+
+      const nearIdx = findNearPoint(e.clientX, e.clientY);
+      if (nearIdx !== null) {
+        // Clicking on existing point — just select it
+        setSelected(nearIdx);
+        return;
+      }
+
+      // Click on empty space — insert new point at correct y position
+      const p = toPoint(e.clientX, e.clientY);
+      const insertIdx = findInsertIndex(p);
+      setPoints((prev) => {
+        const next = [...prev];
+        next.splice(insertIdx, 0, p);
+        return next;
+      });
+      setSelected(insertIdx);
       setCopied(false);
     },
-    [active, docHeight]
+    [active, dragging, findNearPoint, toPoint, findInsertIndex]
   );
 
-  const handleContextMenu = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    setPoints((prev) => prev.slice(0, -1));
-  }, []);
+  const handleContextMenu = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      const nearIdx = findNearPoint(e.clientX, e.clientY);
+      if (nearIdx !== null) {
+        // Right-click on point = delete it
+        setPoints((prev) => prev.filter((_, i) => i !== nearIdx));
+        setSelected(null);
+        setCopied(false);
+      }
+    },
+    [findNearPoint]
+  );
 
-  const undo = () => {
-    setPoints((prev) => prev.slice(0, -1));
-    setCopied(false);
-  };
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (selected === null) return;
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        setPoints((prev) => prev.filter((_, i) => i !== selected));
+        setSelected(null);
+        setCopied(false);
+      }
+    },
+    [selected]
+  );
 
-  const clear = () => {
-    setPoints([]);
-    setCopied(false);
-  };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   const copyPath = () => {
     const output = points.map((p) => ({
@@ -114,9 +234,13 @@ export default function PathDrawer() {
         width: '100%',
         height: docHeight,
         zIndex: 9999,
-        cursor: 'crosshair',
+        cursor: dragging !== null ? 'grabbing' : 'crosshair',
       }}
       onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
       onContextMenu={handleContextMenu}
     >
       <svg
@@ -143,8 +267,18 @@ export default function PathDrawer() {
         )}
         {svgPoints.map((p, i) => (
           <g key={i}>
-            <circle cx={p.x} cy={p.y} r="0.6" fill="rgba(46, 233, 168, 0.9)" stroke="white" strokeWidth="0.15" />
-            <text x={p.x + 1} y={p.y + 0.4} fill="white" fontSize="1" fontFamily="monospace">{i + 1}</text>
+            <circle
+              cx={p.x}
+              cy={p.y}
+              r={selected === i ? 0.9 : 0.6}
+              fill={selected === i ? '#ff6b6b' : 'rgba(46, 233, 168, 0.9)'}
+              stroke="white"
+              strokeWidth="0.15"
+              style={{ cursor: 'grab' }}
+            />
+            <text x={p.x + 1} y={p.y + 0.4} fill="white" fontSize="1" fontFamily="monospace">
+              {i + 1}
+            </text>
           </g>
         ))}
       </svg>
@@ -166,29 +300,75 @@ export default function PathDrawer() {
           border: '1px solid rgba(46, 233, 168, 0.3)',
           alignItems: 'center',
           pointerEvents: 'auto',
+          flexWrap: 'wrap',
+          maxWidth: '90vw',
         }}
       >
-        <span style={{ color: '#2ee9a8', fontSize: 13, fontFamily: 'monospace', marginRight: 8 }}>
-          Path Drawer ({points.length} points)
+        <span
+          style={{
+            color: '#2ee9a8',
+            fontSize: 13,
+            fontFamily: 'monospace',
+            marginRight: 8,
+          }}
+        >
+          Path Editor ({points.length} pts)
         </span>
-        <button onClick={undo} disabled={points.length === 0}
-          style={{ padding: '6px 14px', borderRadius: 8, background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', cursor: points.length === 0 ? 'not-allowed' : 'pointer', fontSize: 12, opacity: points.length === 0 ? 0.4 : 1 }}>
-          Undo
-        </button>
-        <button onClick={clear} disabled={points.length === 0}
-          style={{ padding: '6px 14px', borderRadius: 8, background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', cursor: points.length === 0 ? 'not-allowed' : 'pointer', fontSize: 12, opacity: points.length === 0 ? 0.4 : 1 }}>
-          Clear
-        </button>
-        <button onClick={copyPath} disabled={points.length < 2}
-          style={{ padding: '6px 14px', borderRadius: 8, background: copied ? 'rgba(46, 233, 168, 0.3)' : 'rgba(46, 233, 168, 0.15)', color: '#2ee9a8', border: '1px solid rgba(46, 233, 168, 0.4)', cursor: points.length < 2 ? 'not-allowed' : 'pointer', fontSize: 12, opacity: points.length < 2 ? 0.4 : 1 }}>
+        {selected !== null && (
+          <button
+            onClick={() => {
+              setPoints((prev) => prev.filter((_, i) => i !== selected));
+              setSelected(null);
+              setCopied(false);
+            }}
+            style={{
+              padding: '6px 14px',
+              borderRadius: 8,
+              background: 'rgba(255, 100, 100, 0.2)',
+              color: '#ff6b6b',
+              border: '1px solid rgba(255, 100, 100, 0.4)',
+              cursor: 'pointer',
+              fontSize: 12,
+            }}
+          >
+            Delete #{selected + 1}
+          </button>
+        )}
+        <button
+          onClick={copyPath}
+          disabled={points.length < 2}
+          style={{
+            padding: '6px 14px',
+            borderRadius: 8,
+            background: copied ? 'rgba(46, 233, 168, 0.3)' : 'rgba(46, 233, 168, 0.15)',
+            color: '#2ee9a8',
+            border: '1px solid rgba(46, 233, 168, 0.4)',
+            cursor: points.length < 2 ? 'not-allowed' : 'pointer',
+            fontSize: 12,
+            opacity: points.length < 2 ? 0.4 : 1,
+          }}
+        >
           {copied ? 'Copied!' : 'Copy Path'}
         </button>
-        <button onClick={done} disabled={points.length < 2}
-          style={{ padding: '6px 14px', borderRadius: 8, background: '#2ee9a8', color: '#050B14', border: 'none', cursor: points.length < 2 ? 'not-allowed' : 'pointer', fontSize: 12, fontWeight: 600, opacity: points.length < 2 ? 0.4 : 1 }}>
+        <button
+          onClick={done}
+          disabled={points.length < 2}
+          style={{
+            padding: '6px 14px',
+            borderRadius: 8,
+            background: '#2ee9a8',
+            color: '#050B14',
+            border: 'none',
+            cursor: points.length < 2 ? 'not-allowed' : 'pointer',
+            fontSize: 12,
+            fontWeight: 600,
+            opacity: points.length < 2 ? 0.4 : 1,
+          }}
+        >
           Done
         </button>
         <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, marginLeft: 8 }}>
-          Click to add · Right-click to undo
+          Drag to move · Click empty to add · Right-click to delete
         </span>
       </div>
     </div>

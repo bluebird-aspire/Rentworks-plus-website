@@ -1,28 +1,45 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ClipboardCheck, Globe, Monitor } from 'lucide-react';
+import selfInspectionLogo from '../assets/self-inspection-logo.png';
+import carlaLogo from '../assets/carla-logo.png';
+import signifyLogo from '../assets/signify-logo.png';
+import valpayLogo from '../assets/valpay-logo.png';
 
-const partners = [
+type Partner = {
+  name: string;
+  description: string;
+  color: string;
+  image: string;
+};
+
+const partners: Partner[] = [
   {
-    icon: ClipboardCheck,
+    image: selfInspectionLogo,
     name: 'Self-inspection',
     description:
       'Empower customers to complete vehicle inspections independently through a guided digital workflow.',
     color: '#2EE9A8',
   },
   {
-    icon: Globe,
+    image: carlaLogo,
     name: 'Carla.ai',
     description:
-      'Connect to one of the leading car rental marketplaces to expand your reach and drive more bookings.',
+      'Automate customer inquiries and streamline day-to-day rental operations with an AI-powered assistant.',
     color: '#3B82F6',
   },
   {
-    icon: Monitor,
+    image: signifyLogo,
     name: 'Signify',
     description:
       'Deliver dynamic digital signage content across your rental locations for a modern customer experience.',
     color: '#8B5CF6',
+  },
+  {
+    image: valpayLogo,
+    name: 'ValPay',
+    description:
+      'Process payments seamlessly with integrated payment gateway solutions built for the rental industry.',
+    color: '#1A8D6F',
   },
 ];
 
@@ -75,7 +92,7 @@ export default function CollaborationsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-24 md:py-32">
+    <section ref={sectionRef} id="integrations" className="relative w-full py-24 md:py-32">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-16">
@@ -107,7 +124,7 @@ export default function CollaborationsSection() {
         </div>
 
         {/* Partner Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {partners.map((partner, i) => (
             <div
               key={partner.name}
@@ -147,9 +164,10 @@ export default function CollaborationsSection() {
                     transition: 'background-color 0.3s ease',
                   }}
                 >
-                  <partner.icon
-                    className="w-8 h-8"
-                    style={{ color: partner.color }}
+                  <img
+                    src={partner.image}
+                    alt={partner.name}
+                    className="w-8 h-8 object-contain"
                   />
                 </div>
 

@@ -87,7 +87,7 @@ export default function InspectionVisualizerSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-24 md:py-32 overflow-hidden">
+    <section ref={sectionRef} id="inspection" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="inspection-header text-center mb-16">
           <span

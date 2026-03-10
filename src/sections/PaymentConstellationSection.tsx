@@ -1,14 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { CreditCard, Check, Shield, Zap, Globe, Building2 } from 'lucide-react';
+import { CreditCard, Check, Shield, Zap, Globe, Building2, ClipboardCheck, Coins, Tag } from 'lucide-react';
 
 const paymentGateways = [
-  { name: 'Adyen', description: 'Global payment platform', icon: Globe, color: '#0ABF53' },
-  { name: 'Worldpay', description: 'Enterprise payment processing', icon: CreditCard, color: '#E4002B' },
-  { name: 'TriPOS', description: 'Point-of-sale integration', icon: Zap, color: '#FF6B00' },
-  { name: 'CenPOS', description: 'Secure payment gateway', icon: Shield, color: '#00A8E8' },
-  { name: 'Hosted Payments', description: 'Secure hosted checkout', icon: Globe, color: '#7C3AED' },
-  { name: 'Direct Bill', description: 'Corporate account billing', icon: Building2, color: '#F59E0B' },
+  { name: 'Adyen', icon: Globe, color: '#0ABF53' },
+  { name: 'Direct Bill', icon: Building2, color: '#F59E0B' },
+  { name: 'Check', icon: ClipboardCheck, color: '#10B981' },
+  { name: 'Cash', icon: Coins, color: '#F59E0B' },
+  { name: 'CC Hosted', icon: Globe, color: '#7C3AED' },
+  { name: 'Card Present', icon: CreditCard, color: '#6366F1' },
+  { name: 'Promo Code', icon: Tag, color: '#EC4899' },
 ];
 
 const leftFeatures = [
@@ -178,8 +179,10 @@ export default function PaymentConstellationSection() {
               return (
                 <div key={gateway.name} className="gateway-node absolute z-10"
                   style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}>
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-card flex flex-col items-center justify-center gap-1 hover:scale-110 transition-transform cursor-pointer"
-                    style={{ borderColor: `${gateway.color}40` }}>
+                  <div
+                    className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-card flex flex-col items-center justify-center gap-1 hover:scale-110 transition-transform cursor-pointer"
+                    style={{ borderColor: `${gateway.color}40` }}
+                  >
                     <gateway.icon className="w-6 h-6" style={{ color: gateway.color }} />
                     <span className="text-[10px]" style={{ color: 'var(--theme-text-muted)' }}>{gateway.name}</span>
                   </div>

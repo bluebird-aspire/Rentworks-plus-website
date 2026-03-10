@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileText, Image, Check } from 'lucide-react';
+import { FileText, Image, Check, PenLine } from 'lucide-react';
 
 const builderFeatures = [
   'Drag-and-drop canvas designer',
@@ -53,6 +53,30 @@ export default function FormBuilderSection() {
         {
           opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power3.out',
           scrollTrigger: { trigger: '.formbuilder-canvas', start: 'top 80%', toggleActions: 'play none none none' },
+        }
+      );
+
+      // Signature drawing animation (both fields, looping)
+      const sigPaths = sectionRef.current?.querySelectorAll('.sig-path') as NodeListOf<SVGPathElement> | undefined;
+      sigPaths?.forEach((sigPath, idx) => {
+        const len = sigPath.getTotalLength();
+        gsap.set(sigPath, { strokeDasharray: len, strokeDashoffset: len });
+        const tl = gsap.timeline({
+          repeat: -1, repeatDelay: 1.5, delay: 1.2 + idx * 0.6,
+          scrollTrigger: { trigger: '.formbuilder-canvas', start: 'top 75%', toggleActions: 'play none none none' },
+        });
+        tl.to(sigPath, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut' });
+        tl.to(sigPath, { strokeDashoffset: len, duration: 1.2, ease: 'power2.in' }, '+=1.5');
+      });
+
+      // Pulse glow on signature fields
+      gsap.fromTo(
+        '.sig-glow',
+        { boxShadow: `0 0 0px color-mix(in srgb, var(--theme-accent) 0%, transparent)` },
+        {
+          boxShadow: `0 0 15px color-mix(in srgb, var(--theme-accent) 30%, transparent)`,
+          duration: 1.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2,
+          scrollTrigger: { trigger: '.formbuilder-canvas', start: 'top 75%', toggleActions: 'play none none none' },
         }
       );
     }, sectionRef);
@@ -135,7 +159,7 @@ export default function FormBuilderSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-24 md:py-32 overflow-hidden">
+    <section ref={sectionRef} id="forms" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="formbuilder-header text-center mb-10">
@@ -153,7 +177,7 @@ export default function FormBuilderSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Visual form builder
+            Visual Rental Agreement Form Builder
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Create custom documents and forms with drag-and-drop simplicity. Add conditional logic,
@@ -205,7 +229,7 @@ export default function FormBuilderSection() {
                 </div>
                 <div>
                   <p className="font-medium" style={{ color: 'var(--theme-text)' }}>
-                    Form Builder
+                    Rental Agreement Form Builder
                   </p>
                   <p className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>
                     Drag, drop, and customize
@@ -278,10 +302,44 @@ export default function FormBuilderSection() {
                   )}
                   {el.type === 'signature' && (
                     <div
-                      className="w-full h-full flex items-center justify-center rounded"
-                      style={{ border: '2px dashed color-mix(in srgb, var(--theme-accent) 30%, transparent)' }}
+                      className="sig-glow w-full h-full flex flex-col items-center justify-center rounded relative"
+                      style={{ border: '2px dashed color-mix(in srgb, var(--theme-accent) 50%, transparent)' }}
                     >
-                      <span className="text-xs" style={{ color: 'color-mix(in srgb, var(--theme-accent) 60%, transparent)' }}>
+                      {/* E-Signature badge */}
+                      <span
+                        className="absolute top-1.5 left-1.5 flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded"
+                        style={{
+                          backgroundColor: 'color-mix(in srgb, var(--theme-accent) 12%, transparent)',
+                          color: 'var(--theme-accent)',
+                        }}
+                      >
+                        <PenLine className="w-2.5 h-2.5" />
+                        E-Signature
+                      </span>
+                      {/* Signature SVG drawing */}
+                      <svg
+                        className="absolute"
+                        width="70%" height="40%"
+                        viewBox="0 0 120 30"
+                        fill="none"
+                        style={{ top: '30%' }}
+                      >
+                        <path
+                          className="sig-path"
+                          d={el.label === 'Customer Signature'
+                            ? 'M5 22 C15 2, 25 28, 35 15 S50 2, 55 18 S65 5, 75 15 S90 28, 100 10 Q108 2, 115 8'
+                            : 'M8 18 Q20 5, 30 20 T55 12 Q70 5, 80 18 T105 10 L115 14'
+                          }
+                          stroke="var(--theme-accent)"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          fill="none"
+                        />
+                      </svg>
+                      <span
+                        className="text-xs mt-auto mb-1.5"
+                        style={{ color: 'color-mix(in srgb, var(--theme-accent) 60%, transparent)' }}
+                      >
                         {el.label}
                       </span>
                     </div>

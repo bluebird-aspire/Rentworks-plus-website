@@ -11,8 +11,10 @@ import PaymentConstellationSection from './sections/PaymentConstellationSection'
 import InspectionVisualizerSection from './sections/InspectionVisualizerSection';
 import ReservationTimelineSection from './sections/ReservationTimelineSection';
 import FormBuilderSection from './sections/FormBuilderSection';
+import LoyaltyProgramSection from './sections/LoyaltyProgramSection';
 import CollaborationsSection from './sections/CollaborationsSection';
 import ContactSection from './sections/ContactSection';
+import Footer from './components/Footer';
 import ScrollCar from './components/ScrollCar';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -46,8 +48,10 @@ function App() {
           <InspectionVisualizerSection />
           <ReservationTimelineSection />
           <FormBuilderSection />
+          <LoyaltyProgramSection />
           <CollaborationsSection />
           <ContactSection />
+          <Footer />
         </main>
       </div>
     </ThemeProvider>

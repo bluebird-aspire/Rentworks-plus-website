@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Calendar, Car, ClipboardCheck, Users, BarChart3, Shield, Settings, Search, MapPin, Wrench, CreditCard, CheckCircle, FileText, Truck, Monitor, Activity, ShieldCheck, DollarSign, FolderOpen, CalendarDays, Scan, Heart, Package, LayoutDashboard, BookOpen, SlidersHorizontal } from 'lucide-react';
+import { Calendar, Car, ClipboardCheck, Users, BarChart3, Shield, Settings, Warehouse, CreditCard, CheckCircle, FileText, Truck, ShieldCheck, DollarSign, FolderOpen, CalendarDays, Scan, Award, Package, Tablet, BookOpen, Bell, FileEdit, Monitor, CarFront } from 'lucide-react';
+import CarInspectionIcon from '../components/icons/CarInspectionIcon';
 
 /* ─── Module data ─── */
 
@@ -10,8 +11,8 @@ const innerRingModules = [
   { id: 'reservations', icon: Calendar, title: 'Reservations', color: '#2EE9A8' },
   { id: 'checkin', icon: CheckCircle, title: 'Check-In', color: '#3B82F6' },
   { id: 'checkout', icon: ClipboardCheck, title: 'Check-Out', color: '#8B5CF6' },
-  { id: 'fleet', icon: Car, title: 'Fleet Mgmt', color: '#EF4444' },
-  { id: 'customers', icon: Users, title: 'Customers', color: '#EC4899' },
+  { id: 'fleet', icon: Car, title: 'Fleet Ops', color: '#EF4444' },
+  { id: 'customers', icon: Users, title: 'Customer 360', color: '#EC4899' },
   { id: 'claims', icon: Shield, title: 'Claims', color: '#6366F1' },
   { id: 'payments', icon: CreditCard, title: 'Payments', color: '#84CC16' },
   { id: 'reports', icon: BarChart3, title: 'Analytics', color: '#F97316' },
@@ -19,24 +20,24 @@ const innerRingModules = [
 
 // Outer ring: 18 modules (balanced with the bigger circumference)
 const outerRingModules = [
-  { id: 'inspection', icon: Search, title: 'Inspection', color: '#F59E0B' },
-  { id: 'inventory', icon: MapPin, title: 'Inventory', color: '#10B981' },
-  { id: 'maintenance', icon: Wrench, title: 'Maintenance', color: '#14B8A6' },
+  { id: 'inspection', icon: CarInspectionIcon, title: 'Inspection', color: '#F59E0B' },
+  { id: 'vehicles', icon: CarFront, title: 'Vehicles', color: '#14B8A6' },
+  { id: 'inventory', icon: Warehouse, title: 'Inventory', color: '#10B981' },
   { id: 'config', icon: Settings, title: 'Config', color: '#06B6D4' },
   { id: 'contracts', icon: FileText, title: 'Contracts', color: '#A78BFA' },
   { id: 'nonrevenue', icon: Truck, title: 'Non-Revenue', color: '#78716C' },
-  { id: 'customerdashboard', icon: Monitor, title: 'Customer Portal', color: '#F472B6' },
-  { id: 'fleetops', icon: Activity, title: 'Fleet Ops', color: '#FB923C' },
+  { id: 'notifications', icon: Bell, title: 'Notifications', color: '#F472B6' },
   { id: 'insurance', icon: ShieldCheck, title: 'Insurance', color: '#34D399' },
   { id: 'marketing', icon: DollarSign, title: 'Pricing', color: '#FBBF24' },
   { id: 'documents', icon: FolderOpen, title: 'Documents', color: '#93C5FD' },
+  { id: 'formbuilder', icon: FileEdit, title: 'Form Builder', color: '#94A3B8' },
   { id: 'resplanner', icon: CalendarDays, title: 'Res Planner', color: '#C084FC' },
   { id: 'ocr', icon: Scan, title: 'OCR / VIN', color: '#2DD4BF' },
-  { id: 'loyalty', icon: Heart, title: 'Loyalty', color: '#F87171' },
+  { id: 'loyalty', icon: Award, title: 'Loyalty', color: '#F87171' },
   { id: 'lostandfound', icon: Package, title: 'Lost & Found', color: '#A3E635' },
-  { id: 'counter', icon: LayoutDashboard, title: 'Counter Ops', color: '#38BDF8' },
-  { id: 'guides', icon: BookOpen, title: 'Guides', color: '#E879F9' },
-  { id: 'sysconfig', icon: SlidersHorizontal, title: 'System Config', color: '#94A3B8' },
+  { id: 'counter', icon: Tablet, title: 'Counter Ops', color: '#38BDF8' },
+  { id: 'customerdashboard', icon: Monitor, title: 'Customer Portal', color: '#E879F9' },
+  { id: 'guides', icon: BookOpen, title: 'Guides', color: '#38BDF8' },
 ];
 
 const allModules = [...innerRingModules, ...outerRingModules];
@@ -44,30 +45,30 @@ const allModules = [...innerRingModules, ...outerRingModules];
 const moduleDetails: Record<string, { title: string; description: string; features: string[] }> = {
   reservations: { title: 'Reservations', description: 'Complete reservation lifecycle management with conflict detection', features: ['Advanced search and filtering', 'Conflict detection and resolution', 'Open reservation tracking', 'Real-time availability checking', 'Cancel and void operations', 'Reservation details view'] },
   checkin: { title: 'Check-In', description: 'Structured vehicle handover process with damage documentation', features: ['Multi-step wizard workflow', 'Interactive vehicle diagram', 'Photo capture with retake', 'Damage type classification', 'Driver license validation', 'Multi-payment entry support'] },
-  checkout: { title: 'Check-Out', description: 'End-to-end checkout workflow from reservation to vehicle handover', features: ['Reservation & customer lookup', 'Vehicle selection + availability', 'Rental details + charges', 'Payment processing', 'Self-inspection option', 'Automated contract delivery'] },
+  checkout: { title: 'Check-Out', description: 'End-to-end checkout workflow from reservation to vehicle handover', features: ['Reservation & customer lookup', 'Vehicle selection + availability', 'Rental details + charges', 'Payment processing', 'Vehicle Inspection With Rental Assignment', 'Automated contract delivery'] },
   inspection: { title: 'Vehicle Inspection', description: 'Digital inspection with photo documentation across 60+ vehicle zones', features: ['Photo-based damage docs', '60+ vehicle parts mapped', 'Damage type classification', 'Customer self-service portal', 'Multi-zone coverage', 'Token-based public access'] },
-  fleet: { title: 'Fleet Management', description: 'Complete vehicle catalog and lifecycle management', features: ['ACRISS vehicle classification', 'Service history tracking', 'Financial data tracking', 'Equipment assignment', 'Maintenance alerts', 'Vehicle availability checking'] },
+  fleet: { title: 'Fleet Operations', description: 'Fleet-level operational monitoring and vehicle assignment', features: ['Fleet status monitoring', 'Vehicle assignment management', 'Status code integration', 'Real-time fleet overview', 'Operational load tracking', 'Multi-location fleet view'] },
+  vehicles: { title: 'Vehicles', description: 'Complete vehicle catalog with ACRISS classification and lifecycle management', features: ['ACRISS vehicle classification', 'Service history tracking', 'Financial data tracking', 'Equipment assignment', 'Vehicle availability checking', 'Advanced search filters'] },
   inventory: { title: 'Vehicle Inventory', description: 'Location tracking and inter-branch transport coordination', features: ['Business location tracking', 'Transport confirmation', 'Inter-branch coordination', 'Inventory flow management', 'Multi-vehicle transfer'] },
-  customers: { title: 'Customer Management', description: '360° customer profiles with full history and preferences', features: ['Rental and payment history', 'OCR license scanning', 'Portrait photo capture', 'Duplicate detection', 'Blacklist management', 'Insurance preferences'] },
+  customers: { title: 'Customer 360 View', description: '360° customer profiles with full history, self-service portal, and preferences', features: ['Rental and payment history', 'OCR license scanning', 'Self-service customer portal', 'Customer statistics', 'Blacklist management', 'Duplicate detection'] },
+  customerdashboard: { title: 'Customer Portal', description: 'Public-facing customer self-service portal for rental status and account info', features: ['Customer lookup', 'Contract summaries', 'Rental status tracking', 'Customer statistics display', 'Account information', 'Self-service access'] },
   claims: { title: 'Claims Management', description: 'Full insurance claims lifecycle with 9 detail tabs', features: ['Multi-vehicle claim tracking', '9 detail tabs per claim', 'Expense and payment tracking', 'Repair order integration', 'Document checklist', 'Financial audit trail'] },
-  maintenance: { title: 'Maintenance', description: 'Service tracking and maintenance alerts', features: ['Maintenance alerts', 'Service procedures tracking', 'Repair order management', 'Equipment tracking', 'Maintenance history'] },
   reports: { title: 'Reporting & Analytics', description: '15+ real-time KPI metrics for operational insights', features: ['Fleet status monitoring', 'Revenue trend analysis', 'Utilization metrics', 'Conversion rate tracking', 'No-show rate analysis', 'Maintenance dashboard'] },
-  payments: { title: 'Payment Processing', description: 'Multi-gateway payment processing with real-time status tracking', features: ['Adyen, Worldpay, TriPOS, CenPOS', 'Hosted payment pages', 'Direct Bill (corporate)', 'Real-time status tracking', 'Amount calculation', 'Error handling & recovery'] },
-  config: { title: 'Configuration', description: '20+ configurable system areas for enterprise setup', features: ['Multi-location support', 'Role-based access control', 'Terminal configuration', 'Notification rules', 'Pricing and rate rules', 'Vehicle categories'] },
+  payments: { title: 'Payment Processing', description: 'Multi-gateway payment processing with real-time status tracking', features: ['Hosted payment pages', 'Card present payment', 'Cash & check payments', 'Pay by link', 'Real-time status tracking', 'Error handling & recovery'] },
+  config: { title: 'Configuration', description: '20+ configurable system areas for enterprise setup', features: ['Multi-location support', 'Role-based access control', 'Terminal configuration', 'Branding settings', 'Security settings', 'Integrations management'] },
   contracts: { title: 'Contracts', description: 'Digital contract management with search, print, and email', features: ['Contract search + filtering', 'Detail views + summaries', 'Print and email', 'Contract card components'] },
   nonrevenue: { title: 'Non-Revenue Movements', description: 'Track vehicle movements that don\'t generate revenue', features: ['Open/close non-revenue records', 'Driver assignment', 'Vehicle movement tracking', 'Fleet status integration'] },
-  customerdashboard: { title: 'Customer Portal', description: 'Public-facing customer self-service portal', features: ['Customer lookup', 'Contract summaries', 'Rental status tracking', 'Customer statistics'] },
-  fleetops: { title: 'Fleet Operations', description: 'Fleet-level operational monitoring and vehicle assignment', features: ['Fleet status monitoring', 'Vehicle assignment', 'Status code integration'] },
+  notifications: { title: 'Notifications', description: 'Configurable notification rules and alert delivery', features: ['Notification templates', 'Event-based triggers', 'Delivery channels', 'Alert management', 'Status notifications', 'Custom rule builder'] },
   insurance: { title: 'Insurance', description: 'Configurable insurance products with coverage types', features: ['Insurance product config', 'Coverage type management', 'Add-on options'] },
   marketing: { title: 'Pricing & Rates', description: 'Flexible pricing engine with rate rules and seasonal pricing', features: ['Time & mileage rates', 'Rate rules (business logic)', 'Seasonal pricing', 'Ancillary charges', 'Fuel pricing by location', 'Airline partnership rates'] },
   documents: { title: 'Documents', description: 'Document upload, storage, and metadata management', features: ['Document upload & storage', 'Document retrieval', 'Metadata tracking'] },
-  resplanner: { title: 'Reservation Planner', description: 'Reservation conflict detection and resolution', features: ['Conflict identification', 'Resolution assistance', 'Booking adjustment tools'] },
+  formbuilder: { title: 'Form Builder', description: 'Visual form and document template engine with drag-and-drop design', features: ['Drag-and-drop canvas', 'Conditional logic engine', 'E-signature fields', 'Custom field creation', 'Print configuration', 'Data source binding'] },
+  resplanner: { title: 'Reservation Planner', description: 'Reservation conflict detection and resolution with advanced controls', features: ['Conflict identification', 'Resolution assistance', 'Modify reservations', 'Expand booking duration', 'Booking adjustment tools', 'Advanced controls'] },
   ocr: { title: 'OCR & VIN Scanning', description: 'Built-in VIN scanning with OCR technology', features: ['Text recognition from images', 'VIN code detection', 'Image preprocessing', 'Manual VIN fallback'] },
   loyalty: { title: 'Loyalty Programs', description: 'Customer loyalty with configurable tiers and rewards', features: ['Loyalty program management', 'Settings configuration', 'Point & tier management'] },
   lostandfound: { title: 'Lost & Found', description: 'Track items left in rental vehicles', features: ['Lost item data table', 'Customer association', 'Status tracking'] },
   counter: { title: 'Counter Operations', description: 'Unified counter workspace for front-desk operations', features: ['Counter center page', 'Sidebar navigation', 'Modular layout', 'Landing page for staff'] },
   guides: { title: 'Guides & Onboarding', description: 'Built-in interactive training system', features: ['Guide creation', 'Step-by-step instructions', 'Target highlighting', 'Route-based guides'] },
-  sysconfig: { title: 'System Administration', description: 'Enterprise system administration with 20+ areas', features: ['User, group, role mgmt', 'Terminal settings', 'Credit card controls', 'Integrations', 'Security & notifications', 'Branding config'] },
 };
 
 const featureCardColors = ['#2EE9A8', '#3B82F6', '#8B5CF6', '#F59E0B', '#EF4444', '#10B981'];
@@ -209,7 +210,7 @@ export default function OrbitalModulesSection() {
             <div
               ref={outerOrbitRef}
               className="outer-orbit-ring absolute inset-0 rounded-full"
-              style={{ border: '2px dashed color-mix(in srgb, var(--theme-text) 8%, transparent)' }}
+              style={{ border: '2px dashed color-mix(in srgb, var(--theme-accent) 20%, transparent)' }}
             >
               {outerRingModules.map((module, i) => {
                 const angle = (i * 360) / outerRingModules.length;
@@ -228,7 +229,7 @@ export default function OrbitalModulesSection() {
                       boxShadow: isActive ? `0 0 30px ${activeColor}80` : 'none',
                       scale: isActive ? '1.25' : '1',
                       zIndex: isActive ? 10 : 1,
-                      border: isActive ? 'none' : '1px solid rgba(255,255,255,0.08)',
+                      border: isActive ? 'none' : '1px solid color-mix(in srgb, var(--theme-accent) 15%, transparent)',
                     }}
                     onClick={() => handleModuleSelect(module.id)}
                     onMouseEnter={() => setIsHovering(true)}
@@ -245,7 +246,7 @@ export default function OrbitalModulesSection() {
             <div
               ref={innerOrbitRef}
               className="inner-orbit-ring absolute rounded-full"
-              style={{ inset: '20%', border: '2px dashed color-mix(in srgb, var(--theme-text) 10%, transparent)' }}
+              style={{ inset: '20%', border: '2px dashed color-mix(in srgb, var(--theme-accent) 25%, transparent)' }}
             >
               {innerRingModules.map((module, i) => {
                 const angle = (i * 360) / innerRingModules.length;
@@ -264,7 +265,7 @@ export default function OrbitalModulesSection() {
                       boxShadow: isActive ? `0 0 30px ${activeColor}80` : 'none',
                       scale: isActive ? '1.25' : '1',
                       zIndex: isActive ? 10 : 1,
-                      border: isActive ? 'none' : '1px solid rgba(255,255,255,0.08)',
+                      border: isActive ? 'none' : '1px solid color-mix(in srgb, var(--theme-accent) 15%, transparent)',
                     }}
                     onClick={() => handleModuleSelect(module.id)}
                     onMouseEnter={() => setIsHovering(true)}
@@ -278,8 +279,8 @@ export default function OrbitalModulesSection() {
             </div>
 
             {/* Decorative inner circles */}
-            <div className="absolute rounded-full" style={{ inset: '36%', border: '1px solid rgba(255,255,255,0.04)' }} />
-            <div className="absolute rounded-full" style={{ inset: '44%', border: '1px solid rgba(255,255,255,0.03)' }} />
+            <div className="absolute rounded-full" style={{ inset: '36%', border: '1px solid color-mix(in srgb, var(--theme-accent) 8%, transparent)' }} />
+            <div className="absolute rounded-full" style={{ inset: '44%', border: '1px solid color-mix(in srgb, var(--theme-accent) 6%, transparent)' }} />
 
             {/* Center hub */}
             <div
@@ -288,7 +289,7 @@ export default function OrbitalModulesSection() {
               style={{
                 background: 'var(--theme-surface, rgba(255,255,255,0.08))',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                border: '1px solid color-mix(in srgb, var(--theme-accent) 20%, transparent)',
               }}
             >
               <div className="text-center">
@@ -305,7 +306,7 @@ export default function OrbitalModulesSection() {
               style={{
                 background: 'var(--theme-surface, rgba(255,255,255,0.05))',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                border: '1px solid color-mix(in srgb, var(--theme-accent) 15%, transparent)',
               }}
             >
               {/* Module header */}
@@ -344,7 +345,7 @@ export default function OrbitalModulesSection() {
                       className="rounded-lg p-3 transition-all duration-200 hover:-translate-y-0.5"
                       style={{
                         background: 'var(--theme-navy-800, rgba(15,23,42,0.5))',
-                        border: '1px solid rgba(255,255,255,0.06)',
+                        border: '1px solid color-mix(in srgb, var(--theme-accent) 10%, transparent)',
                         animation: `orbitalFadeSlideIn 0.35s ease-out ${0.06 * i}s both`,
                       }}
                     >

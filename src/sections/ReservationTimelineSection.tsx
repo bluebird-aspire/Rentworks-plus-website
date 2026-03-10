@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   FileText,
   Clock,
@@ -38,54 +37,21 @@ const rightFeatures = [
 ];
 
 const AUTO_CYCLE_INTERVAL = 1500;
-const RESUME_DELAY = 5000;
 
 export default function ReservationTimelineSection() {
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isPausedRef = useRef(false);
-
-  const startAutoCycle = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      if (!isPausedRef.current) {
-        setActiveStep((prev) => (prev + 1) % reservationSteps.length);
-      }
-    }, AUTO_CYCLE_INTERVAL);
-  }, []);
-
-  const pauseAutoCycle = useCallback(() => {
-    isPausedRef.current = true;
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      isPausedRef.current = false;
-    }, RESUME_DELAY);
-  }, []);
 
   useEffect(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top 80%',
-      onEnter: () => {
-        setActiveStep(0);
-        startAutoCycle();
-      },
-      once: true,
-    });
+    intervalRef.current = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % reservationSteps.length);
+    }, AUTO_CYCLE_INTERVAL);
     return () => {
-      trigger.kill();
       if (intervalRef.current) clearInterval(intervalRef.current);
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [startAutoCycle]);
-
-  const handleStepClick = (index: number) => {
-    setActiveStep(index);
-    pauseAutoCycle();
-  };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -160,7 +126,7 @@ export default function ReservationTimelineSection() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full py-24 md:py-32 overflow-hidden">
+    <section ref={sectionRef} id="reservations" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="timeline-header text-center mb-16">
@@ -190,8 +156,6 @@ export default function ReservationTimelineSection() {
         <div
           ref={timelineRef}
           className="mb-16"
-          onMouseEnter={pauseAutoCycle}
-          onClick={pauseAutoCycle}
         >
           <div className="relative py-10">
             <div
@@ -217,7 +181,7 @@ export default function ReservationTimelineSection() {
                     key={step.id}
                     className="timeline-step relative flex flex-col items-center group cursor-pointer"
                     style={{ width: `${100 / reservationSteps.length}%` }}
-                    onClick={() => handleStepClick(i)}
+                    onClick={() => setActiveStep(i)}
                   >
                     {isCurrent && (
                       <div

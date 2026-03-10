@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide nav and scroll car when a legal modal is open */
+body.modal-open [data-nav],
+body.modal-open [data-scroll-car] {
+  display: none !important;
+}
+
 @layer base {
   :root {
     --background: 216 50% 5%;

@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
-import logoImg from '../assets/logo-with-slogan.png';
+import logoImg from '../assets/logo-navbar.png';
 
 const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Modules', href: '#modules' },
   { label: 'Payments', href: '#payments' },
+  { label: 'Inspection', href: '#inspection' },
+  { label: 'Reservations', href: '#reservations' },
+  { label: 'Forms', href: '#forms' },
+  { label: 'Loyalty', href: '#loyalty' },
+  { label: 'Integrations', href: '#integrations' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -34,10 +39,11 @@ export default function Navigation() {
   return (
     <>
       <nav
+        data-nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          isScrolled ? 'backdrop-blur-xl border-b' : 'bg-transparent'
+          isScrolled ? 'border-b' : ''
         }`}
-        style={isScrolled ? { backgroundColor: 'color-mix(in srgb, var(--theme-bg) 90%, transparent)', borderColor: 'var(--theme-divider)' } : {}}
+        style={{ backgroundColor: theme === 'dark' ? 'color-mix(in srgb, var(--theme-bg) 90%, transparent)' : 'rgba(239, 238, 234)', ...(isScrolled ? { borderColor: 'var(--theme-divider)' } : {}) }}
       >
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
