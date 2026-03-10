@@ -1,329 +1,134 @@
-import { useState } from 'react';
-import { Search, ShoppingBag, User, ChevronDown } from 'lucide-react';
-import logo from 'figma:asset/82b6f4b94e67a09f71951541678541a2738fc1b4.png';
+import { useState, useEffect } from 'react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../ThemeContext';
+import logoImg from '../assets/logo-navbar.png';
 
-export function Navigation() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+const navLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Modules', href: '#modules' },
+  { label: 'Payments', href: '#payments' },
+  { label: 'Inspection', href: '#inspection' },
+  { label: 'Reservations', href: '#reservations' },
+  { label: 'Forms', href: '#forms' },
+  { label: 'Loyalty', href: '#loyalty' },
+  { label: 'Integrations', href: '#integrations' },
+  { label: 'Contact', href: '#contact' },
+];
+
+export default function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
-    <nav className="bg-white border-b border-gray-200 relative z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <img src={logo} alt="RentWorksPlus+" className="h-12" />
-          </div>
-
-          {/* Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu('platform')}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button className="text-[#081E32] hover:text-[#007A55] transition-colors flex items-center gap-1">
-                Platform
-                <ChevronDown size={16} />
-              </button>
-              {activeMenu === 'platform' && <PlatformMegaMenu />}
-            </div>
-
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu('solutions')}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button className="text-[#081E32] hover:text-[#007A55] transition-colors flex items-center gap-1">
-                Solutions
-                <ChevronDown size={16} />
-              </button>
-              {activeMenu === 'solutions' && <SolutionsMegaMenu />}
-            </div>
-
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu('resources')}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button className="text-[#081E32] hover:text-[#007A55] transition-colors flex items-center gap-1">
-                Resources
-                <ChevronDown size={16} />
-              </button>
-              {activeMenu === 'resources' && <ResourcesMenu />}
-            </div>
-
-            <a href="#pricing" className="text-[#081E32] hover:text-[#007A55] transition-colors">
-              Pricing
+    <>
+      <nav
+        data-nav
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+          isScrolled ? 'border-b' : ''
+        }`}
+        style={{ backgroundColor: theme === 'dark' ? 'color-mix(in srgb, var(--theme-bg) 90%, transparent)' : 'rgba(239, 238, 234)', ...(isScrolled ? { borderColor: 'var(--theme-divider)' } : {}) }}
+      >
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            <a href="#" className="flex items-center gap-2 group">
+              <img src={logoImg} alt="RentWorksPlus" className="h-8 w-auto" />
             </a>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu('company')}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button className="text-[#081E32] hover:text-[#007A55] transition-colors flex items-center gap-1">
-                Company
-                <ChevronDown size={16} />
-              </button>
-              {activeMenu === 'company' && <CompanyMenu />}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.label}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm transition-colors relative group"
+                  style={{ color: 'var(--theme-text-muted)' }}
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: 'var(--theme-accent)' }} />
+                </button>
+              ))}
             </div>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu('support')}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button className="text-[#081E32] hover:text-[#007A55] transition-colors flex items-center gap-1">
-                Support
-                <ChevronDown size={16} />
+            <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                style={{ backgroundColor: 'var(--theme-hover)', color: 'var(--theme-text-muted)' }}
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              {activeMenu === 'support' && <SupportMenu />}
+              <button
+                onClick={() => scrollToSection('#contact')}
+                className="px-5 py-2.5 rounded-lg border transition-all duration-300 text-sm font-medium"
+                style={{ borderColor: 'color-mix(in srgb, var(--theme-accent) 30%, transparent)', color: 'var(--theme-accent)' }}
+              >
+                Request a demo
+              </button>
+            </div>
+
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg"
+                style={{ color: 'var(--theme-text-muted)' }}
+              >
+                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+              <button
+                className="p-2"
+                style={{ color: 'var(--theme-text)' }}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
+        </div>
+      </nav>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center">
-            <button className="bg-[#007A55] text-white px-6 py-2.5 rounded hover:bg-[#006644] transition-colors">
-              BOOK A DEMO
+      <div
+        className={`fixed inset-0 z-[99] md:hidden transition-all duration-500 ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="absolute inset-0 backdrop-blur-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--theme-bg) 98%, transparent)' }} />
+        <div className="relative flex flex-col items-center justify-center h-full gap-8">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => scrollToSection(link.href)}
+              className="text-2xl font-heading font-semibold transition-colors"
+              style={{ color: 'var(--theme-text)' }}
+            >
+              {link.label}
             </button>
-          </div>
+          ))}
+          <button
+            className="mt-4 px-8 py-3 font-semibold rounded-lg transition-colors"
+            style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-fg)' }}
+            onClick={() => scrollToSection('#contact')}
+          >
+            Request a demo
+          </button>
         </div>
       </div>
-    </nav>
-  );
-}
-
-function PlatformMegaMenu() {
-  return (
-    <div className="absolute top-full left-0 mt-0 w-[900px] bg-white border border-gray-200 shadow-xl rounded-lg p-8 -ml-64">
-      <div className="grid grid-cols-2 gap-8">
-        {/* OPERATIONS */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Operations</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="Auto Rental System"
-              description="Complete end-to-end operational management for vehicle and equipment rental businesses."
-            />
-            <MenuFeature
-              title="Check-Out & Check-In System"
-              description="Fast, guided workflows for returning, inspecting, and issuing vehicles."
-            />
-            <MenuFeature
-              title="Fleet Management"
-              description="Real-time availability, utilization optimization, maintenance tracking."
-            />
-          </div>
-        </div>
-
-        {/* ONLINE & DIGITAL */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Online & Digital</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="Online Reservation Plugin"
-              description="Embed a branded, mobile-friendly booking widget directly into your website."
-            />
-            <MenuFeature
-              title="Rentall API"
-              description="Build your own mobile app or connect external systems with our developer-friendly REST APIs."
-            />
-            <MenuFeature
-              title="Mobile Web App"
-              description="Fully responsive design accessible from any device."
-            />
-          </div>
-        </div>
-
-        {/* FINANCE & PAYMENTS */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Finance & Payments</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="RENTALL Payments"
-              description="5 payment methods: Cash, Card Present, Pay By Link, Direct Debit, Check, Hosted Payment."
-            />
-            <MenuFeature
-              title="Rate Configuration"
-              description="Flexible rate tables, dynamic pricing tools, corporate tariffs."
-            />
-          </div>
-        </div>
-
-        {/* INTELLIGENCE & AUTOMATION */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">Intelligence & Automation</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="Reservation Planner"
-              description="Visual AI-powered planning calendar for fleet and customer allocations."
-            />
-            <MenuFeature
-              title="Customized Dashboard"
-              description="Real-time business KPIs, utilization, revenue trends, performance alerts."
-            />
-            <MenuFeature
-              title="Claims & Damage Management"
-              description="Track incidents, collect evidence, generate reports."
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SolutionsMegaMenu() {
-  return (
-    <div className="absolute top-full left-0 mt-0 w-[900px] bg-white border border-gray-200 shadow-xl rounded-lg p-8 -ml-32">
-      <div className="grid grid-cols-2 gap-8">
-        {/* BY BUSINESS TYPE */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">By Business Type</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="Car Rental Companies"
-              description="Solutions for daily rental operations, fleets, locations & channels."
-            />
-            <MenuFeature
-              title="Equipment & Machinery Rental"
-              description="Support for heavy equipment, construction machinery & tools."
-            />
-            <MenuFeature
-              title="Corporate Fleets"
-              description="Manage internal vehicle assignments, fuel, travel, and cost allocation."
-            />
-            <MenuFeature
-              title="Dealership Rental Programs"
-              description="Loaner rental programs for dealerships and service centers."
-            />
-          </div>
-        </div>
-
-        {/* BY ROLE */}
-        <div>
-          <h3 className="text-[#007A55] uppercase tracking-wider text-sm mb-4">By Role</h3>
-          <div className="space-y-4">
-            <MenuFeature
-              title="General Managers"
-              description="Global visibility, performance dashboards, revenue reporting."
-            />
-            <MenuFeature
-              title="Fleet Managers"
-              description="Vehicle lifecycle, maintenance, utilization, and uptime management."
-            />
-            <MenuFeature
-              title="Front Desk & Agents"
-              description="Fast check-in/out workflows, reservation creation, upsell tools."
-            />
-            <MenuFeature
-              title="Finance & Accounting Teams"
-              description="Payments, invoices, corporate accounts, outstanding balances."
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ResourcesMenu() {
-  return (
-    <div className="absolute top-full left-0 mt-0 w-[320px] bg-white border border-gray-200 shadow-xl rounded-lg p-6 -ml-24">
-      <div className="space-y-3">
-        <MenuLink
-          title="Blogs"
-          description="Insights on rental automation, fleet utilization, AI enhancements."
-        />
-        <MenuLink
-          title="News"
-          description="Product announcements, releases, industry trends."
-        />
-        <MenuLink
-          title="Templates"
-          description="Checklists, agreement templates, fleet audit templates."
-        />
-        <MenuLink
-          title="eBooks & Guides"
-          description="Deep training documents on optimization, pricing, automation."
-        />
-      </div>
-    </div>
-  );
-}
-
-function CompanyMenu() {
-  return (
-    <div className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-200 shadow-xl rounded-lg p-4 -ml-16">
-      <div className="space-y-2">
-        <a href="#about" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          About Us
-        </a>
-        <a href="#careers" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Careers
-        </a>
-        <a href="#press" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Press
-        </a>
-        <a href="#partners" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Partner Program
-        </a>
-        <a href="#contact" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Contact
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function SupportMenu() {
-  return (
-    <div className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-200 shadow-xl rounded-lg p-4 -ml-16">
-      <div className="space-y-2">
-        <a href="#knowledge" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Knowledge Base
-        </a>
-        <a href="#docs" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Documentation
-        </a>
-        <a href="#api" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          API Docs
-        </a>
-        <a href="#support" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          Support Center
-        </a>
-        <a href="#status" className="block px-3 py-2 rounded hover:bg-[#F4F5F7] text-[#081E32] transition-colors">
-          System Status
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function MenuFeature({ title, description }: { title: string; description: string }) {
-  return (
-    <a href="#" className="block group">
-      <div className="p-3 rounded-lg hover:bg-[#F4F5F7] transition-colors">
-        <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
-          {title}
-        </h4>
-        <p className="text-gray-600 text-sm leading-snug">
-          {description}
-        </p>
-      </div>
-    </a>
-  );
-}
-
-function MenuLink({ title, description }: { title: string; description: string }) {
-  return (
-    <a href="#" className="block group p-3 rounded-lg hover:bg-[#F4F5F7] transition-colors">
-      <h4 className="text-[#081E32] group-hover:text-[#007A55] transition-colors mb-1">
-        {title}
-      </h4>
-      <p className="text-gray-600 text-sm leading-snug">
-        {description}
-      </p>
-    </a>
+    </>
   );
 }

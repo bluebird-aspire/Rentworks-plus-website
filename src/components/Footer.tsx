@@ -1,164 +1,121 @@
-import { MapPin, Mail, Phone, Search, Twitter, Facebook, Instagram, Github } from 'lucide-react';
-import logo from 'figma:asset/82b6f4b94e67a09f71951541678541a2738fc1b4.png';
+import { useState } from 'react';
+import { Mail, Phone, Linkedin } from 'lucide-react';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
+import TermsOfServiceModal from './TermsOfServiceModal';
+import logoFooter from '../assets/logo-footer.png';
 
-export function Footer() {
-  const links = {
-    services: [
-      { label: 'First service', href: '#' },
-      { label: 'Next service', href: '#' },
-      { label: 'Another service', href: '#' },
-      { label: 'Last service', href: '#' }
-    ],
-    themeInfo: [
-      { label: 'Get the theme', href: '#' },
-      { label: 'WebMan Design', href: '#' },
-      { label: 'Support Forum', href: '#' },
-      { label: 'User manual', href: '#' }
-    ]
-  };
+const quickLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Modules', href: '#modules' },
+  { label: 'Payments', href: '#payments' },
+  { label: 'Inspection', href: '#inspection' },
+  { label: 'Reservations', href: '#reservations' },
+  { label: 'Loyalty', href: '#loyalty' },
+  { label: 'Integrations', href: '#integrations' },
+  { label: 'Contact', href: '#contact' },
+];
 
-  const locations = [
-    { city: 'London, GB', address: '123 Street Name, Cityname', zip: '56789, COUNTRY' },
-    { city: 'New York, USA', address: '123 Street Name, Cityname', zip: '56789, COUNTRY' }
-  ];
+export default function Footer() {
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTermsOfService, setShowTermsOfService] = useState(false);
 
   return (
-    <footer className="bg-[#F4F5F7] pt-16 pb-8">
-      {/* Scrolling Text Banner */}
-      <div className="bg-[#081E32] text-white py-8 mb-16 overflow-hidden">
-        <div className="whitespace-nowrap animate-scroll">
-          <span className="inline-block text-4xl md:text-6xl tracking-wider px-8">
-            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by intelligence. *
-          </span>
-          <span className="inline-block text-4xl md:text-6xl tracking-wider px-8">
-            Driven by experience. Redefined by intelligence. * Driven by experience. Redefined by intelligence. *
-          </span>
-        </div>
-      </div>
+    <footer className="relative">
+      {/* Green accent bar */}
+      <div className="h-1 w-full" style={{ backgroundColor: 'var(--theme-accent)' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-12 gap-8 mb-12">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <img src={logo} alt="RentWorksPlus+" className="h-12 mb-6" />
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              RentWorksPlus+ is accessibility ready multi-purpose website builder. No coding required!
-            </p>
-            <button className="bg-[#007A55] text-white px-6 py-3 rounded hover:bg-[#006644] transition-colors uppercase tracking-wide">
-              Contact
-            </button>
-          </div>
+      <div style={{ backgroundColor: 'var(--theme-bg-alt)' }}>
+        <div className="max-w-[1400px] mx-auto px-6 py-5">
+          {/* 3-column grid: logo | quick links | contact */}
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {/* Company info */}
+            <div>
+              <img src={logoFooter} alt="RentWorksPlus" className="h-10 w-auto mb-3" />
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-muted)' }}>
+                Cloud-based rental management platform for modern businesses. Streamline your operations with 26 integrated modules.
+              </p>
+              <p className="text-xs italic mt-2" style={{ color: 'var(--theme-text-muted)' }}>
+                Driven by experience, redefined by intelligence.
+              </p>
+            </div>
 
-          {/* Search Bar */}
-          <div className="md:col-span-4 flex items-start justify-center">
-            <div className="w-full max-w-md">
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search..."
-                  className="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded focus:outline-none focus:border-[#007A55]"
-                />
-                <button className="absolute right-0 top-0 h-full px-4 bg-[#007A55] text-white rounded-r hover:bg-[#006644] transition-colors">
-                  <Search className="w-5 h-5" />
-                </button>
+            {/* Quick Links — 2-column sub-grid */}
+            <div>
+              <h4 className="font-heading font-semibold mb-3" style={{ color: 'var(--theme-text)' }}>
+                Quick Links
+              </h4>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+                {quickLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-sm transition-colors hover:opacity-80"
+                      style={{ color: 'var(--theme-text-muted)' }}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Us */}
+            <div>
+              <h4 className="font-heading font-semibold mb-3" style={{ color: 'var(--theme-text)' }}>
+                Contact Us
+              </h4>
+              <div className="space-y-2.5">
+                <a href="mailto:support@barsnet.com" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
+                  <Mail className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
+                  support@barsnet.com
+                </a>
+                <a href="tel:+19739892423" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
+                  <Phone className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
+                  +1 (973) 989-2423
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Social Icons */}
-          <div className="md:col-span-4 flex items-start justify-end">
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-[#007A55] rounded-full flex items-center justify-center text-white hover:bg-[#006644] transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
+          {/* Divider */}
+          <div className="my-4" style={{ borderTop: '1px solid var(--theme-divider)' }} />
+
+          {/* Bottom bar */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
+              style={{ background: 'color-mix(in srgb, var(--theme-accent) 12%, transparent)' }}
+            >
+              <Linkedin className="w-4 h-4" style={{ color: 'var(--theme-accent)' }} />
+            </a>
+
+            {/* Legal + Copyright */}
+            <div className="flex items-center gap-3 text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+              <button onClick={() => setShowTermsOfService(true)} className="transition-colors hover:opacity-70">
+                Terms of Service
+              </button>
+              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
+              <button onClick={() => setShowPrivacyPolicy(true)} className="transition-colors hover:opacity-70">
+                Privacy Policy
+              </button>
+              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
+              <span>&copy; 2026 RentWorksPlus &mdash; All rights reserved.</span>
             </div>
-          </div>
-        </div>
-
-        {/* Links and Locations Grid */}
-        <div className="grid md:grid-cols-4 gap-8 mb-12 pt-12 border-t border-gray-300">
-          {/* Services */}
-          <div>
-            <h4 className="text-[#081E32] mb-6 uppercase tracking-wide">Services</h4>
-            <ul className="space-y-3">
-              {links.services.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-gray-600 hover:text-[#007A55] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Theme Info */}
-          <div>
-            <h4 className="text-[#081E32] mb-6 uppercase tracking-wide">Theme Info</h4>
-            <ul className="space-y-3">
-              {links.themeInfo.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-gray-600 hover:text-[#007A55] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Locations */}
-          <div className="md:col-span-2">
-            <h4 className="text-[#081E32] mb-6 uppercase tracking-wide">Locations</h4>
-            <div className="space-y-6">
-              {locations.map((location, index) => (
-                <div key={index} className="text-gray-600">
-                  <p className="text-[#081E32] mb-1">{location.city}</p>
-                  <p className="text-sm">{location.address}</p>
-                  <p className="text-sm">{location.zip}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center mb-4 md:mb-0">
-            <div className="w-8 h-8 bg-[#081E32] rounded-full flex items-center justify-center mr-3">
-              <span className="text-white text-xs">©</span>
-            </div>
-            <p className="text-gray-600 text-sm">
-              Copyright © 2025 • <a href="#" className="text-[#007A55] hover:underline">Privacy Policy</a>
-            </p>
           </div>
         </div>
       </div>
 
-      {/* CSS for scrolling animation */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-          display: inline-block;
-        }
-      `}</style>
+      <PrivacyPolicyModal isOpen={showPrivacyPolicy} onClose={() => setShowPrivacyPolicy(false)} />
+      <TermsOfServiceModal open={showTermsOfService} onClose={() => setShowTermsOfService(false)} />
     </footer>
   );
 }
