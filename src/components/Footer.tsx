@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Mail, Phone, Linkedin } from 'lucide-react';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
 import TermsOfServiceModal from './TermsOfServiceModal';
-import logoFooter from '../assets/logo-footer.png';
+import logoLight from '../assets/logo-light.svg';
+import logoDark from '../assets/logo-dark.svg';
+import { useTheme } from '../ThemeContext';
 
 const quickLinks = [
   { label: 'Features', href: '#features' },
@@ -16,6 +18,7 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const { theme } = useTheme();
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showTermsOfService, setShowTermsOfService] = useState(false);
 
@@ -30,7 +33,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Company info */}
             <div>
-              <img src={logoFooter} alt="RentWorksPlus" className="h-10 w-auto mb-3" />
+              <img src={theme === 'dark' ? logoDark : logoLight} alt="RentWorksPlus" className="h-8 w-auto mb-3" />
               <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-muted)' }}>
                 Cloud-based rental management platform for modern businesses. Streamline your operations with 26 integrated modules.
               </p>

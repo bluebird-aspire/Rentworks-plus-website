@@ -29,7 +29,7 @@ export default function HeroMockupCard({
 }: HeroMockupCardProps) {
   return (
     <div
-      className={`hero-card absolute rounded-3xl overflow-hidden cursor-pointer ${className}`}
+      className={`hero-card rounded-3xl overflow-hidden cursor-pointer ${className}`}
       style={{
         width,
         height,

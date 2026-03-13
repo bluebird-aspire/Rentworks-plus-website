@@ -157,15 +157,14 @@ export default function ReservationTimelineSection() {
           ref={timelineRef}
           className="mb-16"
         >
-          <div className="relative py-10">
+          <div className="relative py-6 md:py-10">
             <div
-              className="timeline-track absolute left-[7%] right-[7%] h-[3px] rounded-full origin-left"
-              style={{ top: '28px', backgroundColor: 'color-mix(in srgb, var(--theme-text-muted) 20%, transparent)' }}
+              className="timeline-track absolute left-[7%] right-[7%] h-[3px] rounded-full origin-left top-[18px] md:top-[28px]"
+              style={{ backgroundColor: 'color-mix(in srgb, var(--theme-text-muted) 20%, transparent)' }}
             />
             <div
-              className="absolute h-[3px] rounded-full origin-left transition-all duration-700 ease-in-out"
+              className="absolute h-[3px] rounded-full origin-left transition-all duration-700 ease-in-out top-[18px] md:top-[28px]"
               style={{
-                top: '28px',
                 left: '7%',
                 width: `${progressPercent * 0.86}%`,
                 background: 'linear-gradient(90deg, var(--theme-accent), color-mix(in srgb, var(--theme-accent) 60%, #fff))',
@@ -185,14 +184,14 @@ export default function ReservationTimelineSection() {
                   >
                     {isCurrent && (
                       <div
-                        className="absolute -top-7 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-bold tracking-wide whitespace-nowrap"
+                        className="absolute -top-4 md:-top-7 left-1/2 -translate-x-1/2 px-1 md:px-3 py-px md:py-0.5 rounded-full text-[6px] md:text-[10px] font-bold tracking-wide whitespace-nowrap"
                         style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-fg)' }}
                       >
                         {step.label.toUpperCase()}
                       </div>
                     )}
                     <div
-                      className="relative w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500"
+                      className="relative w-9 h-9 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500"
                       style={{
                         background: isCurrent
                           ? 'var(--theme-accent)'
@@ -209,12 +208,12 @@ export default function ReservationTimelineSection() {
                       }}
                     >
                       <step.icon
-                        className="w-6 h-6 transition-colors duration-300"
+                        className="w-4 h-4 md:w-6 md:h-6 transition-colors duration-300"
                         style={{ color: isCurrent || isCompleted ? 'var(--theme-accent-fg)' : 'var(--theme-text-muted)' }}
                       />
                     </div>
                     <span
-                      className="mt-3 text-xs md:text-sm font-medium transition-colors duration-300"
+                      className="mt-1 md:mt-3 text-[7px] md:text-sm font-medium transition-colors duration-300"
                       style={{ color: isUpcoming ? 'var(--theme-text-muted)' : 'var(--theme-text)' }}
                     >
                       {step.label}

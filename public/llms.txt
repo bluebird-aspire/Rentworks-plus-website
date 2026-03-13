@@ -1,0 +1,31 @@
+# RentWorksPlus
+> Cloud-based car rental management platform by Bluebird Auto Rental Systems
+
+RentWorksPlus is a multi-tenant, cloud-based car rental management platform with 26 integrated modules. It covers the full rental lifecycle from reservations through check-out, including fleet management, multi-gateway payment processing, claims management, and customer relationship management.
+
+## Core Capabilities
+- Reservations: Full reservation lifecycle with conflict detection and availability tracking
+- Fleet Management: ACRISS classification, service history, and real-time vehicle availability
+- Payment Processing: Multi-gateway support — Adyen, Worldpay, TriPOS, CenPOS
+- Vehicle Inspection: Photo-based digital inspection covering 60+ vehicle zones
+- Claims Management: End-to-end claims with multi-vehicle tracking and repair orders
+- Form Builder: Visual drag-and-drop document builder with conditional logic
+- Analytics Dashboard: 15+ real-time KPIs for fleet, revenue, and operations
+- Customer Profiles: 360-degree customer management with OCR license scanning
+- Loyalty Programs: Configurable tiers, points, and rewards
+
+## Key Facts
+- 26 integrated feature modules
+- Multi-tenant architecture with role-based access control
+- Payment gateways: Adyen, Worldpay, TriPOS, CenPOS
+- 60+ vehicle inspection zones with photo documentation
+- 15+ dashboard KPIs for real-time analytics
+- Multi-location enterprise configuration
+- Built-in interactive training and onboarding system
+
+## Company
+- Name: Bluebird Auto Rental Systems
+- Product: RentWorksPlus
+- Support: support@barsnet.com
+- Phone: +1 (973) 989-2423
+- App: https://app.rentworksplus.com

@@ -248,7 +248,7 @@ export default function FormBuilderSection() {
               ref={canvasRef}
               className="relative rounded-xl overflow-hidden"
               style={{
-                height: '420px',
+                height: 'clamp(280px, 50vw, 420px)',
                 backgroundColor: 'var(--theme-navy-800)',
                 border: '1px solid var(--theme-divider)',
               }}
@@ -295,7 +295,7 @@ export default function FormBuilderSection() {
                 >
                   {el.type === 'header' && (
                     <div className="w-full h-full flex items-center justify-center">
-                      <span className="font-heading font-semibold" style={{ color: 'var(--theme-text)' }}>
+                      <span className="font-heading font-semibold text-xs md:text-base" style={{ color: 'var(--theme-text)' }}>
                         {el.label}
                       </span>
                     </div>
@@ -307,13 +307,13 @@ export default function FormBuilderSection() {
                     >
                       {/* E-Signature badge */}
                       <span
-                        className="absolute top-1.5 left-1.5 flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded"
+                        className="absolute top-0.5 left-0.5 md:top-1.5 md:left-1.5 flex items-center gap-0.5 md:gap-1 text-[6px] md:text-[9px] font-mono uppercase tracking-wider px-1 md:px-1.5 py-0.5 rounded"
                         style={{
                           backgroundColor: 'color-mix(in srgb, var(--theme-accent) 12%, transparent)',
                           color: 'var(--theme-accent)',
                         }}
                       >
-                        <PenLine className="w-2.5 h-2.5" />
+                        <PenLine className="w-2 h-2 md:w-2.5 md:h-2.5" />
                         E-Signature
                       </span>
                       {/* Signature SVG drawing */}
@@ -337,7 +337,7 @@ export default function FormBuilderSection() {
                         />
                       </svg>
                       <span
-                        className="text-xs mt-auto mb-1.5"
+                        className="text-[8px] md:text-xs mt-auto mb-0.5 md:mb-1.5"
                         style={{ color: 'color-mix(in srgb, var(--theme-accent) 60%, transparent)' }}
                       >
                         {el.label}
@@ -353,8 +353,8 @@ export default function FormBuilderSection() {
                     </div>
                   )}
                   {el.type === 'text' && (
-                    <div className="w-full h-full flex items-center px-3">
-                      <span className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+                    <div className="w-full h-full flex items-center px-1.5 md:px-3">
+                      <span className="text-[8px] md:text-xs" style={{ color: 'var(--theme-text-muted)' }}>
                         {el.label}
                       </span>
                     </div>
