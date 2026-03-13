@@ -8,6 +8,19 @@ import {
   Loader2,
 } from 'lucide-react';
 
+const EMAIL_API_URL = import.meta.env.DEV
+  ? '/api/v1/email/send-public'
+  : 'https://backend-api.dev.rentworksplus.com/api/v1/email/send-public';
+
+const INITIAL_FORM_DATA = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  company: '',
+  phone: '',
+  message: '',
+};
+
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -15,13 +28,7 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showTermsOfService, setShowTermsOfService] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ ...INITIAL_FORM_DATA });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -63,17 +70,54 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    const bodyLines = [
+      `Received from: ${formData.firstName}, ${formData.lastName}`,
+      `Receiver email address: ${formData.email}`,
+    ];
+    if (formData.company) bodyLines.push(`Company: ${formData.company}`);
+    if (formData.phone) bodyLines.push(`Phone: ${formData.phone}`);
+    bodyLines.push(`Email body: ${formData.message}`);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    const bodyText = bodyLines.join('\n');
+    const bodyHtml = bodyLines.map(line => {
+      const [label, ...rest] = line.split(': ');
+      return `<p><b>${label}:</b> ${rest.join(': ')}</p>`;
+    }).join('');
 
-    // Reset after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', company: '', phone: '', message: '' });
-    }, 5000);
+    try {
+      const response = await fetch(EMAIL_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          recipientEmail: 'hello@heycarla.ai',
+          subject: 'RW+',
+          bodyHtml,
+          bodyText,
+          replyTo: formData.email,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || 'Form submission failed');
+      }
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Reset after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ ...INITIAL_FORM_DATA });
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert(`Failed to submit form: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -127,19 +171,37 @@ export default function ContactSection() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm mb-2" style={{ color: 'var(--theme-text-muted)' }}>
-                        Full Name <span style={{ color: 'var(--theme-accent)' }}>*</span>
+                        First Name <span style={{ color: 'var(--theme-accent)' }}>*</span>
                       </label>
                       <input
                         type="text"
-                        name="name"
-                        value={formData.name}
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
+                        placeholder="John"
                         className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 placeholder:opacity-50 focus:outline-none focus:ring-1 transition-all"
                         style={{ color: 'var(--theme-text)', borderColor: 'var(--theme-divider)' }}
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm mb-2" style={{ color: 'var(--theme-text-muted)' }}>
+                        Last Name <span style={{ color: 'var(--theme-accent)' }}>*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        placeholder="Doe"
+                        className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 placeholder:opacity-50 focus:outline-none focus:ring-1 transition-all"
+                        style={{ color: 'var(--theme-text)', borderColor: 'var(--theme-divider)' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm mb-2" style={{ color: 'var(--theme-text-muted)' }}>
                         Email Address <span style={{ color: 'var(--theme-accent)' }}>*</span>
@@ -155,9 +217,6 @@ export default function ContactSection() {
                         style={{ color: 'var(--theme-text)', borderColor: 'var(--theme-divider)' }}
                       />
                     </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm mb-2" style={{ color: 'var(--theme-text-muted)' }}>
                         Company Name
