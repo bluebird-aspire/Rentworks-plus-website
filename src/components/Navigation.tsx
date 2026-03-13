@@ -1,7 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, LogIn } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
-import logoImg from '../assets/logo-navbar.png';
+import logoLight from '../assets/logo-light.svg';
+import logoDark from '../assets/logo-dark.svg';
+
+const loginButtonClass = `
+  group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold
+  overflow-hidden transition-all duration-300
+  hover:scale-105
+`;
+
+function ShimmerOverlay() {
+  return (
+    <span
+      className="absolute inset-0 opacity-0 group-hover:opacity-100"
+      style={{
+        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+        animation: 'shimmer-slide 1.5s ease-in-out infinite',
+      }}
+    />
+  );
+}
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -48,7 +67,7 @@ export default function Navigation() {
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             <a href="#" className="flex items-center gap-2 group">
-              <img src={logoImg} alt="RentWorksPlus" className="h-8 w-auto" />
+              <img src={theme === 'dark' ? logoDark : logoLight} alt="RentWorksPlus" className="h-7 w-auto" />
             </a>
 
             <div className="hidden md:flex items-center gap-8">
@@ -74,13 +93,27 @@ export default function Navigation() {
               >
                 {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="px-5 py-2.5 rounded-lg border transition-all duration-300 text-sm font-medium"
-                style={{ borderColor: 'color-mix(in srgb, var(--theme-accent) 30%, transparent)', color: 'var(--theme-accent)' }}
+              <a
+                href="https://app.rentworksplus.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={loginButtonClass}
+                style={{
+                  backgroundColor: 'var(--theme-accent)',
+                  color: 'var(--theme-accent-fg)',
+                  boxShadow: '0 0 0 0 var(--theme-accent)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 20px color-mix(in srgb, var(--theme-accent) 40%, transparent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0 0 var(--theme-accent)';
+                }}
               >
-                Request a demo
-              </button>
+                <ShimmerOverlay />
+                <LogIn className="w-4 h-4" />
+                Login
+              </a>
             </div>
 
             <div className="flex md:hidden items-center gap-2">
@@ -120,13 +153,21 @@ export default function Navigation() {
               {link.label}
             </button>
           ))}
-          <button
-            className="mt-4 px-8 py-3 font-semibold rounded-lg transition-colors"
-            style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-fg)' }}
-            onClick={() => scrollToSection('#contact')}
+          <a
+            href="https://app.rentworksplus.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${loginButtonClass} mt-4 px-8 py-3 text-base`}
+            style={{
+              backgroundColor: 'var(--theme-accent)',
+              color: 'var(--theme-accent-fg)',
+            }}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            Request a demo
-          </button>
+            <ShimmerOverlay />
+            <LogIn className="w-5 h-5" />
+            Login
+          </a>
         </div>
       </div>
     </>

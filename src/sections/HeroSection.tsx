@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Calendar, ArrowRight } from 'lucide-react';
 
 import HeroCardCollage from '../components/hero/HeroCardCollage';
+import HeroCardCarousel from '../components/hero/HeroCardCarousel';
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,9 +56,9 @@ export default function HeroSection() {
       id="hero"
       className="relative w-full flex flex-col items-center pt-24 pb-0 overflow-visible"
     >
-      {/* Animated gradient orb */}
+      {/* Animated gradient orb — hidden on mobile */}
       <div
-        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute hidden md:block w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
           background: 'radial-gradient(circle, var(--theme-accent) 0%, transparent 70%)',
           opacity: 0.12,
@@ -133,8 +134,13 @@ export default function HeroSection() {
       </div>
 
       {/* Card collage zone */}
-      <div className="relative z-10 w-full mt-32">
-        <HeroCardCollage />
+      <div className="relative z-10 w-full mt-16 md:mt-32">
+        <div className="hidden md:block">
+          <HeroCardCollage />
+        </div>
+        <div className="md:hidden">
+          <HeroCardCarousel />
+        </div>
       </div>
     </section>
   );
