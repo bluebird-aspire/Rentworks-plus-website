@@ -95,7 +95,7 @@ export default function PaymentConstellationSection() {
       `}</style>
 
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="payment-header text-center mb-16">
+        <div className="payment-header opacity-0 text-center mb-16">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -108,10 +108,10 @@ export default function PaymentConstellationSection() {
             Payment Processing
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4" style={{ color: 'var(--theme-text)' }}>
-            Flexible payment solutions
+            How Does RentWorksPlus Handle Payments?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
-            Process payments securely with support for multiple gateways.
+            Process payments securely with Adyen gateway integration.
             Real-time status tracking, error recovery, and hosted payment options.
           </p>
         </div>
@@ -122,7 +122,7 @@ export default function PaymentConstellationSection() {
           <div className="hidden lg:flex flex-col gap-4">
             {leftFeatures.map((f, i) => (
               <div key={i} style={{ transform: `translateY(${(i - 1) * 10}px)` }}>
-                <FeatureItem text={f} className="pay-feature-left" />
+                <FeatureItem text={f} className="pay-feature-left opacity-0" />
               </div>
             ))}
           </div>
@@ -164,7 +164,7 @@ export default function PaymentConstellationSection() {
             {/* Center hub */}
             <div
               ref={centerRef}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 h-24 rounded-full flex items-center justify-center center-hub-glow"
+              className="opacity-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 h-24 rounded-full flex items-center justify-center center-hub-glow"
               style={{ backgroundColor: 'var(--theme-bg)', borderWidth: '2px', borderStyle: 'solid', borderColor: 'var(--theme-accent)' }}
             >
               <CreditCard className="w-10 h-10" style={{ color: 'var(--theme-accent)' }} />
@@ -177,7 +177,7 @@ export default function PaymentConstellationSection() {
               const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
               const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
               return (
-                <div key={gateway.name} className="gateway-node absolute z-10"
+                <div key={gateway.name} className="gateway-node opacity-0 absolute z-10"
                   style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}>
                   <div
                     className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-card flex flex-col items-center justify-center gap-1 hover:scale-110 transition-transform cursor-pointer"
@@ -195,12 +195,12 @@ export default function PaymentConstellationSection() {
           <div className="hidden lg:flex flex-col gap-4">
             {rightFeatures.map((f, i) => (
               <div key={i} style={{ transform: `translateY(${(i - 1) * 10}px)` }}>
-                <FeatureItem text={f} className="pay-feature-right" />
+                <FeatureItem text={f} className="pay-feature-right opacity-0" />
               </div>
             ))}
             {/* Enterprise security card */}
             <div
-              className="pay-feature-right mt-2 p-4 rounded-xl flex items-center gap-3"
+              className="pay-feature-right opacity-0 mt-2 p-4 rounded-xl flex items-center gap-3"
               style={{
                 backgroundColor: 'color-mix(in srgb, var(--theme-accent) 5%, transparent)',
                 border: '1px solid color-mix(in srgb, var(--theme-accent) 20%, transparent)',
@@ -212,7 +212,7 @@ export default function PaymentConstellationSection() {
               </div>
               <div>
                 <p className="text-sm font-medium" style={{ color: 'var(--theme-text)' }}>Enterprise Security</p>
-                <p className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>Secure multi-gateway processing</p>
+                <p className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>Secure payment processing</p>
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function PaymentConstellationSection() {
         {/* Mobile: all features below */}
         <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
           {[...leftFeatures, ...rightFeatures].map((f, i) => (
-            <FeatureItem key={i} text={f} className="pay-feature-left" />
+            <FeatureItem key={i} text={f} className="pay-feature-left opacity-0" />
           ))}
         </div>
       </div>

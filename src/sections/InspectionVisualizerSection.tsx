@@ -89,7 +89,7 @@ export default function InspectionVisualizerSection() {
   return (
     <section ref={sectionRef} id="inspection" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="inspection-header text-center mb-16">
+        <div className="inspection-header opacity-0 text-center mb-16">
           <span
             className="inline-block px-4 py-2 rounded-full border font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -104,7 +104,7 @@ export default function InspectionVisualizerSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Digital inspection system
+            How Does the Digital Vehicle Inspection Work?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Photo-based vehicle inspection with damage mapping across 60+ vehicle zones.
@@ -113,7 +113,7 @@ export default function InspectionVisualizerSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="vehicle-diagram relative">
+          <div className="vehicle-diagram opacity-0 relative">
             <div
               className="rounded-3xl overflow-hidden border"
               style={{
@@ -124,8 +124,9 @@ export default function InspectionVisualizerSection() {
             >
               <img
                 src={inspectionScreenshot}
-                alt="RentWorksPlus vehicle inspection system screenshot"
+                alt="RentWorksPlus vehicle inspection interface showing damage documentation across 60+ vehicle zones"
                 className="w-full h-auto rounded-3xl"
+                loading="lazy"
               />
             </div>
           </div>
@@ -139,7 +140,7 @@ export default function InspectionVisualizerSection() {
                 {damageTypes.map((type) => (
                   <div
                     key={type.name}
-                    className="damage-type flex items-center gap-2 px-3 py-2 rounded-xl"
+                    className="damage-type opacity-0 flex items-center gap-2 px-3 py-2 rounded-xl"
                     style={{
                       backgroundColor: `${type.color}15`,
                       border: `1px solid ${type.color}30`,
@@ -156,7 +157,7 @@ export default function InspectionVisualizerSection() {
               {inspectionFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="inspection-feature flex items-start gap-4 p-4 rounded-xl glass-card hover:border-mint/30 transition-all group"
+                  className="inspection-feature opacity-0 flex items-start gap-4 p-4 rounded-xl glass-card hover:border-mint/30 transition-all group"
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-colors"

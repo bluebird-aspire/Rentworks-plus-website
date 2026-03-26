@@ -54,7 +54,7 @@ const moduleDetails: Record<string, { title: string; description: string; featur
   customerdashboard: { title: 'Customer Portal', description: 'Public-facing customer self-service portal for rental status and account info', features: ['Customer lookup', 'Contract summaries', 'Rental status tracking', 'Customer statistics display', 'Account information', 'Self-service access'] },
   claims: { title: 'Claims Management', description: 'Full insurance claims lifecycle with 9 detail tabs', features: ['Multi-vehicle claim tracking', '9 detail tabs per claim', 'Expense and payment tracking', 'Repair order integration', 'Document checklist', 'Financial audit trail'] },
   reports: { title: 'Reporting & Analytics', description: '15+ real-time KPI metrics for operational insights', features: ['Fleet status monitoring', 'Revenue trend analysis', 'Utilization metrics', 'Conversion rate tracking', 'No-show rate analysis', 'Maintenance dashboard'] },
-  payments: { title: 'Payment Processing', description: 'Multi-gateway payment processing with real-time status tracking', features: ['Hosted payment pages', 'Card present payment', 'Cash & check payments', 'Pay by link', 'Real-time status tracking', 'Error handling & recovery'] },
+  payments: { title: 'Payment Processing', description: 'Adyen payment processing with real-time status tracking', features: ['Hosted payment pages', 'Card present payment', 'Cash & check payments', 'Pay by link', 'Real-time status tracking', 'Error handling & recovery'] },
   config: { title: 'Configuration', description: '20+ configurable system areas for enterprise setup', features: ['Multi-location support', 'Role-based access control', 'Terminal configuration', 'Branding settings', 'Security settings', 'Integrations management'] },
   contracts: { title: 'Contracts', description: 'Digital contract management with search, print, and email', features: ['Contract search + filtering', 'Detail views + summaries', 'Print and email', 'Contract card components'] },
   nonrevenue: { title: 'Non-Revenue Movements', description: 'Track vehicle movements that don\'t generate revenue', features: ['Open/close non-revenue records', 'Driver assignment', 'Vehicle movement tracking', 'Fleet status integration'] },
@@ -180,7 +180,7 @@ export default function OrbitalModulesSection() {
     <section ref={sectionRef} id="modules" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6">
         {/* Header */}
-        <div className="orbital-header text-center mb-16">
+        <div className="orbital-header opacity-0 text-center mb-16">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -192,7 +192,7 @@ export default function OrbitalModulesSection() {
             26 Integrated Modules
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4" style={{ color: 'var(--theme-text)' }}>
-            Explore the platform
+            What Are the 26 Integrated Modules?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Every aspect of rental operations covered—from reservations to payments,
@@ -221,7 +221,7 @@ export default function OrbitalModulesSection() {
                 return (
                   <button
                     key={module.id}
-                    className="orbit-node absolute w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-[background,box-shadow,scale] duration-300"
+                    className="orbit-node opacity-0 absolute w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-[background,box-shadow,scale] duration-300"
                     style={{
                       left: `${x}%`, top: `${y}%`,
                       translate: '-50% -50%',
@@ -257,7 +257,7 @@ export default function OrbitalModulesSection() {
                 return (
                   <button
                     key={module.id}
-                    className="orbit-node absolute w-11 h-11 md:w-[56px] md:h-[56px] rounded-full flex items-center justify-center transition-[background,box-shadow,scale] duration-300"
+                    className="orbit-node opacity-0 absolute w-11 h-11 md:w-[56px] md:h-[56px] rounded-full flex items-center justify-center transition-[background,box-shadow,scale] duration-300"
                     style={{
                       left: `${x}%`, top: `${y}%`,
                       translate: '-50% -50%',
@@ -285,7 +285,7 @@ export default function OrbitalModulesSection() {
             {/* Center hub */}
             <div
               ref={centerRef}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center"
+              className="opacity-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center"
               style={{
                 background: 'var(--theme-surface, rgba(255,255,255,0.08))',
                 backdropFilter: 'blur(12px)',

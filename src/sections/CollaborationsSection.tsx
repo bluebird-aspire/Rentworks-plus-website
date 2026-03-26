@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useTheme } from '../ThemeContext';
 import selfInspectionLogo from '../assets/self-inspection-logo.png';
 import carlaLogo from '../assets/carla-logo.png';
+import carlaLogoDark from '../assets/carla-logo-dark.png';
 import signifyLogo from '../assets/signify-logo.png';
 import valpayLogo from '../assets/valpay-logo.png';
 
@@ -10,6 +12,7 @@ type Partner = {
   description: string;
   color: string;
   image: string;
+  darkImage?: string;
 };
 
 const partners: Partner[] = [
@@ -22,6 +25,7 @@ const partners: Partner[] = [
   },
   {
     image: carlaLogo,
+    darkImage: carlaLogoDark,
     name: 'Carla.ai',
     description:
       'Automate customer inquiries and streamline day-to-day rental operations with an AI-powered assistant.',
@@ -44,6 +48,7 @@ const partners: Partner[] = [
 ];
 
 export default function CollaborationsSection() {
+  const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -95,7 +100,7 @@ export default function CollaborationsSection() {
     <section ref={sectionRef} id="integrations" className="relative w-full py-24 md:py-32">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-16">
+        <div ref={headerRef} className="opacity-0 text-center mb-16">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -112,7 +117,7 @@ export default function CollaborationsSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Trusted collaborations
+            What Integrations Are Available?
           </h2>
           <p
             className="text-lg max-w-[700px] mx-auto"
@@ -131,7 +136,7 @@ export default function CollaborationsSection() {
               ref={(el) => {
                 cardsRef.current[i] = el;
               }}
-              className="group glass-card rounded-2xl overflow-hidden cursor-pointer relative"
+              className="opacity-0 group glass-card rounded-2xl overflow-hidden cursor-pointer relative"
               style={{
                 transition:
                   'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
@@ -165,9 +170,10 @@ export default function CollaborationsSection() {
                   }}
                 >
                   <img
-                    src={partner.image}
-                    alt={partner.name}
+                    src={theme === 'dark' && partner.darkImage ? partner.darkImage : partner.image}
+                    alt={`${partner.name} - RentWorksPlus integration partner`}
                     className="w-8 h-8 object-contain"
+                    loading="lazy"
                   />
                 </div>
 

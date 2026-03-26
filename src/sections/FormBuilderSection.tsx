@@ -162,7 +162,7 @@ export default function FormBuilderSection() {
     <section ref={sectionRef} id="forms" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
-        <div className="formbuilder-header text-center mb-10">
+        <div className="formbuilder-header opacity-0 text-center mb-10">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -177,7 +177,7 @@ export default function FormBuilderSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Visual Rental Agreement Form Builder
+            How Does the Visual Form Builder Work?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Create custom documents and forms with drag-and-drop simplicity. Add conditional logic,
@@ -209,7 +209,7 @@ export default function FormBuilderSection() {
         </div>
 
         {/* Full-width canvas */}
-        <div className="formbuilder-canvas">
+        <div className="formbuilder-canvas opacity-0">
           <div
             className="rounded-2xl p-6"
             style={{
@@ -281,7 +281,7 @@ export default function FormBuilderSection() {
                 return (
                 <div
                   key={i}
-                  className={`canvas-element absolute rounded-lg${dragClass}`}
+                  className={`canvas-element opacity-0 absolute rounded-lg${dragClass}`}
                   style={{
                     left: `${el.x}%`,
                     top: `${el.y}%`,

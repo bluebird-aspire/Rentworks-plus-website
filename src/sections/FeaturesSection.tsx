@@ -3,14 +3,14 @@ import { gsap } from 'gsap';
 import { Calendar, Car, CreditCard, FileText, Users, BarChart3, Shield, Settings } from 'lucide-react';
 
 const features = [
-  { icon: Calendar, title: 'Reservations', description: 'Full reservation lifecycle with conflict detection, availability tracking, and open reservation management.', zDepth: 10 },
-  { icon: Car, title: 'Fleet Management', description: 'ACRISS classification, service history, financial tracking, and real-time vehicle availability.', zDepth: 20 },
-  { icon: CreditCard, title: 'Payment Processing', description: 'Multi-gateway support including Adyen, Worldpay, TriPOS, CenPOS, Hosted Payments, and Direct Bill.', zDepth: 10 },
-  { icon: FileText, title: 'Digital Contracts', description: 'Contract search, print, email functionality, and comprehensive agreement management.', zDepth: 30 },
-  { icon: Users, title: 'Customer 360°', description: 'Complete profiles with rental history, payment tracking, OCR license scanning, and duplicate detection.', zDepth: 30 },
-  { icon: BarChart3, title: 'Analytics Dashboard', description: '15+ real-time KPIs including fleet status, revenue trends, utilization, and conversion rates.', zDepth: 10 },
-  { icon: Shield, title: 'Claims Management', description: 'Full claim lifecycle with multi-vehicle tracking, expense reconciliation, and repair order integration.', zDepth: 20 },
-  { icon: Settings, title: 'Enterprise Config', description: 'Multi-location support, role-based access control, and 20+ configurable system areas.', zDepth: 10 },
+  { icon: Calendar, title: 'Reservations', description: 'Full reservation lifecycle with conflict detection, availability tracking, and open reservation management.', detail: 'The reservation module handles the complete booking lifecycle from initial quote through confirmation. It includes real-time conflict detection to prevent double-bookings, availability tracking across vehicle classes, and open reservation management for walk-in customers. Staff can search, filter, and sort reservations with paginated data tables, view detailed reservation records, and manage booking modifications.', zDepth: 10 },
+  { icon: Car, title: 'Fleet Management', description: 'ACRISS classification, service history, financial tracking, and real-time vehicle availability.', detail: 'RentWorksPlus fleet management provides a complete vehicle catalog with ACRISS industry-standard classification codes. Each vehicle profile includes service history, financial data such as cost and depreciation, equipment assignments, and fuel type tracking. The fleet status dashboard gives managers real-time visibility into vehicle availability across locations, while advanced search filters help staff quickly locate specific vehicles by class, status, or location.', zDepth: 20 },
+  { icon: CreditCard, title: 'Payment Processing', description: 'Adyen gateway integration with Hosted Payments, Direct Bill, and multiple payment methods.', detail: 'The payment module integrates with Adyen plus hosted payment solutions and direct billing options. It provides real-time payment status tracking, automatic error recovery, and support for both card-present and card-not-present transactions. Operators can configure payment settings independently per location for maximum flexibility.', zDepth: 10 },
+  { icon: FileText, title: 'Digital Contracts', description: 'Contract search, print, email functionality, and comprehensive agreement management.', detail: 'Digital contract management streamlines rental agreement workflows with searchable contract records, print and email functionality, and detailed contract summaries. The visual form builder allows operators to design custom rental agreement templates with drag-and-drop fields, conditional logic rules, e-signature capture, and data source binding — all without any coding.', zDepth: 30 },
+  { icon: Users, title: 'Customer 360°', description: 'Complete profiles with rental history, payment tracking, OCR license scanning, and duplicate detection.', detail: 'Customer 360-degree profiles consolidate all renter information into a single tabbed interface covering basic info, addresses, rental history, payment history, notes, documents, and audit logs. The system includes OCR license scanning for fast onboarding, duplicate detection across records, configurable alert types including credit and warning notes, and lifetime value statistics for each customer.', zDepth: 30 },
+  { icon: BarChart3, title: 'Analytics Dashboard', description: '15+ real-time KPIs including fleet status, revenue trends, utilization, and conversion rates.', detail: 'The analytics dashboard tracks 15+ operational KPIs in real time, including fleet status, operational load, class availability, agreement status, conversion rates, equipment usage, maintenance alerts, no-show rates, revenue trends, top add-ons, revenue by vehicle class, top revenue vehicles, and revenue pipeline. These metrics help managers make informed decisions about fleet sizing, pricing, and resource allocation.', zDepth: 10 },
+  { icon: Shield, title: 'Claims Management', description: 'Full claim lifecycle with multi-vehicle tracking, expense reconciliation, and repair order integration.', detail: 'End-to-end claims management uses a nine-tab interface covering overview, contacts, vehicles, financial summary, repair orders, documents, history, expenses, and payments. Each claim can track multiple vehicles and contacts, with expense reconciliation workflows, repair order creation and status tracking, document management with checklists, and a complete audit trail recording every change.', zDepth: 20 },
+  { icon: Settings, title: 'Enterprise Config', description: 'Multi-location support, role-based access control, and 20+ configurable system areas.', detail: 'Enterprise configuration supports multi-location operations where each branch maintains its own settings for vehicle categories, fuel pricing, rate rules, seasonal pricing, notification preferences, and counter positions. The system includes 20+ configurable areas, terminal-specific settings per workstation, and centralized user management with role-based permissions that can vary by location.', zDepth: 10 },
 ];
 
 export default function FeaturesSection() {
@@ -122,7 +122,7 @@ export default function FeaturesSection() {
   return (
     <section ref={sectionRef} id="features" className="relative w-full py-24 md:py-32">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div ref={headerRef} className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16 opacity-0">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -137,7 +137,7 @@ export default function FeaturesSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Everything you need to run your rental business
+            What Does RentWorksPlus Include?
           </h2>
           <p
             className="text-lg max-w-[700px] mx-auto"
@@ -153,7 +153,7 @@ export default function FeaturesSection() {
             <div
               key={feature.title}
               ref={el => { cardsRef.current[i] = el; }}
-              className="group glass-card rounded-2xl p-6 cursor-pointer relative overflow-hidden feature-card-hover"
+              className="group glass-card rounded-2xl p-6 cursor-pointer relative overflow-hidden feature-card-hover opacity-0"
               style={{
                 transformStyle: 'preserve-3d',
                 transform: `translateZ(${feature.zDepth}px)`,
@@ -206,6 +206,8 @@ export default function FeaturesSection() {
                 >
                   {feature.description}
                 </p>
+                {/* Extended description for SEO crawlers — visually hidden but in DOM */}
+                <p className="sr-only">{feature.detail}</p>
               </div>
             </div>
           ))}
