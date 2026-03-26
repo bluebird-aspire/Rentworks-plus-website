@@ -2,6 +2,10 @@ User-agent: *
 Allow: /
 Sitemap: https://www.rentworksplus.com/sitemap.xml
 
+# AI content files
+# https://www.rentworksplus.com/llms.txt
+# https://www.rentworksplus.com/llms-full.txt
+
 # Allow AI search crawlers
 User-agent: GPTBot
 Allow: /

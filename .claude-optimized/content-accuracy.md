@@ -28,11 +28,8 @@
 - Maintenance tracking (alerts, procedures, repair orders)
 - Vehicle tracking (inventory/location management)
 
-### Payment Gateways (confirmed integrations)
+### Payment Gateway (confirmed integration)
 - Adyen
-- Worldpay
-- TriPOS
-- CenPOS
 - Hosted payment solutions
 
 ### Vehicle Inspection
@@ -117,8 +114,8 @@
 - **Rewrite as**: "Vehicle inventory management with location tracking and inter-branch transport coordination"
 
 ### "100+ Integrations"
-- **Reality**: 4 confirmed payment gateways (Adyen, Worldpay, TriPOS, CenPOS), e-signature workflow, self-inspection external service, OCR capability.
-- **Not real**: No OTA integrations (Expedia, Booking.com, etc.), no accounting integrations (QuickBooks, Xero), no telematics (Geotab, Samsara), no communication tools (Twilio, SendGrid).
+- **Reality**: 1 confirmed payment gateway (Adyen), hosted payments, e-signature workflow, self-inspection external service, OCR capability.
+- **Not real**: No OTA integrations (Expedia, Booking.com, etc.), no accounting integrations (QuickBooks, Xero), no telematics (Geotab, Samsara), no communication tools (Twilio, SendGrid). No Worldpay, TriPOS, or CenPOS.
 - **Rewrite as**: List only actual integrations. Say "growing integration ecosystem" if needed, not "100+"
 
 ### "Dynamic Pricing"
@@ -227,7 +224,7 @@
 - Verizon Connect, Geotab, Samsara
 
 **Other claimed integrations (none exist):**
-- Stripe, Square, PayPal, Authorize.net (only Adyen, Worldpay, TriPOS, CenPOS exist)
+- Stripe, Square, PayPal, Authorize.net, Worldpay, TriPOS, CenPOS (only Adyen exists)
 - Turo Insurance, Checkr, Jumio, Onfido
 
 ### Fabricated Company Claims
@@ -258,5 +255,5 @@ Remove completely. Replace with:
 - **For metrics**: Use `[METRIC NEEDED - verify with business team]` as placeholder
 - **For testimonials**: Leave section empty or use `[REAL TESTIMONIAL NEEDED]`
 - **For case studies**: Leave empty or use `[REAL CASE STUDY NEEDED]`
-- **For integrations**: Only list confirmed ones (Adyen, Worldpay, TriPOS, CenPOS)
+- **For integrations**: Only list confirmed ones (Adyen)
 - **For features**: Don't mention them at all

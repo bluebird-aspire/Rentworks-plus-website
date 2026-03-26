@@ -76,8 +76,8 @@ src/
 
 ### DO
 - Describe features based on what the product actually does (see `product-features.md`)
-- Use accurate, specific language ("multi-gateway payment processing" not "AI-powered everything")
-- Reference real integrations only (Adyen, Worldpay, TriPOS, CenPOS)
+- Use accurate, specific language ("Adyen payment processing" not "AI-powered everything")
+- Reference real integrations only (Adyen)
 - Describe the inspection system as "photo-based digital inspection" (not "AI computer vision")
 - Use placeholder text like `[METRIC NEEDED]` when real data isn't available yet
 
@@ -117,7 +117,7 @@ It has **26 real feature modules** including:
 - Full rental lifecycle (reservations, check-in, check-out, contracts)
 - Customer management with OCR license scanning
 - Fleet management with ACRISS coding
-- Multi-gateway payments (Adyen, Worldpay, TriPOS, CenPOS)
+- Payment processing (Adyen gateway, hosted payments)
 - Comprehensive claims management
 - Photo-based vehicle inspection (60+ vehicle parts)
 - Form/document builder with conditional logic

@@ -133,14 +133,14 @@ export default function ContactSection() {
       <div className="max-w-[1400px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="contact-title inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4" style={{ background: 'color-mix(in srgb, var(--theme-accent) 10%, transparent)', color: 'var(--theme-accent)' }}>
+          <span className="contact-title opacity-0 inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4" style={{ background: 'color-mix(in srgb, var(--theme-accent) 10%, transparent)', color: 'var(--theme-accent)' }}>
             Get In Touch
           </span>
-          <h2 className="contact-title text-3xl md:text-5xl font-heading font-bold mb-4" style={{ color: 'var(--theme-text)' }}>
+          <h2 className="contact-title opacity-0 text-3xl md:text-5xl font-heading font-bold mb-4" style={{ color: 'var(--theme-text)' }}>
             Ready to Transform Your
             <span className="text-gradient"> Rental Business?</span>
           </h2>
-          <p className="contact-title text-lg max-w-2xl mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
+          <p className="contact-title opacity-0 text-lg max-w-2xl mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Schedule a personalized demo and see how RentWorksPlus can streamline your operations,
             enhance efficiency, and deliver exceptional customer experiences.
           </p>
@@ -148,7 +148,7 @@ export default function ContactSection() {
 
         {/* Centered Form */}
         <div className="max-w-2xl mx-auto">
-          <div className="contact-card glass-card rounded-2xl p-6 md:p-8">
+          <div className="contact-card opacity-0 glass-card rounded-2xl p-6 md:p-8">
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center text-center py-12">
                 <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6" style={{ background: 'color-mix(in srgb, var(--theme-accent) 20%, transparent)' }}>

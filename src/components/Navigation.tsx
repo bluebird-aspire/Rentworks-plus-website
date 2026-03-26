@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, LogIn } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
-import logoLight from '../assets/logo-light.svg';
-import logoDark from '../assets/logo-dark.svg';
+import logoLight from '../assets/logo-light.png';
+import logoDark from '../assets/logo-dark.png';
 
 const loginButtonClass = `
   group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold

@@ -1,19 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTheme } from '../ThemeContext';
 import carDark from '../assets/car-dark.gif';
 import carLight from '../assets/car-light.gif';
 
 // User-drawn path: x = vw%, y = % of total document height
-const PATH_POINTS = [
-  { x: 69.7, y: 3.51 }, { x: 77.6, y: 4.87 }, { x: 98, y: 7.33 },
-  { x: 90, y: 11.46 }, { x: 98, y: 17.32 }, { x: 79.6, y: 20.75 },
-  { x: 97, y: 24.27 }, { x: 83.4, y: 29.64 }, { x: 96.1, y: 33.43 },
-  { x: 97.7, y: 36.84 }, { x: 81.6, y: 39.73 }, { x: 96.7, y: 43.47 },
-  { x: 86.4, y: 48.3 }, { x: 85.6, y: 51.39 }, { x: 96.4, y: 55 },
-  { x: 88, y: 60.4 }, { x: 95.8, y: 64.91 }, { x: 88.5, y: 70.62 },
-  { x: 97.1, y: 76.03 }, { x: 87.8, y: 80.44 }, { x: 97.3, y: 86.7 },
-  { x: 87.1, y: 90.97 }, { x: 89.3, y: 94.51 }, { x: 79.7, y: 98.16 },
+export const PATH_POINTS = [
+  { x: 74.9, y: 1.7 }, { x: 92.9, y: 2.85 }, { x: 97.8, y: 5.39 },
+  { x: 86.8, y: 9.09 }, { x: 81.5, y: 11.53 }, { x: 91.6, y: 13.8 },
+  { x: 96.1, y: 16.34 }, { x: 86.4, y: 20.53 }, { x: 96.3, y: 23.6 },
+  { x: 93.1, y: 26.8 }, { x: 85.4, y: 29.25 }, { x: 96.1, y: 33.43 },
+  { x: 93.1, y: 36.66 }, { x: 89.1, y: 39.65 }, { x: 96.6, y: 42.47 },
+  { x: 86.4, y: 48.3 }, { x: 79.8, y: 53.01 }, { x: 96.7, y: 56.9 },
+  { x: 90.7, y: 61.2 }, { x: 95.8, y: 64.91 }, { x: 88.5, y: 70.62 },
+  { x: 97.1, y: 76.03 }, { x: 81, y: 80.8 }, { x: 97.3, y: 86.7 },
+  { x: 77.7, y: 90.75 }, { x: 93.8, y: 93.02 }, { x: 94.5, y: 96.09 },
+  { x: 73.6, y: 98.1 },
 ];
 
 // Normalize y range for progress mapping
@@ -112,10 +115,16 @@ export default function ScrollCar() {
     const car = carRef.current;
     if (!car) return;
 
-    // Cache document height — only update on resize to avoid per-frame reflow
+    // Cache document height — update on resize AND when lazy content loads
     let cachedDocHeight = document.documentElement.scrollHeight;
-    const onResize = () => { cachedDocHeight = document.documentElement.scrollHeight; };
-    window.addEventListener('resize', onResize);
+    const resizeObserver = new ResizeObserver(() => {
+      const newHeight = document.documentElement.scrollHeight;
+      if (newHeight !== cachedDocHeight) {
+        cachedDocHeight = newHeight;
+        ScrollTrigger.refresh();
+      }
+    });
+    resizeObserver.observe(document.body);
 
     // Set correct initial position now that page is laid out
     const vwInit = window.innerWidth / 100;
@@ -177,7 +186,7 @@ export default function ScrollCar() {
 
     return () => {
       clearTimeout(scrollTimer.current);
-      window.removeEventListener('resize', onResize);
+      resizeObserver.disconnect();
       trigger.scrollTrigger?.kill();
       trigger.kill();
     };
@@ -199,7 +208,7 @@ export default function ScrollCar() {
       <img
         ref={imgRef}
         src={theme === 'dark' ? carDark : carLight}
-        alt=""
+        alt="RentWorksPlus platform demonstration"
         width={56}
         height={56}
         style={{ opacity: 1 }}

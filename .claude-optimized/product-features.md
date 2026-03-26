@@ -156,18 +156,18 @@ This document lists **only features confirmed to exist** in the actual codebase.
 ## 4. PAYMENT & BILLING
 
 ### 4.1 Payments (`/payments`)
-**What it does**: Multi-gateway payment processing.
-- **Payment gateways**: Adyen, Worldpay, TriPOS, CenPOS, Hosted Payments
+**What it does**: Payment processing with Adyen gateway.
+- **Payment gateway**: Adyen, Hosted Payments
 - Payment method selection interface
 - Real-time payment status tracking
 - Error handling and recovery flows
 - Amount calculation and display
 - Payment progress indicators
-- Dedicated hooks per gateway (useAdyenPayment, useWorldpayPayment)
+- Dedicated hook (useAdyenPayment)
 
-**Marketable as**: "Flexible payment processing with support for Adyen, Worldpay, TriPOS, CenPOS, and hosted payment solutions. Real-time status tracking and error recovery."
+**Marketable as**: "Secure payment processing with Adyen gateway integration and hosted payment solutions. Real-time status tracking and error recovery."
 
-**Confirmed integrations to list**: Adyen, Worldpay, TriPOS, CenPOS. Do NOT list Stripe, PayPal, Square, or Authorize.net — these are not in the codebase.
+**Confirmed integrations to list**: Adyen only. Do NOT list Worldpay, TriPOS, CenPOS, Stripe, PayPal, Square, or Authorize.net — these are not in the codebase.
 
 ---
 

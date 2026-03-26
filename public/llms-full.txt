@@ -1,0 +1,106 @@
+# RentWorksPlus — Complete Feature Reference
+> Cloud-based car rental management platform by Bluebird Auto Rental Systems
+
+For a summary, see: https://www.rentworksplus.com/llms.txt
+
+## Platform Overview
+RentWorksPlus is a multi-tenant, cloud-based car rental management platform with 26 integrated feature modules. Built with React 19, TypeScript, NestJS, Prisma, and PostgreSQL, it covers the full rental lifecycle from reservations through check-out. The platform is designed for car rental agencies, dealerships with rental departments, and fleet operators.
+
+---
+
+## Module 1: Reservations
+Full reservation lifecycle management with search, filtering, and pagination. Includes reservation details view, open reservations tracking, conflict booking detection and handling, and sortable data tables. Staff can manage the complete workflow from initial quote through confirmation.
+
+## Module 2: Check-In
+Vehicle handover process at rental start with step-by-step workflow, vehicle inspection forms, damage assessment documentation, and contract validation including locked contract handling.
+
+## Module 3: Check-Out
+Vehicle return, final charges, and invoice generation. Multi-step checkout flow with vehicle inspection at return, payment processing integration, damage collection and review, completion tracking, and a self-inspection option for customers.
+
+## Module 4: Vehicle Inspection
+Photo-based vehicle condition documentation with visual damage marking on vehicle diagrams. Covers 60+ vehicle parts with damage type classification (scratch, dent, crack, stain, chip, tear, rust, missing, broken, other). Includes self-service inspection for customers and image masking/preprocessing utilities.
+
+## Module 5: Contracts
+Digital rental agreement management with contract search, filtering, detail views with summaries, print and email functionality, and contract card display components.
+
+## Module 6: Non-Revenue Movements
+Track vehicle movements that don't generate revenue. Includes open/close records, driver assignment, vehicle movement tracking, and fleet status integration.
+
+## Module 7: Customer Profiles
+Complete customer lifecycle management with CRUD operations, tabbed interface (Basic Info, Addresses, Rental History, Payment History, Notes, Documents, Audit Log), rental/payment history with pagination, notes system (General, Alert, Warning, Credit, History), document management, customer statistics (total rentals, revenue, lifetime value), preferences, duplicate detection, OCR license scanning, and alerting/blacklisting.
+
+## Module 8: Customer Dashboard
+Public-facing customer self-service portal with customer lookup, contract summaries, rental status tracking, and customer statistics display.
+
+## Module 9: Vehicles
+Complete vehicle catalog and lifecycle management with ACRISS code handling, vehicle classes and categories, service history tracking, financial data (cost, depreciation), fleet status overview, vehicle availability checking, equipment assignment, fuel type tracking, and advanced search filters.
+
+## Module 10: Fleet Operations
+Fleet-level operational monitoring with fleet status monitoring, vehicle assignment management, and status code service integration.
+
+## Module 11: Vehicle Inventory
+Vehicle location and transport management with location tracking (which location holds which vehicle), transport confirmation workflows, inventory flow coordination, and vehicle search within inventory.
+
+## Module 12: Payments
+Payment processing with Adyen gateway integration and hosted payments. Includes payment method selection, real-time status tracking, error handling and recovery, amount calculation, and progress indicators.
+
+## Module 13: Claims Management
+Full insurance/damage claims lifecycle with claims list (filtering/search), creation form, and detail view with 9 tabs: Overview, Contacts, Vehicles, Financial, Repair Orders, Documents, History, Expenses, Payments. Supports multi-vehicle tracking, multi-contact management, expense tracking with mark-as-paid workflow, payment tracking with received/void workflow, repair order management, document management with checklists, financial summary, and full audit trail.
+
+## Module 14: Insurance Configuration
+Insurance product setup with coverage type management and add-on options.
+
+## Module 15: System Configuration
+Comprehensive administration hub with 20+ areas: User Management (users, groups, roles, permissions), Location Management (positions, counters, notification rules, fuel types, vehicle categories, source of business, financial settings per location), Vehicle Configuration (products, catalog, equipment, fuel types), Operations Configuration (status codes, check-in settings, drivers, transaction sequences, maintenance, repair orders, claims), System Configuration (terminal settings, credit card control, integrations, security, notifications, branding, database, reports).
+
+## Module 16: Marketing & Revenue Settings
+Revenue optimization with miscellaneous charges, time/mileage rates, rate rules, rate seasons, fuel pricing, airline partnerships, and rental reason tracking.
+
+## Module 17: Dashboard Analytics
+Operational analytics with 15+ KPI metrics: fleet status, operational load (overall + detailed), class availability, agreements status, conversion rate, equipment usage, maintenance alerts, no-show rate, revenue trends, top add-ons, revenue by class, top revenue vehicles, revenue pipeline.
+
+## Module 18: Documents
+File storage and management with document upload, retrieval, and metadata tracking.
+
+## Module 19: PDF/Form Builder
+Visual form and document template engine with drag-and-drop canvas, field types (static text, data fields, boxes, RTF content, signatures, images), conditional logic engine, visibility rules, custom fields, transaction allocation, print configuration, form template management, data source binding, and 20+ UI builder components.
+
+## Module 20: Reservation Planner
+Reservation conflict resolution with booking identification, resolution assistance, and booking adjustment tools.
+
+## Module 21: OCR & VIN Scanning
+Optical character recognition for text and VIN code detection/extraction from images, with preprocessing, validation, model preloading, and manual validation fallback.
+
+## Module 22: Loyalty Programs
+Customer loyalty with program management, settings configuration, and point/tier management.
+
+## Module 23: Lost and Found
+Track items left in rental vehicles with data table, customer association, and status tracking.
+
+## Module 24: Counter Operations
+Unified counter/desk workspace with center page, sidebar navigation, modular layout, and landing page for counter staff.
+
+## Module 25: Guides & Onboarding
+Interactive in-app training with guide creation/management, step-by-step instructions, target element highlighting, permission-based access, route-based guides, and guided onboarding tours.
+
+## Module 26: Authentication & Security
+JWT access tokens with automatic refresh, HttpOnly refresh token cookies, request queuing during token refresh, role-based access control, user impersonation, cross-tab logout synchronization, and session expiry handling.
+
+---
+
+## Technical Architecture
+- Frontend: React 19 + TypeScript + Vite
+- Backend: NestJS + Prisma + PostgreSQL
+- Multi-tenant architecture
+- 35+ API service clients
+- 100+ pages/routes
+- TanStack Query for data caching
+- Centralized typed API client
+
+## Company Information
+- Company: Bluebird Auto Rental Systems
+- Product: RentWorksPlus
+- Email: support@barsnet.com
+- Phone: +1 (973) 989-2423
+- App: https://app.rentworksplus.com
+- Website: https://www.rentworksplus.com

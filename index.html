@@ -2,11 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RentWorksPlus — Car Rental Management Software | 26 Integrated Modules</title>
     <meta name="description" content="RentWorksPlus is a cloud-based car rental management platform with 26 integrated modules for reservations, fleet management, payments, claims, and customer relationships." />
     <link rel="canonical" href="https://www.rentworksplus.com/" />
+
+    <!-- Google Search Console verification — replace VERIFICATION_TOKEN with actual token -->
+    <!-- <meta name="google-site-verification" content="VERIFICATION_TOKEN" /> -->
+
+    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with actual measurement ID -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="RentWorksPlus — Car Rental Management Software" />
@@ -14,11 +21,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.rentworksplus.com/" />
     <meta property="og:site_name" content="RentWorksPlus" />
+    <meta property="og:image" content="https://www.rentworksplus.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="RentWorksPlus — Car Rental Management Software" />
     <meta name="twitter:description" content="Cloud-based platform with 26 integrated modules for modern rental operations." />
+    <meta name="twitter:image" content="https://www.rentworksplus.com/og-image.png" />
 
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
@@ -28,7 +39,12 @@
       "name": "RentWorksPlus",
       "alternateName": "Bluebird Auto Rental Systems",
       "url": "https://www.rentworksplus.com",
+      "logo": "https://www.rentworksplus.com/favicon.svg",
       "description": "Cloud-based car rental management platform with 26 integrated modules for reservations, fleet management, payments, claims, and customer relationships.",
+      "sameAs": [
+        "https://www.linkedin.com/company/bluebird-auto-rental-systems",
+        "https://app.rentworksplus.com"
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
@@ -50,12 +66,12 @@
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Car Rental Management Software",
       "operatingSystem": "Web (Cloud-based)",
-      "description": "Multi-tenant car rental management platform with 26 integrated modules covering the full rental lifecycle — reservations, fleet management, multi-gateway payments, claims, customer profiles, vehicle inspection, analytics, and more.",
+      "description": "Multi-tenant car rental management platform with 26 integrated modules covering the full rental lifecycle — reservations, fleet management, payment processing, claims, customer profiles, vehicle inspection, analytics, and more.",
       "url": "https://www.rentworksplus.com",
       "featureList": [
         "Full rental lifecycle management",
         "Fleet management with ACRISS classification",
-        "Multi-gateway payments (Adyen, Worldpay, TriPOS, CenPOS)",
+        "Payment processing (Adyen gateway, hosted payments)",
         "Customer 360° profiles with OCR license scanning",
         "Photo-based vehicle inspection (60+ zones)",
         "Claims management with 9 detail tabs",
@@ -91,12 +107,89 @@
     }
     </script>
 
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is RentWorksPlus and who is it for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RentWorksPlus is a cloud-based car rental management platform built by Bluebird Auto Rental Systems. It provides 26 integrated modules that cover the full rental lifecycle — from reservations and check-in through vehicle inspection, payment processing, and check-out. The platform is designed for car rental agencies, dealerships with rental departments, and fleet operators who need a unified system to manage daily operations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What payment gateways does RentWorksPlus support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RentWorksPlus integrates with Adyen for payment processing, plus hosted payment solutions and direct billing. The system provides real-time payment status tracking, automatic error recovery, and support for multiple payment methods per transaction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the digital vehicle inspection work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The RentWorksPlus inspection system uses photo-based documentation across 60+ mapped vehicle zones. Staff mark damage on visual vehicle diagrams, classify damage types, and attach timestamped photos. A customer self-service option allows renters to document vehicle condition independently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can RentWorksPlus manage multiple rental locations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. RentWorksPlus is built on a multi-tenant, multi-location architecture. Each location can have its own configuration for vehicle categories, fuel pricing, rate rules, seasonal pricing, notification preferences, counter positions, and staff roles. The system supports vehicle inventory tracking across locations with inter-branch transport coordination."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What analytics and reporting does RentWorksPlus provide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dashboard provides 15+ real-time KPIs covering fleet status, operational load, class availability, agreement status, conversion rates, equipment usage, maintenance alerts, no-show rates, revenue trends, top add-ons, revenue by vehicle class, top revenue vehicles, and revenue pipeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does RentWorksPlus handle claims management?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RentWorksPlus provides end-to-end claims management with a nine-tab interface covering overview, contacts, vehicles, financial summary, repair orders, documents, history, expenses, and payments. Each claim can track multiple vehicles and contacts, with expense reconciliation and a full audit trail."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
   </head>
   <body>
+    <noscript>
+      <div style="max-width:900px;margin:0 auto;padding:40px 20px;font-family:Inter,sans-serif;color:#081E32">
+        <h1>RentWorksPlus — Car Rental Management Software</h1>
+        <p>RentWorksPlus is a cloud-based car rental management platform built by Bluebird Auto Rental Systems. It provides 26 integrated modules covering the full rental lifecycle — from reservations and check-in through vehicle inspection, payment processing, and check-out. Designed for car rental agencies, dealerships, and fleet operators, RentWorksPlus consolidates operations into a single multi-tenant platform with role-based access control and multi-location support.</p>
+
+        <h2>What Does RentWorksPlus Include?</h2>
+        <p>The platform includes reservation management with conflict detection, fleet management with ACRISS vehicle classification, 360-degree customer profiles with OCR license scanning, and payment processing with Adyen gateway integration. Additional modules cover claims management with nine detail tabs, a visual drag-and-drop form builder with conditional logic, photo-based vehicle inspection across 60+ zones, a real-time analytics dashboard with 15+ KPIs, customer loyalty programs, lost and found tracking, and built-in interactive training guides.</p>
+
+        <h2>How Does Payment Processing Work?</h2>
+        <p>RentWorksPlus integrates with Adyen for payment processing, plus hosted payment solutions and direct billing. The system handles real-time payment status tracking, error recovery, and multiple payment methods per transaction. Operators can configure payment settings per location for maximum flexibility.</p>
+
+        <h2>How Does the Digital Vehicle Inspection Work?</h2>
+        <p>The inspection system uses photo-based documentation across 60+ mapped vehicle zones. Staff mark damage directly on visual vehicle diagrams, classify damage types (scratch, dent, crack, stain, chip, tear, rust, missing, broken), and attach photos. A customer self-service inspection option allows renters to document vehicle condition independently before and after rental.</p>
+
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:support@barsnet.com">support@barsnet.com</a> | Phone: <a href="tel:+19739892423">+1 (973) 989-2423</a></p>
+        <p>Sign in: <a href="https://app.rentworksplus.com">app.rentworksplus.com</a></p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

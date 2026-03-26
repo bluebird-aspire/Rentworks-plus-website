@@ -128,12 +128,12 @@ export default function AnalyticsDashboardSection() {
   return (
     <section ref={sectionRef} id="analytics" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="analytics-header text-center mb-16">
+        <div className="analytics-header opacity-0 text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-mint/10 border border-mint/20 text-mint font-mono text-xs uppercase tracking-wider mb-4">
             Analytics Dashboard
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-text mb-4">
-            Real-time operational insights
+            What Analytics and Reporting Does RentWorksPlus Provide?
           </h2>
           <p className="text-lg text-slate-muted max-w-[700px] mx-auto">
             15+ KPI metrics tracking fleet status, revenue trends, utilization, 
@@ -146,7 +146,7 @@ export default function AnalyticsDashboardSection() {
             <div
               key={metric.label}
               ref={el => { cardsRef.current[i] = el; }}
-              className="glass-card rounded-2xl p-5 hover:border-mint/30 transition-all duration-300 group cursor-pointer"
+              className="opacity-0 glass-card rounded-2xl p-5 hover:border-mint/30 transition-all duration-300 group cursor-pointer"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${metric.color}20` }}>
@@ -173,7 +173,7 @@ export default function AnalyticsDashboardSection() {
 
         <div className="kpi-categories grid grid-cols-1 md:grid-cols-3 gap-6">
           {kpiCategories.map((category) => (
-            <div key={category.title} className="kpi-category glass-card rounded-2xl p-6 hover:border-mint/20 transition-colors">
+            <div key={category.title} className="kpi-category opacity-0 glass-card rounded-2xl p-6 hover:border-mint/20 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
                 <h3 className="font-heading text-lg font-semibold text-slate-text">{category.title}</h3>

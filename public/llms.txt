@@ -1,27 +1,46 @@
 # RentWorksPlus
 > Cloud-based car rental management platform by Bluebird Auto Rental Systems
 
-RentWorksPlus is a multi-tenant, cloud-based car rental management platform with 26 integrated modules. It covers the full rental lifecycle from reservations through check-out, including fleet management, multi-gateway payment processing, claims management, and customer relationship management.
+RentWorksPlus is a multi-tenant, cloud-based car rental management platform with 26 integrated modules. It covers the full rental lifecycle from reservations through check-out, including fleet management, payment processing, claims management, and customer relationship management. Designed for car rental agencies, dealerships with rental departments, and fleet operators, it consolidates daily operations into a single platform with role-based access control and multi-location support.
 
 ## Core Capabilities
-- Reservations: Full reservation lifecycle with conflict detection and availability tracking
-- Fleet Management: ACRISS classification, service history, and real-time vehicle availability
-- Payment Processing: Multi-gateway support — Adyen, Worldpay, TriPOS, CenPOS
-- Vehicle Inspection: Photo-based digital inspection covering 60+ vehicle zones
-- Claims Management: End-to-end claims with multi-vehicle tracking and repair orders
-- Form Builder: Visual drag-and-drop document builder with conditional logic
-- Analytics Dashboard: 15+ real-time KPIs for fleet, revenue, and operations
-- Customer Profiles: 360-degree customer management with OCR license scanning
-- Loyalty Programs: Configurable tiers, points, and rewards
+- Reservations: Full reservation lifecycle with conflict detection, availability tracking, and open reservation management
+- Fleet Management: ACRISS vehicle classification, service history, financial tracking, equipment assignment, and real-time availability
+- Payment Processing: Adyen gateway integration with hosted payments and direct billing
+- Vehicle Inspection: Photo-based digital inspection covering 60+ vehicle zones with damage classification and customer self-service
+- Claims Management: End-to-end claims with nine detail tabs, multi-vehicle tracking, expense reconciliation, and repair orders
+- Form Builder: Visual drag-and-drop document builder with conditional logic, e-signature fields, and custom templates
+- Analytics Dashboard: 15+ real-time KPIs for fleet status, revenue trends, utilization, conversion rates, and maintenance alerts
+- Customer Profiles: 360-degree customer management with OCR license scanning, rental history, payment tracking, and duplicate detection
+- Loyalty Programs: Configurable tiers, points, and rewards to encourage repeat business
+- Contracts: Digital contract management with search, print, and email capabilities
+- Check-In/Check-Out: Structured workflows with vehicle inspection and payment processing at each stage
 
 ## Key Facts
 - 26 integrated feature modules
 - Multi-tenant architecture with role-based access control
-- Payment gateways: Adyen, Worldpay, TriPOS, CenPOS
+- Payment gateway: Adyen
 - 60+ vehicle inspection zones with photo documentation
 - 15+ dashboard KPIs for real-time analytics
-- Multi-location enterprise configuration
+- Multi-location enterprise configuration with 20+ configurable areas
 - Built-in interactive training and onboarding system
+- Customer self-service inspection portal
+- OCR license scanning for fast customer onboarding
+- ACRISS industry-standard vehicle classification
+
+## Frequently Asked Questions
+
+### What is RentWorksPlus?
+RentWorksPlus is a cloud-based car rental management platform built by Bluebird Auto Rental Systems. It provides 26 integrated modules covering the full rental lifecycle from reservations and check-in through vehicle inspection, payment processing, and check-out.
+
+### What payment gateways does RentWorksPlus support?
+RentWorksPlus integrates with Adyen for payment processing, plus hosted payment solutions and direct billing. The system supports real-time payment status tracking and error recovery.
+
+### How does vehicle inspection work?
+The inspection system uses photo-based documentation across 60+ mapped vehicle zones. Staff mark damage on visual vehicle diagrams, classify damage types, and attach photos. A customer self-service option is also available.
+
+### Can it manage multiple locations?
+Yes. Each location can have its own configuration for vehicle categories, fuel pricing, rate rules, seasonal pricing, counter positions, and staff roles. Vehicle inventory tracking supports inter-branch transport coordination.
 
 ## Company
 - Name: Bluebird Auto Rental Systems
@@ -29,3 +48,4 @@ RentWorksPlus is a multi-tenant, cloud-based car rental management platform with
 - Support: support@barsnet.com
 - Phone: +1 (973) 989-2423
 - App: https://app.rentworksplus.com
+- Website: https://www.rentworksplus.com

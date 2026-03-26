@@ -129,7 +129,7 @@ export default function ReservationTimelineSection() {
     <section ref={sectionRef} id="reservations" className="relative w-full py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
-        <div className="timeline-header text-center mb-16">
+        <div className="timeline-header opacity-0 text-center mb-16">
           <span
             className="inline-block px-4 py-2 rounded-full border font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -144,7 +144,7 @@ export default function ReservationTimelineSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Complete reservation workflow
+            How Does the Reservation System Work?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             From quote to close — manage every stage of the rental lifecycle with real-time status
@@ -178,7 +178,7 @@ export default function ReservationTimelineSection() {
                 return (
                   <button
                     key={step.id}
-                    className="timeline-step relative flex flex-col items-center group cursor-pointer"
+                    className="timeline-step opacity-0 relative flex flex-col items-center group cursor-pointer"
                     style={{ width: `${100 / reservationSteps.length}%` }}
                     onClick={() => setActiveStep(i)}
                   >
@@ -233,7 +233,7 @@ export default function ReservationTimelineSection() {
             <div className="hidden lg:flex flex-col gap-5">
               {leftFeatures.map((feature, i) => (
                 <div key={i} style={{ transform: `translateY(${(i - 1) * 12}px)` }}>
-                  <FeatureCard feature={feature} className="side-feature-left" />
+                  <FeatureCard feature={feature} className="side-feature-left opacity-0" />
                 </div>
               ))}
             </div>
@@ -285,7 +285,7 @@ export default function ReservationTimelineSection() {
             <div className="hidden lg:flex flex-col gap-5">
               {rightFeatures.map((feature, i) => (
                 <div key={i} style={{ transform: `translateY(${(i - 1) * 12}px)` }}>
-                  <FeatureCard feature={feature} className="side-feature-right" />
+                  <FeatureCard feature={feature} className="side-feature-right opacity-0" />
                 </div>
               ))}
             </div>
@@ -294,7 +294,7 @@ export default function ReservationTimelineSection() {
           {/* Mobile: show all features below */}
           <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             {[...leftFeatures, ...rightFeatures].map((feature, i) => (
-              <FeatureCard key={i} feature={feature} className="side-feature-left" />
+              <FeatureCard key={i} feature={feature} className="side-feature-left opacity-0" />
             ))}
           </div>
         </div>

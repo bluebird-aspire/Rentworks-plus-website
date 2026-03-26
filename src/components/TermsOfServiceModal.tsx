@@ -83,10 +83,7 @@ const termsSections: LegalSection[] = [
   {
     title: 'Term & Termination',
     content: (
-      <>
-        <p>By making use of the Services You enter into an Agreement with Us which has a minimum initial term of twelve calendar months from the date of commencement. Continued use after the expiration of the initial term extends that term automatically by one calendar month on a rolling month by month basis.</p>
-        <p className="mt-3">Either party may terminate this Agreement by giving a minimum of three months' notice. All Fees and Charges that would otherwise have been due from You, had the Agreement not been terminated, shall remain due and payable in the normal manner up to the expiration of that notice period. In extreme circumstances We may terminate this Agreement immediately and remove access to the Data and Services.</p>
-      </>
+      <p>By making use of the Services You enter into an Agreement with Us which has a minimum initial term of twelve calendar months from the date of commencement. Upon expiration of the initial term, the Agreement will automatically renew for successive periods of one calendar year unless either party provides written notice of cancellation prior to the renewal date, so long as all obligations for payment by You have been maintained and We have not exercised our option to terminate the Agreement.</p>
     ),
   },
   {

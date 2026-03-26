@@ -153,7 +153,7 @@ export default function LoyaltyProgramSection() {
 
       <div className="max-w-[1200px] mx-auto px-6 relative">
         {/* Header */}
-        <div className="loyalty-header text-center mb-14">
+        <div className="loyalty-header opacity-0 text-center mb-14">
           <span
             className="inline-block px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider mb-4"
             style={{
@@ -168,7 +168,7 @@ export default function LoyaltyProgramSection() {
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold mb-4"
             style={{ color: 'var(--theme-text)' }}
           >
-            Reward your repeat customers
+            How Do Customer Loyalty Programs Work?
           </h2>
           <p className="text-lg max-w-[700px] mx-auto" style={{ color: 'var(--theme-text-muted)' }}>
             Build customer loyalty with configurable tiers, point tracking, and rewards
@@ -185,7 +185,7 @@ export default function LoyaltyProgramSection() {
               <div
                 key={tier.name}
                 ref={el => { cardsRef.current[i] = el; }}
-                className={`relative rounded-2xl p-6 ${isFeatured ? 'md:-mt-4 md:pb-8' : ''}`}
+                className={`opacity-0 relative rounded-2xl p-6 ${isFeatured ? 'md:-mt-4 md:pb-8' : ''}`}
                 style={{
                   background: 'var(--theme-surface)',
                   backdropFilter: 'blur(12px)',
@@ -313,7 +313,7 @@ export default function LoyaltyProgramSection() {
             return (
               <div
                 key={i}
-                className="loyalty-feature-pill flex items-center gap-2 px-5 py-2.5 rounded-full text-sm cursor-default"
+                className="loyalty-feature-pill opacity-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm cursor-default"
                 style={{
                   background: 'var(--theme-surface)',
                   border: '1px solid var(--theme-surface-border)',
