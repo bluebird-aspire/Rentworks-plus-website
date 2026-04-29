@@ -8,6 +8,7 @@ import HeroSection from './sections/HeroSection';
 import DefinitionBlock from './sections/DefinitionBlock';
 import Footer from './components/Footer';
 import ScrollCar from './components/ScrollCar';
+import IcrsFormPage from './pages/IcrsFormPage';
 
 // Lazy-load below-fold sections for faster initial paint
 const FeaturesSection = lazy(() => import('./sections/FeaturesSection'));
@@ -30,6 +31,11 @@ function App() {
       ScrollTrigger.getAll().forEach(st => st.kill());
     };
   }, []);
+
+  const path = typeof window !== 'undefined' ? window.location.pathname : '/';
+  if (path === '/icrs' || path === '/icrs/') {
+    return <IcrsFormPage />;
+  }
 
   return (
     <ThemeProvider>
