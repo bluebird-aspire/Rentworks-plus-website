@@ -70,7 +70,7 @@ export default function LegalModal({ isOpen, onClose, title, sections }: LegalMo
       {/* Modal */}
       <div
         className="relative w-full max-w-4xl max-h-[85vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-        style={{ background: '#ffffff' }}
+        style={{ background: 'var(--theme-bg-alt)' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -83,7 +83,7 @@ export default function LegalModal({ isOpen, onClose, title, sections }: LegalMo
           </h2>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-black/5"
+            className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-[var(--theme-hover)]"
             aria-label="Close"
           >
             <X className="w-5 h-5" style={{ color: 'var(--theme-text-muted)' }} />
@@ -156,7 +156,7 @@ export default function LegalModal({ isOpen, onClose, title, sections }: LegalMo
           <button
             onClick={() => goTo(currentSection - 1)}
             disabled={currentSection === 0}
-            className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5"
+            className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[var(--theme-hover)]"
             style={{ color: 'var(--theme-text-muted)' }}
           >
             <ChevronLeft className="w-4 h-4" />
@@ -170,7 +170,7 @@ export default function LegalModal({ isOpen, onClose, title, sections }: LegalMo
           <button
             onClick={() => goTo(currentSection + 1)}
             disabled={currentSection === sections.length - 1}
-            className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5"
+            className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[var(--theme-hover)]"
             style={{ color: 'var(--theme-text-muted)' }}
           >
             Next

@@ -53,8 +53,10 @@ export default function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => {
-                        e.preventDefault();
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                        if (link.href.startsWith('#')) {
+                          e.preventDefault();
+                          document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                        }
                       }}
                       className="text-sm transition-colors hover:opacity-80"
                       style={{ color: 'var(--theme-text-muted)' }}
@@ -72,9 +74,9 @@ export default function Footer() {
                 Contact Us
               </h4>
               <div className="space-y-2.5">
-                <a href="mailto:support@barsnet.com" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
+                <a href="mailto:sales@rentworksplus.com" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
                   <Mail className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
-                  support@barsnet.com
+                  sales@rentworksplus.com
                 </a>
                 <a href="tel:+19739892423" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
                   <Phone className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
@@ -103,6 +105,10 @@ export default function Footer() {
 
             {/* Legal + Copyright */}
             <div className="flex items-center gap-3 text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+              <a href="/icrs" className="transition-colors hover:opacity-70">
+                ICRS
+              </a>
+              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
               <button onClick={() => setShowTermsOfService(true)} className="transition-colors hover:opacity-70">
                 Terms of Service
               </button>
