@@ -45,7 +45,7 @@ Yes. Each location can have its own configuration for vehicle categories, fuel p
 ## Company
 - Name: Bluebird Auto Rental Systems
 - Product: RentWorksPlus
-- Support: support@barsnet.com
+- Sales: sales@rentworksplus.com
 - Phone: +1 (973) 989-2423
 - App: https://app.rentworksplus.com
 - Website: https://www.rentworksplus.com

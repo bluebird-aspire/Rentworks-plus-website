@@ -58,6 +58,22 @@ function IcrsFormPage() {
   return (
     <main style={{ minHeight: '100vh', padding: '40px 20px', background: '#fff' }}>
       <div style={{ maxWidth: 720, margin: '0 auto' }}>
+        <a
+          href="/"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            marginBottom: 24,
+            fontSize: 14,
+            fontFamily: 'Inter, sans-serif',
+            color: '#007A55',
+            textDecoration: 'none',
+            fontWeight: 600,
+          }}
+        >
+          <span aria-hidden="true">←</span> Back to home
+        </a>
         <div id={TARGET_ID} />
       </div>
     </main>

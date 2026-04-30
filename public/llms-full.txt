@@ -100,7 +100,7 @@ JWT access tokens with automatic refresh, HttpOnly refresh token cookies, reques
 ## Company Information
 - Company: Bluebird Auto Rental Systems
 - Product: RentWorksPlus
-- Email: support@barsnet.com
+- Email: sales@rentworksplus.com
 - Phone: +1 (973) 989-2423
 - App: https://app.rentworksplus.com
 - Website: https://www.rentworksplus.com

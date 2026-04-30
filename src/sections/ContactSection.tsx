@@ -91,7 +91,7 @@ export default function ContactSection() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          recipientEmail: 'hello@heycarla.ai',
+          recipientEmail: 'sales@rentworksplus.com',
           subject: 'RW+',
           bodyHtml,
           bodyText,
