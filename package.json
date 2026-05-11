@@ -19,6 +19,7 @@
     "framer-motion": "^11.0.0",
     "gsap": "^3.12.5",
     "lucide-react": "^0.344.0",
+    "posthog-js": "^1.372.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.0"
