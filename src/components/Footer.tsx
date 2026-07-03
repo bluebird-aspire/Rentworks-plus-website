@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { Mail, Phone, Linkedin } from 'lucide-react';
-import PrivacyPolicyModal from './PrivacyPolicyModal';
-import TermsOfServiceModal from './TermsOfServiceModal';
-import logoLight from '../assets/logo-light.png';
-import logoDark from '../assets/logo-dark.png';
-import { useTheme } from '../ThemeContext';
+import { useState } from "react";
+import { Mail, Phone, Linkedin } from "lucide-react";
+import PrivacyPolicyModal from "./PrivacyPolicyModal";
+import TermsOfServiceModal from "./TermsOfServiceModal";
+import logoLight from "../assets/logo-light.png";
+import logoDark from "../assets/logo-dark.png";
+import { useTheme } from "../ThemeContext";
 
 const quickLinks = [
-  { label: 'Features', href: '#features' },
-  { label: 'Modules', href: '#modules' },
-  { label: 'Payments', href: '#payments' },
-  { label: 'Inspection', href: '#inspection' },
-  { label: 'Reservations', href: '#reservations' },
-  { label: 'Loyalty', href: '#loyalty' },
-  { label: 'Integrations', href: '#integrations' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Features", href: "#features" },
+  { label: "Modules", href: "#modules" },
+  { label: "Payments", href: "#payments" },
+  { label: "Inspection", href: "#inspection" },
+  { label: "Reservations", href: "#reservations" },
+  { label: "Loyalty", href: "#loyalty" },
+  { label: "Integrations", href: "#integrations" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
@@ -25,26 +25,37 @@ export default function Footer() {
   return (
     <footer className="relative">
       {/* Green accent bar */}
-      <div className="h-1 w-full" style={{ backgroundColor: 'var(--theme-accent)' }} />
+      <div
+        className="h-1 w-full"
+        style={{ backgroundColor: "var(--theme-accent)" }}
+      />
 
-      <div style={{ backgroundColor: 'var(--theme-bg-alt)' }}>
+      <div style={{ backgroundColor: "var(--theme-bg-alt)" }}>
         <div className="max-w-[1400px] mx-auto px-6 py-5">
           {/* 3-column grid: logo | quick links | contact */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Company info */}
             <div>
-              <img src={theme === 'dark' ? logoDark : logoLight} alt="RentWorksPlus" className="h-8 w-auto mb-3" loading="lazy" />
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-muted)' }}>
-                Cloud-based rental management platform for modern businesses. Streamline your operations with 26 integrated modules.
-              </p>
-              <p className="text-xs italic mt-2" style={{ color: 'var(--theme-text-muted)' }}>
+              <img
+                src={theme === "dark" ? logoDark : logoLight}
+                alt="RentWorksPlus"
+                className="h-8 w-auto mb-3"
+                loading="lazy"
+              />
+              <p
+                className="text-xs italic mt-2"
+                style={{ color: "var(--theme-text-muted)" }}
+              >
                 Driven by experience, redefined by intelligence.
               </p>
             </div>
 
             {/* Quick Links — 2-column sub-grid */}
             <div>
-              <h4 className="font-heading font-semibold mb-3" style={{ color: 'var(--theme-text)' }}>
+              <h4
+                className="font-heading font-semibold mb-3"
+                style={{ color: "var(--theme-text)" }}
+              >
                 Quick Links
               </h4>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-1.5">
@@ -53,13 +64,15 @@ export default function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => {
-                        if (link.href.startsWith('#')) {
+                        if (link.href.startsWith("#")) {
                           e.preventDefault();
-                          document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                          document
+                            .querySelector(link.href)
+                            ?.scrollIntoView({ behavior: "smooth" });
                         }
                       }}
                       className="text-sm transition-colors hover:opacity-80"
-                      style={{ color: 'var(--theme-text-muted)' }}
+                      style={{ color: "var(--theme-text-muted)" }}
                     >
                       {link.label}
                     </a>
@@ -70,24 +83,57 @@ export default function Footer() {
 
             {/* Contact Us */}
             <div>
-              <h4 className="font-heading font-semibold mb-3" style={{ color: 'var(--theme-text)' }}>
+              <h4
+                className="font-heading font-semibold mb-3"
+                style={{ color: "var(--theme-text)" }}
+              >
                 Contact Us
               </h4>
               <div className="space-y-2.5">
-                <a href="mailto:sales@rentworksplus.com" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
-                  <Mail className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
+                <a
+                  href="mailto:sales@rentworksplus.com"
+                  className="flex items-center gap-3 text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--theme-text-muted)" }}
+                >
+                  <Mail
+                    className="w-4 h-4 flex-shrink-0"
+                    style={{ color: "var(--theme-accent)" }}
+                  />
                   sales@rentworksplus.com
                 </a>
-                <a href="tel:+19739892423" className="flex items-center gap-3 text-sm transition-colors hover:opacity-80" style={{ color: 'var(--theme-text-muted)' }}>
-                  <Phone className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--theme-accent)' }} />
-                  +1 (973) 989-2423
+
+                {/* Replaced single phone entry with toll-free + local */}
+                <a
+                  href="tel:+18332001250"
+                  className="flex items-center gap-3 text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--theme-text-muted)" }}
+                >
+                  <Phone
+                    className="w-4 h-4 flex-shrink-0"
+                    style={{ color: "var(--theme-accent)" }}
+                  />
+                  1-833-200-1250 (toll-free)
+                </a>
+                <a
+                  href="tel:+19733849150"
+                  className="flex items-center gap-3 text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--theme-text-muted)" }}
+                >
+                  <Phone
+                    className="w-4 h-4 flex-shrink-0"
+                    style={{ color: "var(--theme-accent)" }}
+                  />
+                  1-973-384-9150 (local)
                 </a>
               </div>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="my-4" style={{ borderTop: '1px solid var(--theme-divider)' }} />
+          <div
+            className="my-4"
+            style={{ borderTop: "1px solid var(--theme-divider)" }}
+          />
 
           {/* Bottom bar */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
@@ -98,33 +144,56 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: 'color-mix(in srgb, var(--theme-accent) 12%, transparent)' }}
+              style={{
+                background:
+                  "color-mix(in srgb, var(--theme-accent) 12%, transparent)",
+              }}
             >
-              <Linkedin className="w-4 h-4" style={{ color: 'var(--theme-accent)' }} />
+              <Linkedin
+                className="w-4 h-4"
+                style={{ color: "var(--theme-accent)" }}
+              />
             </a>
 
             {/* Legal + Copyright */}
-            <div className="flex items-center gap-3 text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+            <div
+              className="flex items-center gap-3 text-xs"
+              style={{ color: "var(--theme-text-muted)" }}
+            >
               <a href="/icrs" className="transition-colors hover:opacity-70">
                 ICRS
               </a>
-              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
-              <button onClick={() => setShowTermsOfService(true)} className="transition-colors hover:opacity-70">
+              <span style={{ color: "var(--theme-divider-strong)" }}>|</span>
+              <button
+                onClick={() => setShowTermsOfService(true)}
+                className="transition-colors hover:opacity-70"
+              >
                 Terms of Service
               </button>
-              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
-              <button onClick={() => setShowPrivacyPolicy(true)} className="transition-colors hover:opacity-70">
+              <span style={{ color: "var(--theme-divider-strong)" }}>|</span>
+              <button
+                onClick={() => setShowPrivacyPolicy(true)}
+                className="transition-colors hover:opacity-70"
+              >
                 Privacy Policy
               </button>
-              <span style={{ color: 'var(--theme-divider-strong)' }}>|</span>
-              <span>&copy; 2026 RentWorksPlus &mdash; All rights reserved.</span>
+              <span style={{ color: "var(--theme-divider-strong)" }}>|</span>
+              <span>
+                &copy; 2026 RentWorksPlus &mdash; All rights reserved.
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      <PrivacyPolicyModal isOpen={showPrivacyPolicy} onClose={() => setShowPrivacyPolicy(false)} />
-      <TermsOfServiceModal open={showTermsOfService} onClose={() => setShowTermsOfService(false)} />
+      <PrivacyPolicyModal
+        isOpen={showPrivacyPolicy}
+        onClose={() => setShowPrivacyPolicy(false)}
+      />
+      <TermsOfServiceModal
+        open={showTermsOfService}
+        onClose={() => setShowTermsOfService(false)}
+      />
     </footer>
   );
 }
